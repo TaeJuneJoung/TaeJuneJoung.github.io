@@ -6,13 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="AllAuth참고사이트https://django-allauth.readthedocs.io/en/latest/ Install &amp;amp; SettingsInstall django-allauth 1pip install django-allauth    settings.py  12345678910111213141516171819202122232425262728293">
-<meta name="keywords" content="oauth2, django">
+    <meta name="description" content="oAuth2참고사이트https://django-allauth.readthedocs.io/en/latest/ Install &amp;amp; SettingsInstall django-allauth 1pip install django-allauth    settings.py  123456789101112131415161718192021222324252627282930">
+<meta name="keywords" content="oauth2,django">
 <meta property="og:type" content="article">
 <meta property="og:title" content="oauth2">
 <meta property="og:url" content="http://TaeJuneJoung.github.io/2019/06/23/oauth2/index.html">
 <meta property="og:site_name" content="Jun&#39;s Blog">
-<meta property="og:description" content="AllAuth참고사이트https://django-allauth.readthedocs.io/en/latest/ Install &amp;amp; SettingsInstall django-allauth 1pip install django-allauth    settings.py  12345678910111213141516171819202122232425262728293">
+<meta property="og:description" content="oAuth2참고사이트https://django-allauth.readthedocs.io/en/latest/ Install &amp;amp; SettingsInstall django-allauth 1pip install django-allauth    settings.py  123456789101112131415161718192021222324252627282930">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://taejunejoung.github.io/2019/06/23/oauth2/kakao_allauth_1.PNG">
 <meta property="og:image" content="http://taejunejoung.github.io/2019/06/23/oauth2/kakao_allauth_2.PNG">
@@ -24,10 +24,10 @@
 <meta property="og:image" content="http://taejunejoung.github.io/2019/06/23/oauth2/kakao_allauth_7.PNG">
 <meta property="og:image" content="http://taejunejoung.github.io/2019/06/23/oauth2/kakao_allauth_8.PNG">
 <meta property="og:image" content="http://taejunejoung.github.io/2019/06/23/oauth2/kakao_allauth_9.PNG">
-<meta property="og:updated_time" content="2019-06-23T13:22:33.624Z">
+<meta property="og:updated_time" content="2019-06-23T16:32:17.611Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="oauth2">
-<meta name="twitter:description" content="AllAuth참고사이트https://django-allauth.readthedocs.io/en/latest/ Install &amp;amp; SettingsInstall django-allauth 1pip install django-allauth    settings.py  12345678910111213141516171819202122232425262728293">
+<meta name="twitter:description" content="oAuth2참고사이트https://django-allauth.readthedocs.io/en/latest/ Install &amp;amp; SettingsInstall django-allauth 1pip install django-allauth    settings.py  123456789101112131415161718192021222324252627282930">
 <meta name="twitter:image" content="http://taejunejoung.github.io/2019/06/23/oauth2/kakao_allauth_1.PNG">
     
     
@@ -89,7 +89,7 @@
       <ul>
         
         
-        <li><a class="icon" href="/2019/06/21/Categories/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" href="/2019/06/23/hexo/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -116,7 +116,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#AllAuth"><span class="toc-number">1.</span> <span class="toc-text">AllAuth</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#참고사이트"><span class="toc-number">1.0.1.</span> <span class="toc-text">참고사이트</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Install-amp-Settings"><span class="toc-number">1.0.2.</span> <span class="toc-text">Install &amp; Settings</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Kakao"><span class="toc-number">1.0.3.</span> <span class="toc-text">Kakao</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Image-부가설명"><span class="toc-number">1.0.4.</span> <span class="toc-text">Image 부가설명</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SourceCode"><span class="toc-number">1.0.5.</span> <span class="toc-text">SourceCode</span></a></li></ol></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#oAuth2"><span class="toc-number">1.</span> <span class="toc-text">oAuth2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#참고사이트"><span class="toc-number">1.0.1.</span> <span class="toc-text">참고사이트</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Install-amp-Settings"><span class="toc-number">1.0.2.</span> <span class="toc-text">Install &amp; Settings</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Kakao"><span class="toc-number">1.0.3.</span> <span class="toc-text">Kakao</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Image-부가설명"><span class="toc-number">1.0.4.</span> <span class="toc-text">Image 부가설명</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SourceCode"><span class="toc-number">1.0.5.</span> <span class="toc-text">SourceCode</span></a></li></ol></li></ol></li></ol>
     </div>
   </span>
 </div>
@@ -149,14 +149,14 @@
       
     <div class="article-category">
         <i class="fas fa-archive"></i>
-        <a class="category-link" href="/categories/oauth2/">oauth2</a>
+        <a class="category-link" href="/categories/django/">django</a> › <a class="category-link" href="/categories/django/oauth2/">oauth2</a>
     </div>
 
 
       
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/tags/oauth2-django/">oauth2, django</a>
+        <a class="tag-link" href="/tags/django/">django</a>, <a class="tag-link" href="/tags/oauth2/">oauth2</a>
     </div>
 
 
@@ -165,7 +165,7 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h1 id="AllAuth"><a href="#AllAuth" class="headerlink" title="AllAuth"></a>AllAuth</h1><h3 id="참고사이트"><a href="#참고사이트" class="headerlink" title="참고사이트"></a>참고사이트</h3><p><a href="https://django-allauth.readthedocs.io/en/latest/" target="_blank" rel="noopener">https://django-allauth.readthedocs.io/en/latest/</a></p>
+    <h1 id="oAuth2"><a href="#oAuth2" class="headerlink" title="oAuth2"></a>oAuth2</h1><h3 id="참고사이트"><a href="#참고사이트" class="headerlink" title="참고사이트"></a>참고사이트</h3><p><a href="https://django-allauth.readthedocs.io/en/latest/" target="_blank" rel="noopener">https://django-allauth.readthedocs.io/en/latest/</a></p>
 <h3 id="Install-amp-Settings"><a href="#Install-amp-Settings" class="headerlink" title="Install &amp; Settings"></a>Install &amp; Settings</h3><p><strong>Install django-allauth</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install django-allauth</span><br></pre></td></tr></table></figure>
 
@@ -263,7 +263,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#AllAuth"><span class="toc-number">1.</span> <span class="toc-text">AllAuth</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#참고사이트"><span class="toc-number">1.0.1.</span> <span class="toc-text">참고사이트</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Install-amp-Settings"><span class="toc-number">1.0.2.</span> <span class="toc-text">Install &amp; Settings</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Kakao"><span class="toc-number">1.0.3.</span> <span class="toc-text">Kakao</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Image-부가설명"><span class="toc-number">1.0.4.</span> <span class="toc-text">Image 부가설명</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SourceCode"><span class="toc-number">1.0.5.</span> <span class="toc-text">SourceCode</span></a></li></ol></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#oAuth2"><span class="toc-number">1.</span> <span class="toc-text">oAuth2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#참고사이트"><span class="toc-number">1.0.1.</span> <span class="toc-text">참고사이트</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Install-amp-Settings"><span class="toc-number">1.0.2.</span> <span class="toc-text">Install &amp; Settings</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Kakao"><span class="toc-number">1.0.3.</span> <span class="toc-text">Kakao</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Image-부가설명"><span class="toc-number">1.0.4.</span> <span class="toc-text">Image 부가설명</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SourceCode"><span class="toc-number">1.0.5.</span> <span class="toc-text">SourceCode</span></a></li></ol></li></ol></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">

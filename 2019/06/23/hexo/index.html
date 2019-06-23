@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Hexo 쉽고 빠른, 강력한 블로그 프레임워크 Markdown 지원 작업 환경 CLI(command line interface)방식 github의 pages 서비스를 활용하여 정적 사이트 생성 가능 웹 프로그래밍에 대한 기본적인 지식 필요  Install node.js 다운로드 공식사이트 https://nodejs.org/en/  Setting Hexo 1">
+<meta name="keywords" content="oauth2,django">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hexo">
+<meta property="og:url" content="http://TaeJuneJoung.github.io/2019/06/23/hexo/index.html">
+<meta property="og:site_name" content="Jun&#39;s Blog">
+<meta property="og:description" content="Hexo 쉽고 빠른, 강력한 블로그 프레임워크 Markdown 지원 작업 환경 CLI(command line interface)방식 github의 pages 서비스를 활용하여 정적 사이트 생성 가능 웹 프로그래밍에 대한 기본적인 지식 필요  Install node.js 다운로드 공식사이트 https://nodejs.org/en/  Setting Hexo 1">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-06-23T23:14:57.933Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="hexo">
+<meta name="twitter:description" content="Hexo 쉽고 빠른, 강력한 블로그 프레임워크 Markdown 지원 작업 환경 CLI(command line interface)방식 github의 pages 서비스를 활용하여 정적 사이트 생성 가능 웹 프로그래밍에 대한 기본적인 지식 필요  Install node.js 다운로드 공식사이트 https://nodejs.org/en/  Setting Hexo 1">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>hexo</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+         
+          <li><a href="/categories/">categories</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+         
+          <li><a href="http://github.com/TaeJuneJoung">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/06/23/oauth2/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/06/21/hello-world/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://TaeJuneJoung.github.io/2019/06/23/hexo/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://TaeJuneJoung.github.io/2019/06/23/hexo/&text=hexo"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://TaeJuneJoung.github.io/2019/06/23/hexo/&title=hexo"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://TaeJuneJoung.github.io/2019/06/23/hexo/&is_video=false&description=hexo"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=hexo&body=Check out this article: http://TaeJuneJoung.github.io/2019/06/23/hexo/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://TaeJuneJoung.github.io/2019/06/23/hexo/&title=hexo"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://TaeJuneJoung.github.io/2019/06/23/hexo/&title=hexo"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://TaeJuneJoung.github.io/2019/06/23/hexo/&title=hexo"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://TaeJuneJoung.github.io/2019/06/23/hexo/&title=hexo"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://TaeJuneJoung.github.io/2019/06/23/hexo/&name=hexo&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Hexo"><span class="toc-number">1.</span> <span class="toc-text">Hexo</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Install-node-js"><span class="toc-number">1.0.1.</span> <span class="toc-text">Install node.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Setting-Hexo"><span class="toc-number">1.0.2.</span> <span class="toc-text">Setting Hexo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Git-repositories"><span class="toc-number">1.0.3.</span> <span class="toc-text">Git repositories</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Change-Theme"><span class="toc-number">1.0.4.</span> <span class="toc-text">Change Theme</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#github에-배포하기"><span class="toc-number">1.0.5.</span> <span class="toc-text">github에 배포하기</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#이미지-복사"><span class="toc-number">1.0.6.</span> <span class="toc-text">이미지 복사</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#페이지-및-파일-생성"><span class="toc-number">1.0.7.</span> <span class="toc-text">페이지 및 파일 생성</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#이미지-작성법"><span class="toc-number">1.0.8.</span> <span class="toc-text">이미지 작성법</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#카테고리-및-태그-사용법"><span class="toc-number">1.0.9.</span> <span class="toc-text">카테고리 및 태그 사용법</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#해나가야할것들"><span class="toc-number">1.0.10.</span> <span class="toc-text">해나가야할것들</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        hexo
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Jun's Blog</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-06-23T13:16:35.000Z" itemprop="datePublished">2019-06-23</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/django/">django</a> › <a class="category-link" href="/categories/django/oauth2/">oauth2</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/django/">django</a>, <a class="tag-link" href="/tags/oauth2/">oauth2</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h1><ul>
+<li>쉽고 빠른, 강력한 블로그 프레임워크</li>
+<li>Markdown 지원</li>
+<li>작업 환경 CLI(command line interface)방식</li>
+<li>github의 pages 서비스를 활용하여 정적 사이트 생성 가능</li>
+<li>웹 프로그래밍에 대한 기본적인 지식 필요</li>
+</ul>
+<h3 id="Install-node-js"><a href="#Install-node-js" class="headerlink" title="Install node.js"></a>Install node.js</h3><blockquote>
+<p>다운로드 공식사이트</p>
+<p><a href="https://nodejs.org/en/" target="_blank" rel="noopener">https://nodejs.org/en/</a></p>
+</blockquote>
+<h3 id="Setting-Hexo"><a href="#Setting-Hexo" class="headerlink" title="Setting Hexo"></a>Setting Hexo</h3><blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; npm install -g hexo-cil</span><br><span class="line">&gt; mkdir 폴더명</span><br><span class="line">&gt; </span><br><span class="line">&gt; <span class="built_in">cd</span> 폴더명</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; hexo init <span class="comment">#웹사이트 초기화</span></span><br><span class="line">&gt; npm install <span class="comment">#필요한 패키지 다운로드</span></span><br><span class="line">&gt; <span class="comment">#node_modules 폴더가 없을 시 생성</span></span><br><span class="line">&gt; <span class="comment">#현재 프로젝트의 package.json에 있는 패키지를 node_modules폴더에 설치</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&gt; # Site</span></span><br><span class="line"><span class="string">&gt; title: Jun's Blog</span></span><br><span class="line"><span class="string">&gt; subtitle: Jun's의 개발일지</span></span><br><span class="line"><span class="string">&gt; description:</span></span><br><span class="line"><span class="string">&gt; keywords:</span></span><br><span class="line"><span class="string">&gt; author: TaeJune Joung</span></span><br><span class="line"><span class="string">&gt; language: en</span></span><br><span class="line"><span class="string">&gt; timezone: Asia/Seoul</span></span><br><span class="line"><span class="string">&gt; </span></span><br><span class="line"><span class="string">&gt; # URL</span></span><br><span class="line"><span class="string">&gt; ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'</span></span><br><span class="line"><span class="string">&gt; url: http://TaeJuneJoung.github.io/</span></span><br><span class="line"><span class="string">&gt; root: /</span></span><br><span class="line"><span class="string">&gt; permalink: :year/:month/:day/:title/</span></span><br><span class="line"><span class="string">&gt; permalink_defaults:</span></span><br><span class="line"><span class="string">&gt;</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="Git-repositories"><a href="#Git-repositories" class="headerlink" title="Git repositories"></a>Git repositories</h3><blockquote>
+<p><code>계정명.github.io</code> 공개용 저장소 생성</p>
+</blockquote>
+<h3 id="Change-Theme"><a href="#Change-Theme" class="headerlink" title="Change Theme"></a>Change Theme</h3><blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="built_in">cd</span> themes</span><br><span class="line">&gt; <span class="comment">#어둡고 깔끔한게 마음에 들어서 해당 theme를 사용함</span></span><br><span class="line">&gt; <span class="comment">#theme마다 기본적으로 제공되는 부분들이 있으니 주의 선택</span></span><br><span class="line">&gt; git <span class="built_in">clone</span> https://github.com/probberechts/hexo-theme-cactus.git</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="comment">#_config_yml line73</span></span><br><span class="line">&gt; </span><br><span class="line">&gt; <span class="comment"># Extensions</span></span><br><span class="line">&gt; <span class="comment">## Plugins: https://hexo.io/plugins/</span></span><br><span class="line">&gt; <span class="comment">## Themes: https://hexo.io/themes/</span></span><br><span class="line">&gt; theme: hexo-theme-cactus</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p><strong>필요 패키지 다운로드 및 서버실행</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="built_in">cd</span> hexo-theme-cactus</span><br><span class="line">&gt; npm install</span><br><span class="line">&gt; </span><br><span class="line">&gt; <span class="built_in">cd</span> ../..</span><br><span class="line">&gt; <span class="comment">#서버실행</span></span><br><span class="line">&gt; hexo server</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="github에-배포하기"><a href="#github에-배포하기" class="headerlink" title="github에 배포하기"></a>github에 배포하기</h3><blockquote>
+<p><strong>git 배포를 위한 패키지 설치</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; npm install hexo-deployer-git --save</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p><strong>배포(deployment)주소 수정</strong></p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&gt; # Deployment</span></span><br><span class="line"><span class="string">&gt; ## Docs: https://hexo.io/docs/deployment.html</span></span><br><span class="line"><span class="string">&gt; deploy:</span></span><br><span class="line"><span class="string">&gt;   type: git</span></span><br><span class="line"><span class="string">&gt;   repo: https://github.com/TaeJuneJoung/TaeJuneJoung.github.io.git</span></span><br><span class="line"><span class="string">&gt;   branch: master</span></span><br><span class="line"><span class="string">&gt;</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p><strong>deployment</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; hexo deploy</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="이미지-복사"><a href="#이미지-복사" class="headerlink" title="이미지 복사"></a>이미지 복사</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">source/</span><br><span class="line">	images/</span><br></pre></td></tr></table></figure>
+
+<p><code>images</code>폴더에 넣어서 경로 설정으로 잡아주면 됨.</p>
+<blockquote>
+<p><strong>example)</strong></p>
+<p>​    url: /images/파일명</p>
+</blockquote>
+<h3 id="페이지-및-파일-생성"><a href="#페이지-및-파일-생성" class="headerlink" title="페이지 및 파일 생성"></a>페이지 및 파일 생성</h3><blockquote>
+<p><strong>페이지 생성</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; hexo new page 페이지명</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p><strong>파일 생성</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; hexo new 파일명</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="이미지-작성법"><a href="#이미지-작성법" class="headerlink" title="이미지 작성법"></a>이미지 작성법</h3><blockquote>
+<p style="color:#007bff;font-weight:bold">이미지 작성</p>
+
+<p><strong>전역 Asset</strong></p>
+<p><code>source/images</code>에 파일들을 넣고 <code>![](/images/image.jpg)</code>이와 같이 하면 해결</p>
+<p><strong>Post Asset</strong></p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&gt; _config.yml</span></span><br><span class="line"><span class="string">&gt; post_asset_folder: true</span></span><br><span class="line"><span class="string">&gt;</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>설정에서 post_asset_folder를 <code>true</code>로 한 후,</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="quote">&gt; &#123;% asset_img slug [title] %&#125;</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>위와 같이 불러오면 된다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; example)</span><br><span class="line">&gt; &#123;% asset_img slug testImg.PNG %&#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="카테고리-및-태그-사용법"><a href="#카테고리-및-태그-사용법" class="headerlink" title="카테고리 및 태그 사용법"></a>카테고리 및 태그 사용법</h3><blockquote>
+<p><strong>categories/index.md</strong></p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="quote">&gt; ---</span></span><br><span class="line"><span class="quote">&gt; title: categories</span></span><br><span class="line"><span class="quote">&gt; type: "categories"</span></span><br><span class="line"><span class="quote">&gt; date: </span></span><br><span class="line"><span class="quote">&gt; ---</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p><strong>tags/index.md</strong></p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="quote">&gt; ---</span></span><br><span class="line"><span class="quote">&gt; title: tags</span></span><br><span class="line"><span class="quote">&gt; type: 'tags'</span></span><br><span class="line"><span class="quote">&gt; date: </span></span><br><span class="line"><span class="quote">&gt; ---</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>작성파일 예시)</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="quote">&gt; ---</span></span><br><span class="line"><span class="quote">&gt; title: oauth2</span></span><br><span class="line"><span class="quote">&gt; date: 2019-06-23 22:16:35</span></span><br><span class="line"><span class="quote">&gt; tags: ['oauth2', 'django']</span></span><br><span class="line"><span class="quote">&gt; categories: ['django', 'oauth2']</span></span><br><span class="line"><span class="quote">&gt; ---</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="해나가야할것들"><a href="#해나가야할것들" class="headerlink" title="해나가야할것들"></a>해나가야할것들</h3><ul>
+<li><p>SEO</p>
+<blockquote>
+<p><strong>참고사이트</strong></p>
+<p><a href="https://iseongho.github.io/posts/hexo-seo/" target="_blank" rel="noopener">https://iseongho.github.io/posts/hexo-seo/</a></p>
+<p><a href="https://futurecreator.github.io/2016/06/23/search-engine-optimization-hexo-plugins/" target="_blank" rel="noopener">https://futurecreator.github.io/2016/06/23/search-engine-optimization-hexo-plugins/</a></p>
+</blockquote>
+</li>
+<li><p>검색기능</p>
+<blockquote>
+<p><a href="https://elfinlas.github.io/2018/06/07/hexo-usea-lgolia/" target="_blank" rel="noopener">https://elfinlas.github.io/2018/06/07/hexo-usea-lgolia/</a></p>
+</blockquote>
+</li>
+</ul>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+         
+          <li><a href="/categories/">categories</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+         
+          <li><a href="http://github.com/TaeJuneJoung">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Hexo"><span class="toc-number">1.</span> <span class="toc-text">Hexo</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Install-node-js"><span class="toc-number">1.0.1.</span> <span class="toc-text">Install node.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Setting-Hexo"><span class="toc-number">1.0.2.</span> <span class="toc-text">Setting Hexo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Git-repositories"><span class="toc-number">1.0.3.</span> <span class="toc-text">Git repositories</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Change-Theme"><span class="toc-number">1.0.4.</span> <span class="toc-text">Change Theme</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#github에-배포하기"><span class="toc-number">1.0.5.</span> <span class="toc-text">github에 배포하기</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#이미지-복사"><span class="toc-number">1.0.6.</span> <span class="toc-text">이미지 복사</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#페이지-및-파일-생성"><span class="toc-number">1.0.7.</span> <span class="toc-text">페이지 및 파일 생성</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#이미지-작성법"><span class="toc-number">1.0.8.</span> <span class="toc-text">이미지 작성법</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#카테고리-및-태그-사용법"><span class="toc-number">1.0.9.</span> <span class="toc-text">카테고리 및 태그 사용법</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#해나가야할것들"><span class="toc-number">1.0.10.</span> <span class="toc-text">해나가야할것들</span></a></li></ol></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://TaeJuneJoung.github.io/2019/06/23/hexo/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://TaeJuneJoung.github.io/2019/06/23/hexo/&text=hexo"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://TaeJuneJoung.github.io/2019/06/23/hexo/&title=hexo"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://TaeJuneJoung.github.io/2019/06/23/hexo/&is_video=false&description=hexo"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=hexo&body=Check out this article: http://TaeJuneJoung.github.io/2019/06/23/hexo/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://TaeJuneJoung.github.io/2019/06/23/hexo/&title=hexo"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://TaeJuneJoung.github.io/2019/06/23/hexo/&title=hexo"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://TaeJuneJoung.github.io/2019/06/23/hexo/&title=hexo"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://TaeJuneJoung.github.io/2019/06/23/hexo/&title=hexo"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://TaeJuneJoung.github.io/2019/06/23/hexo/&name=hexo&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 TaeJune Joung
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+         
+          <li><a href="/categories/">categories</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+         
+          <li><a href="http://github.com/TaeJuneJoung">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-142495508-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'cactus-1';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
+</body>
+</html>
