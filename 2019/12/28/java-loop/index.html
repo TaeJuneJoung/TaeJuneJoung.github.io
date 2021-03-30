@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    <meta name="description" content="for문알고 있던 for문이 아닌 다른 for문에 대해서 알아보자. 123456789for(int i=0, j=7; i&amp;lt;j; i++, j--) &amp;#123;    System.out.println(&quot;i: &quot; + i + &quot;, j: &quot; + j);    /*    * i: 0, j: 7    * i: 1, j: 6    * i: 2, j: 5    * i:">
+<meta name="keywords" content="Java,Loop">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java] 조건문과 반복문">
+<meta property="og:url" content="http://TaeJuneJoung.github.io/2019/12/28/java-loop/index.html">
+<meta property="og:site_name" content="Jun&#39;s Blog">
+<meta property="og:description" content="for문알고 있던 for문이 아닌 다른 for문에 대해서 알아보자. 123456789for(int i=0, j=7; i&amp;lt;j; i++, j--) &amp;#123;    System.out.println(&quot;i: &quot; + i + &quot;, j: &quot; + j);    /*    * i: 0, j: 7    * i: 1, j: 6    * i: 2, j: 5    * i:">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2021-03-30T16:01:50.259Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java] 조건문과 반복문">
+<meta name="twitter:description" content="for문알고 있던 for문이 아닌 다른 for문에 대해서 알아보자. 123456789for(int i=0, j=7; i&amp;lt;j; i++, j--) &amp;#123;    System.out.println(&quot;i: &quot; + i + &quot;, j: &quot; + j);    /*    * i: 0, j: 7    * i: 1, j: 6    * i: 2, j: 5    * i:">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Java] 조건문과 반복문</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post " href="/2019/12/29/java-method/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post " href="/2019/12/27/java-operator-traning/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://TaeJuneJoung.github.io/2019/12/28/java-loop/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://TaeJuneJoung.github.io/2019/12/28/java-loop/&text=Java] 조건문과 반복문"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://TaeJuneJoung.github.io/2019/12/28/java-loop/&title=Java] 조건문과 반복문"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://TaeJuneJoung.github.io/2019/12/28/java-loop/&is_video=false&description=Java] 조건문과 반복문"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Java] 조건문과 반복문&body=Check out this article: http://TaeJuneJoung.github.io/2019/12/28/java-loop/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://TaeJuneJoung.github.io/2019/12/28/java-loop/&title=Java] 조건문과 반복문"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://TaeJuneJoung.github.io/2019/12/28/java-loop/&title=Java] 조건문과 반복문"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://TaeJuneJoung.github.io/2019/12/28/java-loop/&title=Java] 조건문과 반복문"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://TaeJuneJoung.github.io/2019/12/28/java-loop/&title=Java] 조건문과 반복문"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://TaeJuneJoung.github.io/2019/12/28/java-loop/&name=Java] 조건문과 반복문&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://TaeJuneJoung.github.io/2019/12/28/java-loop/&t=Java] 조건문과 반복문"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#for문"><span class="toc-number">1.</span> <span class="toc-text">for문</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#for문을-while문-처럼-사용하는-방법"><span class="toc-number">1.1.</span> <span class="toc-text">for문을 while문 처럼 사용하는 방법</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#레이블을-설정하는-break문"><span class="toc-number">1.2.</span> <span class="toc-text">레이블을 설정하는 break문</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Break-amp-Continue"><span class="toc-number">2.</span> <span class="toc-text">Break &amp; Continue</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#break"><span class="toc-number">2.1.</span> <span class="toc-text">break</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#continue"><span class="toc-number">2.2.</span> <span class="toc-text">continue</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Problem"><span class="toc-number">3.</span> <span class="toc-text">Problem]</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#01"><span class="toc-number">3.1.</span> <span class="toc-text">01.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#02"><span class="toc-number">3.2.</span> <span class="toc-text">02.</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4111865521431436",
+    enable_page_level_ads: true
+  });
+</script>
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Java] 조건문과 반복문
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">TaeJune Joung</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-12-27T15:59:46.000Z" itemprop="datePublished">2019-12-28</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/Java/">Java</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/Java/">Java</a>, <a class="tag-link" href="/tags/Loop/">Loop</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="for문"><a href="#for문" class="headerlink" title="for문"></a>for문</h2><p>알고 있던 for문이 아닌 다른 for문에 대해서 알아보자.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>, j=<span class="number">7</span>; i&lt;j; i++, j--) &#123;</span><br><span class="line">    System.out.println(<span class="string">"i: "</span> + i + <span class="string">", j: "</span> + j);</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    * i: 0, j: 7</span></span><br><span class="line"><span class="comment">    * i: 1, j: 6</span></span><br><span class="line"><span class="comment">    * i: 2, j: 5</span></span><br><span class="line"><span class="comment">    * i: 3, j: 4</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="for문을-while문-처럼-사용하는-방법"><a href="#for문을-while문-처럼-사용하는-방법" class="headerlink" title="for문을 while문 처럼 사용하는 방법"></a>for문을 while문 처럼 사용하는 방법</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>( ; ; ) &#123;</span><br><span class="line">    System.out.println(<span class="string">"무한 루프"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="레이블을-설정하는-break문"><a href="#레이블을-설정하는-break문" class="headerlink" title="레이블을 설정하는 break문"></a>레이블을 설정하는 break문</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">outerLoop :</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">5</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;<span class="number">5</span>; j++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(i==<span class="number">0</span> &amp;&amp; j==<span class="number">2</span>) &#123;</span><br><span class="line">            <span class="keyword">break</span> outerLoop;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"i: "</span> + i + <span class="string">", j: "</span> + j);</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        * i: 0, j: 0</span></span><br><span class="line"><span class="comment">        * i: 0, j: 1</span></span><br><span class="line"><span class="comment">        * */</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Break-amp-Continue"><a href="#Break-amp-Continue" class="headerlink" title="Break &amp; Continue"></a>Break &amp; Continue</h2><h3 id="break"><a href="#break" class="headerlink" title="break"></a>break</h3><p>break를 사용하면 사용된 범위의 for문을 나갈 수 있다.</p>
+<p>그렇지만 이중 for문일 때 하나의 break문을 이용해서 나가는 방법에 대해서 알아보자.</p>
+<p>지금까지 이러한 경우가 있을 때는 boolean 변수를 하나 더 이용해서 if문으로 검사하여 break를 두 개 사용하거나, 함수를 이용해서 return으로 처리했었다.</p>
+<h3 id="continue"><a href="#continue" class="headerlink" title="continue"></a>continue</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">5</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span>(i == <span class="number">3</span>) &#123;</span><br><span class="line">        <span class="keyword">continue</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println(i);</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    * 0</span></span><br><span class="line"><span class="comment">    * 1</span></span><br><span class="line"><span class="comment">    * 2</span></span><br><span class="line"><span class="comment">    * 4</span></span><br><span class="line"><span class="comment">    * */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>위 예제를 보게되면 <code>continue</code>에 대해서 쉽게 이해할 수 있다.</p>
+<h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem]"></a>Problem]</h2><h3 id="01"><a href="#01" class="headerlink" title="01."></a>01.</h3><p>1+(-2)+3+(-4)+…과 같은 식으로 계속 더해나갔을 때, 몇까지 더해야 총합이 100이상이 되는지 구하시오.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> num = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">int</span> sumV = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span>(sumV &lt; <span class="number">100</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span>(num % <span class="number">2</span> == <span class="number">1</span>) &#123;</span><br><span class="line">        sumV += num;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        sumV -= num;</span><br><span class="line">    &#125;</span><br><span class="line">    num += <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line">System.out.println(num); <span class="comment">//200</span></span><br><span class="line">System.out.println(sumV); <span class="comment">//100</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="02"><a href="#02" class="headerlink" title="02."></a>02.</h3><p>1+(1+2)+(1+2+3)+(1+2+3+4)+…+(1+2+3+4+5+6+7+8+9+10)의 결과를 계산하시오.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(num == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> num + sum(num-<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> sumV = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i &lt; <span class="number">11</span>; i++) &#123;</span><br><span class="line">        sumV += sum(i);</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println(sumV); <span class="comment">//220</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><a href="https://www.python.org/dev/peps/pep-3136/" target="_blank" rel="noopener">https://www.python.org/dev/peps/pep-3136/</a></p>
+<p>못 찾은 것일수도 있겠지만, 파이썬에는 레이블을 이용한 break문은 없다.</p>
+<p>라이브러리를 사용하여 하는 방법은 있다.</p>
+
+  </div>
+</article>
+<!--  utteranc comment -->
+
+<script src="https://utteranc.es/client.js"
+        repo="TaeJuneJoung/gitblog-comment"
+        issue-term="title"
+        label="Comment"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#for문"><span class="toc-number">1.</span> <span class="toc-text">for문</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#for문을-while문-처럼-사용하는-방법"><span class="toc-number">1.1.</span> <span class="toc-text">for문을 while문 처럼 사용하는 방법</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#레이블을-설정하는-break문"><span class="toc-number">1.2.</span> <span class="toc-text">레이블을 설정하는 break문</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Break-amp-Continue"><span class="toc-number">2.</span> <span class="toc-text">Break &amp; Continue</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#break"><span class="toc-number">2.1.</span> <span class="toc-text">break</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#continue"><span class="toc-number">2.2.</span> <span class="toc-text">continue</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Problem"><span class="toc-number">3.</span> <span class="toc-text">Problem]</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#01"><span class="toc-number">3.1.</span> <span class="toc-text">01.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#02"><span class="toc-number">3.2.</span> <span class="toc-text">02.</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://TaeJuneJoung.github.io/2019/12/28/java-loop/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://TaeJuneJoung.github.io/2019/12/28/java-loop/&text=Java] 조건문과 반복문"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://TaeJuneJoung.github.io/2019/12/28/java-loop/&title=Java] 조건문과 반복문"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://TaeJuneJoung.github.io/2019/12/28/java-loop/&is_video=false&description=Java] 조건문과 반복문"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Java] 조건문과 반복문&body=Check out this article: http://TaeJuneJoung.github.io/2019/12/28/java-loop/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://TaeJuneJoung.github.io/2019/12/28/java-loop/&title=Java] 조건문과 반복문"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://TaeJuneJoung.github.io/2019/12/28/java-loop/&title=Java] 조건문과 반복문"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://TaeJuneJoung.github.io/2019/12/28/java-loop/&title=Java] 조건문과 반복문"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://TaeJuneJoung.github.io/2019/12/28/java-loop/&title=Java] 조건문과 반복문"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://TaeJuneJoung.github.io/2019/12/28/java-loop/&name=Java] 조건문과 반복문&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://TaeJuneJoung.github.io/2019/12/28/java-loop/&t=Java] 조건문과 반복문"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+          
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4111865521431436",
+    enable_page_level_ads: true
+  });
+</script>
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2021
+    TaeJune Joung
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155762921-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-155762921-1');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

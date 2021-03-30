@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    <meta name="description" content="연산자 우선순위   연산기호 결합방향 우선순위    [ ], . 👉 1(높음)   expr++, expr– 👈🏿 2   ++expr, –expr, +expr, -expr, ~, !, (type) 👈🏿 3   *, /, % 👉 4   +, - 👉 5   &amp;lt;&amp;lt;, &amp;gt;&amp;gt;, &amp;gt;&amp;gt;&amp;gt; 👉 6   &amp;lt;, &amp;gt;,">
+<meta name="keywords" content="Java,Operator">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java] Operator">
+<meta property="og:url" content="http://TaeJuneJoung.github.io/2019/12/27/java-operator/index.html">
+<meta property="og:site_name" content="Jun&#39;s Blog">
+<meta property="og:description" content="연산자 우선순위   연산기호 결합방향 우선순위    [ ], . 👉 1(높음)   expr++, expr– 👈🏿 2   ++expr, –expr, +expr, -expr, ~, !, (type) 👈🏿 3   *, /, % 👉 4   +, - 👉 5   &amp;lt;&amp;lt;, &amp;gt;&amp;gt;, &amp;gt;&amp;gt;&amp;gt; 👉 6   &amp;lt;, &amp;gt;,">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2021-03-30T15:57:55.782Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java] Operator">
+<meta name="twitter:description" content="연산자 우선순위   연산기호 결합방향 우선순위    [ ], . 👉 1(높음)   expr++, expr– 👈🏿 2   ++expr, –expr, +expr, -expr, ~, !, (type) 👈🏿 3   *, /, % 👉 4   +, - 👉 5   &amp;lt;&amp;lt;, &amp;gt;&amp;gt;, &amp;gt;&amp;gt;&amp;gt; 👉 6   &amp;lt;, &amp;gt;,">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Java] Operator</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post " href="/2019/12/27/java-operator-traning/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post " href="/2019/12/27/java-type-conversion/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://TaeJuneJoung.github.io/2019/12/27/java-operator/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://TaeJuneJoung.github.io/2019/12/27/java-operator/&text=Java] Operator"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://TaeJuneJoung.github.io/2019/12/27/java-operator/&title=Java] Operator"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://TaeJuneJoung.github.io/2019/12/27/java-operator/&is_video=false&description=Java] Operator"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Java] Operator&body=Check out this article: http://TaeJuneJoung.github.io/2019/12/27/java-operator/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://TaeJuneJoung.github.io/2019/12/27/java-operator/&title=Java] Operator"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://TaeJuneJoung.github.io/2019/12/27/java-operator/&title=Java] Operator"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://TaeJuneJoung.github.io/2019/12/27/java-operator/&title=Java] Operator"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://TaeJuneJoung.github.io/2019/12/27/java-operator/&title=Java] Operator"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://TaeJuneJoung.github.io/2019/12/27/java-operator/&name=Java] Operator&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://TaeJuneJoung.github.io/2019/12/27/java-operator/&t=Java] Operator"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#연산자-우선순위"><span class="toc-number">1.</span> <span class="toc-text">연산자 우선순위</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#논리-연산자와-Short-Circuit-Evaluation-Lazy-Evaluation-SCE"><span class="toc-number">2.</span> <span class="toc-text">논리 연산자와 Short-Circuit Evaluation(Lazy Evaluation), SCE</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#비트-연산자-그리고-비트-쉬프트-연산자"><span class="toc-number">3.</span> <span class="toc-text">비트 연산자 그리고 비트 쉬프트 연산자</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Problem01"><span class="toc-number">3.1.</span> <span class="toc-text">Problem01.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Problem02"><span class="toc-number">3.2.</span> <span class="toc-text">Problem02.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Problem03"><span class="toc-number">3.3.</span> <span class="toc-text">Problem03.</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4111865521431436",
+    enable_page_level_ads: true
+  });
+</script>
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Java] Operator
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">TaeJune Joung</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-12-26T15:56:39.000Z" itemprop="datePublished">2019-12-27</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/Java/">Java</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/Java/">Java</a>, <a class="tag-link" href="/tags/Operator/">Operator</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="연산자-우선순위"><a href="#연산자-우선순위" class="headerlink" title="연산자 우선순위"></a>연산자 우선순위</h2><table>
+<thead>
+<tr>
+<th>연산기호</th>
+<th>결합방향</th>
+<th>우선순위</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>[ ], .</td>
+<td>👉</td>
+<td>1(높음)</td>
+</tr>
+<tr>
+<td>expr++, expr–</td>
+<td>👈🏿</td>
+<td>2</td>
+</tr>
+<tr>
+<td>++expr, –expr, +expr, -expr, ~, !, (type)</td>
+<td>👈🏿</td>
+<td>3</td>
+</tr>
+<tr>
+<td>*, /, %</td>
+<td>👉</td>
+<td>4</td>
+</tr>
+<tr>
+<td>+, -</td>
+<td>👉</td>
+<td>5</td>
+</tr>
+<tr>
+<td>&lt;&lt;, &gt;&gt;, &gt;&gt;&gt;</td>
+<td>👉</td>
+<td>6</td>
+</tr>
+<tr>
+<td>&lt;, &gt;, &lt;=, &gt;=, instanceof</td>
+<td>👉</td>
+<td>7</td>
+</tr>
+<tr>
+<td>==, !=</td>
+<td>👉</td>
+<td>8</td>
+</tr>
+<tr>
+<td>&amp;</td>
+<td>👉</td>
+<td>9</td>
+</tr>
+<tr>
+<td>^</td>
+<td>👉</td>
+<td>10</td>
+</tr>
+<tr>
+<td>|</td>
+<td>👉</td>
+<td>11</td>
+</tr>
+<tr>
+<td>&amp;&amp;</td>
+<td>👉</td>
+<td>12</td>
+</tr>
+<tr>
+<td>||</td>
+<td>👉</td>
+<td>13</td>
+</tr>
+<tr>
+<td>? expr : expr</td>
+<td>👈🏿</td>
+<td>14</td>
+</tr>
+<tr>
+<td>=, +=, -=, *=, /=, %=, &amp;=, ^=, |=, &lt;&lt;=, &gt;&gt;=, &gt;&gt;&gt;=</td>
+<td>👈🏿</td>
+<td>15(낮음)</td>
+</tr>
+</tbody></table>
+<h2 id="논리-연산자와-Short-Circuit-Evaluation-Lazy-Evaluation-SCE"><a href="#논리-연산자와-Short-Circuit-Evaluation-Lazy-Evaluation-SCE" class="headerlink" title="논리 연산자와 Short-Circuit Evaluation(Lazy Evaluation), SCE"></a>논리 연산자와 Short-Circuit Evaluation(Lazy Evaluation), SCE</h2><p>연산자를 사용할 때는 우선순위를 고려해야한다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> num1 = <span class="number">0</span>, num2 = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">boolean</span> result;</span><br><span class="line"></span><br><span class="line">result = (num1 += <span class="number">10</span>) &lt; <span class="number">0</span> &amp;&amp; (num2 += <span class="number">10</span>) &gt; <span class="number">0</span>;</span><br><span class="line">System.out.println(<span class="string">"result : "</span> + result);</span><br><span class="line">System.out.println(<span class="string">"num1 : "</span> + num1 + <span class="string">", num2 : "</span> + num2);</span><br><span class="line"></span><br><span class="line">result = (num1 += <span class="number">10</span>) &gt; <span class="number">0</span> || (num2 += <span class="number">10</span>) &gt; <span class="number">0</span>;</span><br><span class="line">System.out.println(<span class="string">"result : "</span> + result);</span><br><span class="line">System.out.println(<span class="string">"num1 : "</span> + num1 + <span class="string">", num2 : "</span> + num2);</span><br></pre></td></tr></table></figure>
+
+<p>위의 소스의 결과는 참으로 재미있다.</p>
+<p>논리 연산자에 대해서 정확히 알고 있는 사람이라면 당연한 것이지만…</p>
+<p><code>&amp;&amp;</code>의 경우에는 앞에 값이 false가 나왔다면 뒤의 값이 뭐가 나오는지 계산할 필요 없이 false값이 나온다.</p>
+<p><code>||</code>의 경우에는 앞에 값이 true가 나온다면 뒤의 값이 뭐가 나오는지 계산할 필요 없이 true값이 나온다.</p>
+<p>이말은, 이러한 경우에는 뒤의 조건식은 실행해보지도 않는다는 것이다.</p>
+<p>시간 복잡도를 고려할 때도 조건식의 순서를 따져서 놓으면 효율이 조금이나마 좋아질 수 있다는 뜻이다.</p>
+<h2 id="비트-연산자-그리고-비트-쉬프트-연산자"><a href="#비트-연산자-그리고-비트-쉬프트-연산자" class="headerlink" title="비트 연산자 그리고 비트 쉬프트 연산자"></a>비트 연산자 그리고 비트 쉬프트 연산자</h2><p>CPU에게 있어서 곱셈과 나눗셈은 매우 부담이 되는 작업이다. 비트를 이동시키는 연산은 전혀 부담되지 않는 작업이다.</p>
+<h3 id="Problem01"><a href="#Problem01" class="headerlink" title="Problem01."></a>Problem01.</h3><p>정수 7의 비트 열을 기반으로 2의 보수를 취하면 -7이 된다. 실제로 그런지 정수 7에 대한 2의 보수를 계산하여 출력하는 프로그램을 작성하시오.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> num = <span class="number">7</span>;</span><br><span class="line"><span class="comment">// 10진법을 2진법으로 나타내는 방법 - Integer.toBinaryString()</span></span><br><span class="line">System.out.println(Integer.toBinaryString(~num + <span class="number">1</span>)); <span class="comment">//11111111111111111111111111111001</span></span><br><span class="line">num = ~num + <span class="number">1</span>;</span><br><span class="line">System.out.println(num); <span class="comment">//-7</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Problem02"><a href="#Problem02" class="headerlink" title="Problem02."></a>Problem02.</h3><p>int형 정수 15678의 오른쪽에서 세 번째 비트와 다섯 번째 비트가 각각 어떻게 되는지 확인하여 출력하는 프로그램을 작성하시오.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> num = <span class="number">15678</span>;</span><br><span class="line">System.out.println(Integer.toBinaryString(num)); <span class="comment">//11110100111110</span></span><br><span class="line">System.out.println(num &gt;&gt; <span class="number">3</span> &amp; <span class="number">1</span>); <span class="comment">//1</span></span><br><span class="line">System.out.println(num &gt;&gt; <span class="number">5</span> &amp; <span class="number">1</span>); <span class="comment">//1</span></span><br></pre></td></tr></table></figure>
+
+<p>연산자 우선순위를 생각하였을 때 비트 쉬프트 연산자가 먼저 이뤄지고 나서 비트 연산자가 이뤄진다.</p>
+<p>옮기고자 하는 위치만큼 비트 쉬프트 연산자를 통해 옮겨주고 나서 비트 연산자를 이용하여 해당 값이 0이면 0이 나오게 하고, 1이라면 1이 나오게 <code>&amp;</code>을 사용하면 된다. bit는 0과 1만 있기에 다른 값은 고려하지 않아도 된다.</p>
+<h3 id="Problem03"><a href="#Problem03" class="headerlink" title="Problem03."></a>Problem03.</h3><p>&lt;&lt; 연산은 대부분의 경우에 피연산자의 값에 2의 배수를 곱하는 결과를 보인다. 그러나 MSB[^1]를 변경시켜서 전혀 엉뚱한 결과를 보이는 경우도 있다. 음의 정수와 양의 정수를 하나씩 예로 들어서 엉뚱한 결과가 어떻게 발생하는지 설명하고, 이를 증명하기 위한 간단한 프로그램을 작성하시오.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> num = <span class="number">7</span>;</span><br><span class="line"><span class="keyword">int</span> bitset = <span class="number">1</span> &lt;&lt; <span class="number">30</span>;</span><br><span class="line">num |= bitset;</span><br><span class="line">System.out.println(num); <span class="comment">//1073741831</span></span><br><span class="line">System.out.println(num &lt;&lt;= <span class="number">1</span>); <span class="comment">//-2147483634</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> minusNum = -<span class="number">12</span>;</span><br><span class="line">bitset = ~<span class="number">0</span>;</span><br><span class="line">bitset ^= <span class="number">1</span> &lt;&lt; <span class="number">30</span>;</span><br><span class="line">minusNum &amp;= bitset;</span><br><span class="line">System.out.println(minusNum); <span class="comment">//-1073741836</span></span><br><span class="line">System.out.println(minusNum &lt;&lt;= <span class="number">1</span>); <span class="comment">//2147483624</span></span><br></pre></td></tr></table></figure>
+
+<p><code>01000000 00000000 00000000 00000001</code> 이러한 비트를 왼쪽으로 한 칸씩 이동시키면 음수가 된다.</p>
+<p>반대로, <code>11000000 00000000 00000000 00000001</code> 이러한 비트를 오른쪽으로 한 칸씩 이동시키면 양수가 된다.</p>
+<hr>
+<p>[^1]: 최상위 비트 MSB, most significant bit, 반대 개념은 LSB</p>
+
+  </div>
+</article>
+<!--  utteranc comment -->
+
+<script src="https://utteranc.es/client.js"
+        repo="TaeJuneJoung/gitblog-comment"
+        issue-term="title"
+        label="Comment"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#연산자-우선순위"><span class="toc-number">1.</span> <span class="toc-text">연산자 우선순위</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#논리-연산자와-Short-Circuit-Evaluation-Lazy-Evaluation-SCE"><span class="toc-number">2.</span> <span class="toc-text">논리 연산자와 Short-Circuit Evaluation(Lazy Evaluation), SCE</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#비트-연산자-그리고-비트-쉬프트-연산자"><span class="toc-number">3.</span> <span class="toc-text">비트 연산자 그리고 비트 쉬프트 연산자</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Problem01"><span class="toc-number">3.1.</span> <span class="toc-text">Problem01.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Problem02"><span class="toc-number">3.2.</span> <span class="toc-text">Problem02.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Problem03"><span class="toc-number">3.3.</span> <span class="toc-text">Problem03.</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://TaeJuneJoung.github.io/2019/12/27/java-operator/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://TaeJuneJoung.github.io/2019/12/27/java-operator/&text=Java] Operator"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://TaeJuneJoung.github.io/2019/12/27/java-operator/&title=Java] Operator"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://TaeJuneJoung.github.io/2019/12/27/java-operator/&is_video=false&description=Java] Operator"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Java] Operator&body=Check out this article: http://TaeJuneJoung.github.io/2019/12/27/java-operator/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://TaeJuneJoung.github.io/2019/12/27/java-operator/&title=Java] Operator"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://TaeJuneJoung.github.io/2019/12/27/java-operator/&title=Java] Operator"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://TaeJuneJoung.github.io/2019/12/27/java-operator/&title=Java] Operator"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://TaeJuneJoung.github.io/2019/12/27/java-operator/&title=Java] Operator"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://TaeJuneJoung.github.io/2019/12/27/java-operator/&name=Java] Operator&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://TaeJuneJoung.github.io/2019/12/27/java-operator/&t=Java] Operator"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+          
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4111865521431436",
+    enable_page_level_ads: true
+  });
+</script>
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2021
+    TaeJune Joung
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155762921-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-155762921-1');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

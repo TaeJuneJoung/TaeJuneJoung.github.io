@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    <meta name="description" content="Class와 Instance 관계클래스는 붕어빵 틀이고 인스턴스는 붕어빵이다. 클래스와 인스턴스 관계를 이해했다면, 정말 이 말이 너무도 와닿는 말 일수 밖에 없다. 이와 유사한 예로서 검을 만드는 거푸집과 그로 인해 만들어진 검들을 예로 들어보자. 검을 만드는 거푸집이 클래스라면, 클래스는 사회적인 현상을 객체화한 것이다. 만들어진 검이 인스턴스이기에,">
+<meta name="keywords" content="Java,Class">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java] Class &amp; Instance">
+<meta property="og:url" content="http://TaeJuneJoung.github.io/2019/12/29/java-class-instance/index.html">
+<meta property="og:site_name" content="Jun&#39;s Blog">
+<meta property="og:description" content="Class와 Instance 관계클래스는 붕어빵 틀이고 인스턴스는 붕어빵이다. 클래스와 인스턴스 관계를 이해했다면, 정말 이 말이 너무도 와닿는 말 일수 밖에 없다. 이와 유사한 예로서 검을 만드는 거푸집과 그로 인해 만들어진 검들을 예로 들어보자. 검을 만드는 거푸집이 클래스라면, 클래스는 사회적인 현상을 객체화한 것이다. 만들어진 검이 인스턴스이기에,">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2021-03-30T16:05:03.610Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java] Class &amp; Instance">
+<meta name="twitter:description" content="Class와 Instance 관계클래스는 붕어빵 틀이고 인스턴스는 붕어빵이다. 클래스와 인스턴스 관계를 이해했다면, 정말 이 말이 너무도 와닿는 말 일수 밖에 없다. 이와 유사한 예로서 검을 만드는 거푸집과 그로 인해 만들어진 검들을 예로 들어보자. 검을 만드는 거푸집이 클래스라면, 클래스는 사회적인 현상을 객체화한 것이다. 만들어진 검이 인스턴스이기에,">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Java] Class &amp; Instance</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post " href="/2019/12/29/java-information-hiding/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post " href="/2019/12/29/java-method/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://TaeJuneJoung.github.io/2019/12/29/java-class-instance/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://TaeJuneJoung.github.io/2019/12/29/java-class-instance/&text=Java] Class &amp; Instance"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://TaeJuneJoung.github.io/2019/12/29/java-class-instance/&title=Java] Class &amp; Instance"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://TaeJuneJoung.github.io/2019/12/29/java-class-instance/&is_video=false&description=Java] Class &amp; Instance"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Java] Class &amp; Instance&body=Check out this article: http://TaeJuneJoung.github.io/2019/12/29/java-class-instance/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://TaeJuneJoung.github.io/2019/12/29/java-class-instance/&title=Java] Class &amp; Instance"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://TaeJuneJoung.github.io/2019/12/29/java-class-instance/&title=Java] Class &amp; Instance"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://TaeJuneJoung.github.io/2019/12/29/java-class-instance/&title=Java] Class &amp; Instance"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://TaeJuneJoung.github.io/2019/12/29/java-class-instance/&title=Java] Class &amp; Instance"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://TaeJuneJoung.github.io/2019/12/29/java-class-instance/&name=Java] Class &amp; Instance&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://TaeJuneJoung.github.io/2019/12/29/java-class-instance/&t=Java] Class &amp; Instance"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Class와-Instance-관계"><span class="toc-number">1.</span> <span class="toc-text">Class와 Instance 관계</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#메모리-관점"><span class="toc-number">1.1.</span> <span class="toc-text">메모리 관점</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#객체와-인스턴스"><span class="toc-number">2.</span> <span class="toc-text">객체와 인스턴스</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#객체가-더-어울릴-경우"><span class="toc-number">2.1.</span> <span class="toc-text">객체가 더 어울릴 경우</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#인스턴스가-더-어울릴-경우"><span class="toc-number">2.2.</span> <span class="toc-text">인스턴스가 더 어울릴 경우</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#인스턴스-변수와-인스턴스-메소드"><span class="toc-number">2.3.</span> <span class="toc-text">인스턴스 변수와 인스턴스 메소드</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4111865521431436",
+    enable_page_level_ads: true
+  });
+</script>
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Java] Class &amp; Instance
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">TaeJune Joung</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-12-28T16:03:45.000Z" itemprop="datePublished">2019-12-29</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/Java/">Java</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/Class/">Class</a>, <a class="tag-link" href="/tags/Java/">Java</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="Class와-Instance-관계"><a href="#Class와-Instance-관계" class="headerlink" title="Class와 Instance 관계"></a>Class와 Instance 관계</h2><p>클래스는 붕어빵 틀이고 인스턴스는 붕어빵이다.</p>
+<p>클래스와 인스턴스 관계를 이해했다면, 정말 이 말이 너무도 와닿는 말 일수 밖에 없다.</p>
+<p>이와 유사한 예로서 검을 만드는 거푸집과 그로 인해 만들어진 검들을 예로 들어보자.</p>
+<p>검을 만드는 거푸집이 클래스라면, 클래스는 사회적인 현상을 객체화한 것이다.</p>
+<p>만들어진 검이 인스턴스이기에, 객체인 인스턴스는 사용된다면 하나의 검의 역할을 하게 되는 것이다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ClassName name = <span class="keyword">new</span> ClassName();</span><br></pre></td></tr></table></figure>
+
+<p>name은 참조 변수로서 인스턴스의 주소값(참조값)을 가지고 있다.</p>
+<p><code>new</code>는 객체 생성 명령어로서, new ClassName은 해당 클래스 객체를 생성한다는 것이다.</p>
+<p><code>ClassName()</code>의 ()는 해당 클래스의 기본 생성자를 가리킨다.</p>
+<p>해당 클래스의 기본 생성자가 없다면 오류가 발생할 것이다.</p>
+<p>(단, 해당 클래스에 생성자가 아무것도 없다면 default는 기본 생성자이다.)</p>
+<h3 id="메모리-관점"><a href="#메모리-관점" class="headerlink" title="메모리 관점"></a>메모리 관점</h3><p><strong>클래스에 존재하는 변수, 메소드는 메모리 공간 할당된 형태가 아니다.</strong></p>
+<p>인스턴스 객체는 메모리 공간에 할당된다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*ClassInstance Class*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ClassInstance</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> num;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getNum</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> num;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setNum</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.num = num;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*Test Class*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ClassInstance ci1 = <span class="keyword">new</span> ClassInstance();</span><br><span class="line">        ClassInstance ci2 = <span class="keyword">new</span> ClassInstance();</span><br><span class="line"></span><br><span class="line">        ci1.setNum(<span class="number">5</span>);</span><br><span class="line">        ci2.setNum(<span class="number">7</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(ci1.getNum()); <span class="comment">//5</span></span><br><span class="line">        System.out.println(ci2.getNum()); <span class="comment">//7</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>인스턴스마다 서로 다른 주소값으로 접근하여 변수값이 다름을 알 수 있다.</p>
+<h2 id="객체와-인스턴스"><a href="#객체와-인스턴스" class="headerlink" title="객체와 인스턴스"></a>객체와 인스턴스</h2><p>객체와 인스턴스는 자바에서 같은 말로 쓰이나, 상황에 따라 더 어울리는 말이 있다.</p>
+<h3 id="객체가-더-어울릴-경우"><a href="#객체가-더-어울릴-경우" class="headerlink" title="객체가 더 어울릴 경우"></a>객체가 더 어울릴 경우</h3><blockquote>
+<p>“과일 장수를 하시는 옆집 철수 아버님을 의미하는 객체를 생성한다”</p>
+</blockquote>
+<p>이는 철수 아버님을 프로그램상에서 표현한 것이므로 객체라는 표현이 더 어울린다.</p>
+<h3 id="인스턴스가-더-어울릴-경우"><a href="#인스턴스가-더-어울릴-경우" class="headerlink" title="인스턴스가 더 어울릴 경우"></a>인스턴스가 더 어울릴 경우</h3><blockquote>
+<p>“클래스 FruitSeller의 인스턴스 두 개를 생성한다”</p>
+</blockquote>
+<p>이 경우에는 FruitSeller 클래스가 틀로 사용됨을 강조하였기에 인스턴스라는 표현이 더 어울린다.</p>
+<h3 id="인스턴스-변수와-인스턴스-메소드"><a href="#인스턴스-변수와-인스턴스-메소드" class="headerlink" title="인스턴스 변수와 인스턴스 메소드"></a>인스턴스 변수와 인스턴스 메소드</h3><p>메소드라는 이름이 붙은 이유는 메소드가 인스턴스의 행위 및 행동을 표현하는 방법(method)으로 사용되기 때문이다. 자바에서는 인스턴스 변수를 가리켜 ‘인스턴스 필드’라고 부르기도 한다.</p>
+
+  </div>
+</article>
+<!--  utteranc comment -->
+
+<script src="https://utteranc.es/client.js"
+        repo="TaeJuneJoung/gitblog-comment"
+        issue-term="title"
+        label="Comment"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Class와-Instance-관계"><span class="toc-number">1.</span> <span class="toc-text">Class와 Instance 관계</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#메모리-관점"><span class="toc-number">1.1.</span> <span class="toc-text">메모리 관점</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#객체와-인스턴스"><span class="toc-number">2.</span> <span class="toc-text">객체와 인스턴스</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#객체가-더-어울릴-경우"><span class="toc-number">2.1.</span> <span class="toc-text">객체가 더 어울릴 경우</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#인스턴스가-더-어울릴-경우"><span class="toc-number">2.2.</span> <span class="toc-text">인스턴스가 더 어울릴 경우</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#인스턴스-변수와-인스턴스-메소드"><span class="toc-number">2.3.</span> <span class="toc-text">인스턴스 변수와 인스턴스 메소드</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://TaeJuneJoung.github.io/2019/12/29/java-class-instance/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://TaeJuneJoung.github.io/2019/12/29/java-class-instance/&text=Java] Class &amp; Instance"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://TaeJuneJoung.github.io/2019/12/29/java-class-instance/&title=Java] Class &amp; Instance"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://TaeJuneJoung.github.io/2019/12/29/java-class-instance/&is_video=false&description=Java] Class &amp; Instance"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Java] Class &amp; Instance&body=Check out this article: http://TaeJuneJoung.github.io/2019/12/29/java-class-instance/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://TaeJuneJoung.github.io/2019/12/29/java-class-instance/&title=Java] Class &amp; Instance"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://TaeJuneJoung.github.io/2019/12/29/java-class-instance/&title=Java] Class &amp; Instance"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://TaeJuneJoung.github.io/2019/12/29/java-class-instance/&title=Java] Class &amp; Instance"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://TaeJuneJoung.github.io/2019/12/29/java-class-instance/&title=Java] Class &amp; Instance"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://TaeJuneJoung.github.io/2019/12/29/java-class-instance/&name=Java] Class &amp; Instance&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://TaeJuneJoung.github.io/2019/12/29/java-class-instance/&t=Java] Class &amp; Instance"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+          
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4111865521431436",
+    enable_page_level_ads: true
+  });
+</script>
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2021
+    TaeJune Joung
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155762921-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-155762921-1');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

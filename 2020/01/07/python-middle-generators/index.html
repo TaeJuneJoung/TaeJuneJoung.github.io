@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    <meta name="description" content="iterator 객체의 한 종류 제너레이터를 만드는 2가지 방법  제너레이터 함수: 제네레이터를 만들기 위한 함수 정의 제너레이터 표현식: 제너레이터를 만들기 위한 식  제너레이터의 최대 핵심이자 장점 -&amp;gt; lazy evaluation 제너레이터 함수일반 함수와 다른 점은 yield로 인해 제너레이터 함수가 된다는 점. 12345678910111213">
+<meta name="keywords" content="Python,Generators">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python] Generators">
+<meta property="og:url" content="http://TaeJuneJoung.github.io/2020/01/07/python-middle-generators/index.html">
+<meta property="og:site_name" content="Jun&#39;s Blog">
+<meta property="og:description" content="iterator 객체의 한 종류 제너레이터를 만드는 2가지 방법  제너레이터 함수: 제네레이터를 만들기 위한 함수 정의 제너레이터 표현식: 제너레이터를 만들기 위한 식  제너레이터의 최대 핵심이자 장점 -&amp;gt; lazy evaluation 제너레이터 함수일반 함수와 다른 점은 yield로 인해 제너레이터 함수가 된다는 점. 12345678910111213">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2021-03-30T16:13:02.869Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python] Generators">
+<meta name="twitter:description" content="iterator 객체의 한 종류 제너레이터를 만드는 2가지 방법  제너레이터 함수: 제네레이터를 만들기 위한 함수 정의 제너레이터 표현식: 제너레이터를 만들기 위한 식  제너레이터의 최대 핵심이자 장점 -&amp;gt; lazy evaluation 제너레이터 함수일반 함수와 다른 점은 yield로 인해 제너레이터 함수가 된다는 점. 12345678910111213">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Python] Generators</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post " href="/2020/01/08/python-middle-named-tuple/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post " href="/2020/01/07/python-middle-map-filter/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://TaeJuneJoung.github.io/2020/01/07/python-middle-generators/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://TaeJuneJoung.github.io/2020/01/07/python-middle-generators/&text=Python] Generators"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://TaeJuneJoung.github.io/2020/01/07/python-middle-generators/&title=Python] Generators"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://TaeJuneJoung.github.io/2020/01/07/python-middle-generators/&is_video=false&description=Python] Generators"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Python] Generators&body=Check out this article: http://TaeJuneJoung.github.io/2020/01/07/python-middle-generators/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://TaeJuneJoung.github.io/2020/01/07/python-middle-generators/&title=Python] Generators"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://TaeJuneJoung.github.io/2020/01/07/python-middle-generators/&title=Python] Generators"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://TaeJuneJoung.github.io/2020/01/07/python-middle-generators/&title=Python] Generators"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://TaeJuneJoung.github.io/2020/01/07/python-middle-generators/&title=Python] Generators"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://TaeJuneJoung.github.io/2020/01/07/python-middle-generators/&name=Python] Generators&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://TaeJuneJoung.github.io/2020/01/07/python-middle-generators/&t=Python] Generators"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#제너레이터-함수"><span class="toc-number">1.</span> <span class="toc-text">제너레이터 함수</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#yield-from"><span class="toc-number">1.1.</span> <span class="toc-text">yield from</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#제너레이터-표현식"><span class="toc-number">2.</span> <span class="toc-text">제너레이터 표현식</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#제너레이터-표현식-사용-예시"><span class="toc-number">2.1.</span> <span class="toc-text">제너레이터 표현식 사용 예시</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4111865521431436",
+    enable_page_level_ads: true
+  });
+</script>
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Python] Generators
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">TaeJune Joung</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-01-06T16:11:29.000Z" itemprop="datePublished">2020-01-07</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/Python/">Python</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/Generators/">Generators</a>, <a class="tag-link" href="/tags/Python/">Python</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p><strong>iterator 객체의 한 종류</strong></p>
+<p>제너레이터를 만드는 2가지 방법</p>
+<ul>
+<li>제너레이터 함수: 제네레이터를 만들기 위한 함수 정의</li>
+<li>제너레이터 표현식: 제너레이터를 만들기 위한 식</li>
+</ul>
+<p>제너레이터의 최대 핵심이자 장점 -&gt; <strong>lazy evaluation</strong></p>
+<h2 id="제너레이터-함수"><a href="#제너레이터-함수" class="headerlink" title="제너레이터 함수"></a>제너레이터 함수</h2><p>일반 함수와 다른 점은 <code>yield</code>로 인해 제너레이터 함수가 된다는 점.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">generator</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'One!'</span>)</span><br><span class="line">    <span class="keyword">yield</span> <span class="number">1</span></span><br><span class="line">    print(<span class="string">'Two!'</span>)</span><br><span class="line">    <span class="keyword">yield</span> <span class="number">2</span></span><br><span class="line">    print(<span class="string">'Three!'</span>)</span><br><span class="line">    <span class="keyword">yield</span> <span class="number">3</span></span><br><span class="line"></span><br><span class="line">gen = generator() <span class="comment">#제너레이터 객체 생성</span></span><br><span class="line"></span><br><span class="line">print(next(gen))</span><br><span class="line">print(next(gen))</span><br><span class="line">print(next(gen))</span><br><span class="line">print(next(gen))</span><br><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">One!</span></span><br><span class="line"><span class="string">1</span></span><br><span class="line"><span class="string">Two!</span></span><br><span class="line"><span class="string">2</span></span><br><span class="line"><span class="string">Three!</span></span><br><span class="line"><span class="string">3</span></span><br><span class="line"><span class="string">Traceback (most recent call last):</span></span><br><span class="line"><span class="string">  File "test.py", line 14, in &lt;module&gt;</span></span><br><span class="line"><span class="string">    print(next(gen))</span></span><br><span class="line"><span class="string">StopIteration</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
+
+<p>for문도 iterator을 이용하지만, Generator는 쓸때마다 next를 써야하는 불편함이 있기에 장점이 없다면 쓰고 싶지 않다. 그렇다면 써야하는 이유는 무엇일까?</p>
+<p>결론적으로 말하자면 <strong>메모리 때문</strong>이다.</p>
+<p><strong>제너레이터를 사용하지 않았을 때]</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">pows</span><span class="params">(s)</span>:</span></span><br><span class="line">    r = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> s:</span><br><span class="line">        r.append(i**<span class="number">2</span>)</span><br><span class="line">    <span class="keyword">return</span> r</span><br><span class="line"></span><br><span class="line">N = range(<span class="number">1</span>,<span class="number">10</span>)</span><br><span class="line">st = pows(N)</span><br><span class="line"></span><br><span class="line">print(st)</span><br><span class="line">print(sys.getsizeof(st)) <span class="comment">#184</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>제너레이터 사용]</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">pows</span><span class="params">(s)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> s:</span><br><span class="line">        <span class="keyword">yield</span> i**<span class="number">2</span></span><br><span class="line"></span><br><span class="line">N = range(<span class="number">1</span>,<span class="number">10</span>)</span><br><span class="line">st = pows(N)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> st:</span><br><span class="line">    print(i, end=<span class="string">' '</span>)</span><br><span class="line"></span><br><span class="line">print()</span><br><span class="line">print(sys.getsizeof(st)) <span class="comment">#112</span></span><br></pre></td></tr></table></figure>
+
+<p>메모리 사용량을 본다면 차이가 생겼음을 알 수 있다. 적은 데이터로도 저렇게 차이가 나는데 정말 많은 데이터를 가지고 한다면 큰 차이가 생길 것이다.</p>
+<h3 id="yield-from"><a href="#yield-from" class="headerlink" title="yield from"></a>yield from</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">pows</span><span class="params">(s)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> s:</span><br><span class="line">        <span class="keyword">yield</span> i</span><br></pre></td></tr></table></figure>
+
+<p>위의 for문을 간단하게 해결할 수 있는 방법이 있다.(파이썬 3.3이상 지원)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">pows</span><span class="params">(s)</span>:</span></span><br><span class="line">    <span class="keyword">yield</span> <span class="keyword">from</span> s</span><br></pre></td></tr></table></figure>
+
+<p>s에 함수를 넣어도 되지만, for문으로 i의 값에 제곱을 한다거나 변화하는 방법을 바로 적용하지 못하는 점은 다소 아쉽다.</p>
+<h2 id="제너레이터-표현식"><a href="#제너레이터-표현식" class="headerlink" title="제너레이터 표현식"></a>제너레이터 표현식</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 제너레이터 함수</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show</span><span class="params">(s)</span>:</span></span><br><span class="line">    <span class="keyword">yield</span> <span class="keyword">from</span> s</span><br><span class="line"></span><br><span class="line">s = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"></span><br><span class="line">res = show(s)</span><br><span class="line"></span><br><span class="line">print(type(res)) <span class="comment">#&lt;class 'generator'&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> res:</span><br><span class="line">    print(i, end=<span class="string">' '</span>)</span><br><span class="line">print()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 제너레이터 표현식</span></span><br><span class="line">res = (i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">6</span>))</span><br><span class="line"></span><br><span class="line">print(type(res)) <span class="comment">#&lt;class 'generator'&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>제너레이터 표현식은 메모리를 효율적으로 사용할 수 있으며, 함수를 별도로 정의해야하는 불편함도 없다.</p>
+<p><code>next()</code>을 써야하는 불편함(?)은 있다고 생각하는가? <strong>lazy evaluation</strong>의 장점을 버리지 말자.</p>
+<h3 id="제너레이터-표현식-사용-예시"><a href="#제너레이터-표현식-사용-예시" class="headerlink" title="제너레이터 표현식 사용 예시"></a>제너레이터 표현식 사용 예시</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sum</span><span class="params">(s)</span>:</span></span><br><span class="line">    sumV = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> s:</span><br><span class="line">        sumV += i</span><br><span class="line">    <span class="keyword">return</span> sumV</span><br><span class="line"></span><br><span class="line">s = [i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">11</span>)]</span><br><span class="line">res = sum(s)</span><br><span class="line">print(res) <span class="comment">#55</span></span><br><span class="line"></span><br><span class="line">print(sys.getsizeof(s)) <span class="comment">#184</span></span><br></pre></td></tr></table></figure>
+
+<p>위와 같이 쓰는 것을 제너레이터 표현식으로 사용하여 쓸 수도 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sum</span><span class="params">(s)</span>:</span></span><br><span class="line">    sumV = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> s:</span><br><span class="line">        sumV += i</span><br><span class="line">    <span class="keyword">return</span> sumV</span><br><span class="line"></span><br><span class="line">s = (i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">11</span>))</span><br><span class="line">res = sum(s)</span><br><span class="line">print(res) <span class="comment">#55</span></span><br><span class="line"></span><br><span class="line">print(sys.getsizeof(s)) <span class="comment">#112</span></span><br></pre></td></tr></table></figure>
+
+<p>원하는 값도 얻으면서 메모리도 줄일 수 있다.</p>
+
+  </div>
+</article>
+<!--  utteranc comment -->
+
+<script src="https://utteranc.es/client.js"
+        repo="TaeJuneJoung/gitblog-comment"
+        issue-term="title"
+        label="Comment"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#제너레이터-함수"><span class="toc-number">1.</span> <span class="toc-text">제너레이터 함수</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#yield-from"><span class="toc-number">1.1.</span> <span class="toc-text">yield from</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#제너레이터-표현식"><span class="toc-number">2.</span> <span class="toc-text">제너레이터 표현식</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#제너레이터-표현식-사용-예시"><span class="toc-number">2.1.</span> <span class="toc-text">제너레이터 표현식 사용 예시</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://TaeJuneJoung.github.io/2020/01/07/python-middle-generators/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://TaeJuneJoung.github.io/2020/01/07/python-middle-generators/&text=Python] Generators"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://TaeJuneJoung.github.io/2020/01/07/python-middle-generators/&title=Python] Generators"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://TaeJuneJoung.github.io/2020/01/07/python-middle-generators/&is_video=false&description=Python] Generators"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Python] Generators&body=Check out this article: http://TaeJuneJoung.github.io/2020/01/07/python-middle-generators/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://TaeJuneJoung.github.io/2020/01/07/python-middle-generators/&title=Python] Generators"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://TaeJuneJoung.github.io/2020/01/07/python-middle-generators/&title=Python] Generators"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://TaeJuneJoung.github.io/2020/01/07/python-middle-generators/&title=Python] Generators"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://TaeJuneJoung.github.io/2020/01/07/python-middle-generators/&title=Python] Generators"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://TaeJuneJoung.github.io/2020/01/07/python-middle-generators/&name=Python] Generators&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://TaeJuneJoung.github.io/2020/01/07/python-middle-generators/&t=Python] Generators"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+          
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4111865521431436",
+    enable_page_level_ads: true
+  });
+</script>
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2021
+    TaeJune Joung
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155762921-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-155762921-1');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

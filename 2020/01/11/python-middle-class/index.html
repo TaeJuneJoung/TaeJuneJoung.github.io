@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    <meta name="description" content="파이썬의 클래스와 Java의 클래스를 비교해가면서 알아보자. 123456789101112131415class Test:    __num = 5    def __init__(self):        pass    def get_num(self):        return self.__num    def set_num(self, num):        self">
+<meta name="keywords" content="Class,Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python] Class">
+<meta property="og:url" content="http://TaeJuneJoung.github.io/2020/01/11/python-middle-class/index.html">
+<meta property="og:site_name" content="Jun&#39;s Blog">
+<meta property="og:description" content="파이썬의 클래스와 Java의 클래스를 비교해가면서 알아보자. 123456789101112131415class Test:    __num = 5    def __init__(self):        pass    def get_num(self):        return self.__num    def set_num(self, num):        self">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2021-03-30T17:13:49.196Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python] Class">
+<meta name="twitter:description" content="파이썬의 클래스와 Java의 클래스를 비교해가면서 알아보자. 123456789101112131415class Test:    __num = 5    def __init__(self):        pass    def get_num(self):        return self.__num    def set_num(self, num):        self">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Python] Class</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post " href="/2020/01/16/algorithm-codility-lesson16-1/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post " href="/2020/01/11/python-middle-dict/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://TaeJuneJoung.github.io/2020/01/11/python-middle-class/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://TaeJuneJoung.github.io/2020/01/11/python-middle-class/&text=Python] Class"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://TaeJuneJoung.github.io/2020/01/11/python-middle-class/&title=Python] Class"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://TaeJuneJoung.github.io/2020/01/11/python-middle-class/&is_video=false&description=Python] Class"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Python] Class&body=Check out this article: http://TaeJuneJoung.github.io/2020/01/11/python-middle-class/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://TaeJuneJoung.github.io/2020/01/11/python-middle-class/&title=Python] Class"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://TaeJuneJoung.github.io/2020/01/11/python-middle-class/&title=Python] Class"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://TaeJuneJoung.github.io/2020/01/11/python-middle-class/&title=Python] Class"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://TaeJuneJoung.github.io/2020/01/11/python-middle-class/&title=Python] Class"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://TaeJuneJoung.github.io/2020/01/11/python-middle-class/&name=Python] Class&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://TaeJuneJoung.github.io/2020/01/11/python-middle-class/&t=Python] Class"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#파이썬-class의-유연성"><span class="toc-number">1.</span> <span class="toc-text">파이썬 class의 유연성</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#클래스-상속-type"><span class="toc-number">1.1.</span> <span class="toc-text">클래스 상속 type</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Override"><span class="toc-number">2.</span> <span class="toc-text">Override</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Overloading"><span class="toc-number">3.</span> <span class="toc-text">Overloading</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pratice"><span class="toc-number">4.</span> <span class="toc-text">Pratice</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#isinstance-issubclass"><span class="toc-number">5.</span> <span class="toc-text">isinstance / issubclass</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#isinstance"><span class="toc-number">5.1.</span> <span class="toc-text">isinstance</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#issubclass"><span class="toc-number">5.2.</span> <span class="toc-text">issubclass</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4111865521431436",
+    enable_page_level_ads: true
+  });
+</script>
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Python] Class
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">TaeJune Joung</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-01-10T17:12:25.000Z" itemprop="datePublished">2020-01-11</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/Python/">Python</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/Class/">Class</a>, <a class="tag-link" href="/tags/Python/">Python</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>파이썬의 클래스와 Java의 클래스를 비교해가면서 알아보자.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span>:</span></span><br><span class="line">    __num = <span class="number">5</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_num</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.__num</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">set_num</span><span class="params">(self, num)</span>:</span></span><br><span class="line">        self.__num = num</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">test = Test()</span><br><span class="line">print(test.get_num()) <span class="comment">#5</span></span><br><span class="line"><span class="comment">#print(test.__num) #AttributeError: 'Test' object has no attribute '__num'</span></span><br></pre></td></tr></table></figure>
+
+<p>위의 파이썬 소스는 아래의 Java 소스와 같다</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">public class Test &#123;</span><br><span class="line">    private int num = <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line">    public Test() &#123;&#125;</span><br><span class="line"></span><br><span class="line">    public int getNum() &#123;</span><br><span class="line">        <span class="keyword">return</span> num;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setNum(int num) &#123;</span><br><span class="line">        this.num = num;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class TestMain &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Test test = new Test();</span><br><span class="line">        System.out.println(test.getNum()); //<span class="number">5</span></span><br><span class="line">//      System.out.println(test.num); //컴파일 에러 - num has private access</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="파이썬-class의-유연성"><a href="#파이썬-class의-유연성" class="headerlink" title="파이썬 class의 유연성"></a>파이썬 class의 유연성</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">test.test = <span class="string">"테스트"</span></span><br><span class="line">print(test.test) <span class="comment">#테스트</span></span><br><span class="line">test.f = <span class="keyword">lambda</span> : print(<span class="string">"함수 확인"</span>)</span><br><span class="line">test.f() <span class="comment">#함수 확인</span></span><br></pre></td></tr></table></figure>
+
+<p>사용해야할 때는 위와 같이 사용하고 난 후, 지워야할 때는 <code>del</code>을 이용해서 지워주면 된다.</p>
+<h3 id="클래스-상속-type"><a href="#클래스-상속-type" class="headerlink" title="클래스 상속 type"></a>클래스 상속 type</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(type(test)) <span class="comment">#&lt;class '__main__.Test'&gt;</span></span><br><span class="line">print(type(Test)) <span class="comment">#&lt;class 'type'&gt;</span></span><br><span class="line">print(type(int)) <span class="comment">#&lt;class 'type'&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>인스턴스는 클래스를 상속 받고, 클래스는 type을 상속 받는다.</p>
+<p>그러면 type이 최상위일까 생각을 하였는데 type 코드를 보면 <code>class type(object):</code>으로 쓰여져 있는 것을 볼 수 있다. <strong>최상위 객체는 object</strong>이다.</p>
+<h2 id="Override"><a href="#Override" class="headerlink" title="Override"></a>Override</h2><p>파이썬에서 오버라이딩은 Annotation이 필요없다.</p>
+<h2 id="Overloading"><a href="#Overloading" class="headerlink" title="Overloading"></a>Overloading</h2><p>파이썬은 오버로딩을 지원하지 않는다.</p>
+<p>사용하기 위해서는 별도의 라이브러리를 써야한다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">first</span><span class="params">(self, f=None)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> f <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">print</span> <span class="string">'first met'</span>, f</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">print</span> <span class="string">'first method'</span></span><br></pre></td></tr></table></figure>
+
+<p>위와 같이 하는 것도 하나의 방도이다.</p>
+<h2 id="Pratice"><a href="#Pratice" class="headerlink" title="Pratice"></a>Pratice</h2><p>클래스에 대해서 이해하기 위해 실습을 하나 진행</p>
+<p>자바에서 공부했던 클래스를 파이썬으로 구현해보자.</p>
+<p><a href="https://github.com/TaeJuneJoung/Java/tree/master/src/Chater5" target="_blank" rel="noopener">https://github.com/TaeJuneJoung/Java/tree/master/src/Chater5</a></p>
+<p>Customer과 VIPCustomer을 구현해보자.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Customer</span>:</span></span><br><span class="line"></span><br><span class="line">    __cutomerID = <span class="number">10000</span></span><br><span class="line">    __customerName = <span class="literal">None</span></span><br><span class="line">    __customerGrade = <span class="literal">None</span></span><br><span class="line">    __bonusPoint = <span class="number">0</span></span><br><span class="line">    __bonusRatio = <span class="number">0.0</span></span><br><span class="line"></span><br><span class="line">    <span class="string">""" Constructor """</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.setCustomerGrade(<span class="string">"SILVER"</span>)</span><br><span class="line">        self.setbonusRatio(<span class="number">0.01</span>)</span><br><span class="line">        self.setCustomerID(self.getCustomerID() + <span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">    <span class="string">""" Method """</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">calcPricer</span><span class="params">(self, price)</span>:</span></span><br><span class="line">        self.__bonusPoint += int(price * self.__bonusRatio)</span><br><span class="line">        <span class="keyword">return</span> price</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">showCustomerInfo</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">f'<span class="subst">&#123;self.getCustomerName()&#125;</span>님의 등급은 <span class="subst">&#123;self.getCustomerGrade()&#125;</span>이며, 적립된 보너스 포인트는 <span class="subst">&#123;self.getBonusPoint()&#125;</span>점 입니다.'</span></span><br><span class="line"></span><br><span class="line">    <span class="string">""" Getter &amp; Setter """</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getCustomerID</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.__cutomerID</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">setCustomerID</span><span class="params">(self, customerID)</span>:</span></span><br><span class="line">        self.__customerID = customerID</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getCustomerName</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.__customerName</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">setCustomerName</span><span class="params">(self, customerName)</span>:</span></span><br><span class="line">        self.__customerName = customerName</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getCustomerGrade</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.__customerGrade</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">setCustomerGrade</span><span class="params">(self, customerGrade)</span>:</span></span><br><span class="line">        self.__customerGrade = customerGrade</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getBonusPoint</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.__bonusPoint</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">setBonusPoint</span><span class="params">(self, bonusPoint)</span>:</span></span><br><span class="line">        self.__bonusPoint = bonusPoint</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getbonusRatio</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.__bonusRatio</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">setbonusRatio</span><span class="params">(self, bonusRatio)</span>:</span></span><br><span class="line">        self.__bonusRatio = bonusRatio</span><br><span class="line"><span class="keyword">from</span> Customer <span class="keyword">import</span> Customer</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">VIPCustomer</span><span class="params">(Customer)</span>:</span></span><br><span class="line">    </span><br><span class="line">    __agentID = <span class="number">1</span></span><br><span class="line">    __saleRatio = <span class="number">0.0</span></span><br><span class="line"></span><br><span class="line">    <span class="string">""" Constructor """</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line"><span class="comment">#        super().__init__() #쓰지 않으면 부모의 기본생성자 호출하지 않음</span></span><br><span class="line">        self.setCustomerGrade(<span class="string">'VIP'</span>)</span><br><span class="line">        self.setbonusRatio(<span class="number">0.05</span>)</span><br><span class="line">        self.setSaleRatio(<span class="number">0.1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="string">""" Method """</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">calcPricer</span><span class="params">(self, price)</span>:</span></span><br><span class="line">        self.setBonusPoint(int(price * self.getbonusRatio()))</span><br><span class="line">        <span class="keyword">return</span> int(price - price * self.getSaleRatio())</span><br><span class="line"></span><br><span class="line">    <span class="string">""" Getter &amp; Setter """</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getAgentID</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.__agentID</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">setAgentID</span><span class="params">(self, agentID)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> agentID &gt; <span class="number">0</span> <span class="keyword">and</span> type(agentID) == int:</span><br><span class="line">            self.__agentID = agentID</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(<span class="string">"컨설턴트ID는 숫자며, 자연수여야 합니다."</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getSaleRatio</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.__saleRatio</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">setSaleRatio</span><span class="params">(self, saleRatio)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> saleRatio &gt;= <span class="number">0.0</span> <span class="keyword">and</span> saleRatio &lt; <span class="number">1.0</span>:</span><br><span class="line">            self.__saleRatio = saleRatio</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(<span class="string">"할인율 오류가 발생하였습니다."</span>)</span><br><span class="line"><span class="keyword">from</span> Customer <span class="keyword">import</span> Customer</span><br><span class="line"><span class="keyword">from</span> VIPCustomer <span class="keyword">import</span> VIPCustomer</span><br><span class="line"></span><br><span class="line">customerLee = Customer()</span><br><span class="line">customerLee.setCustomerName(<span class="string">"이순신"</span>)</span><br><span class="line"></span><br><span class="line">customerKim = VIPCustomer()</span><br><span class="line">customerKim.setCustomerName(<span class="string">"김유신"</span>)</span><br><span class="line"></span><br><span class="line">print(customerLee.showCustomerInfo())</span><br><span class="line"><span class="comment">#이순신님의 등급은 SILVER이며, 적립된 보너스 포인트는 0점 입니다.</span></span><br><span class="line">print(customerKim.showCustomerInfo())</span><br><span class="line"><span class="comment">#김유신님의 등급은 VIP이며, 적립된 보너스 포인트는 0점 입니다.</span></span><br><span class="line"></span><br><span class="line">priceLee = customerLee.calcPricer(<span class="number">10000</span>)</span><br><span class="line">priceKim = customerKim.calcPricer(<span class="number">10000</span>)</span><br><span class="line"></span><br><span class="line">print(<span class="string">f'<span class="subst">&#123;customerLee.getCustomerName()&#125;</span>님의 지불하실 금액은 <span class="subst">&#123;priceLee&#125;</span>원 입니다.'</span>)</span><br><span class="line"><span class="comment">#이순신님의 지불하실 금액은 10000원 입니다.</span></span><br><span class="line">print(customerLee.showCustomerInfo())</span><br><span class="line"><span class="comment">#이순신님의 등급은 SILVER이며, 적립된 보너스 포인트는 100점 입니다.</span></span><br><span class="line">print(<span class="string">f'<span class="subst">&#123;customerKim.getCustomerName()&#125;</span>님의 지불하실 금액은 <span class="subst">&#123;priceKim&#125;</span>원 입니다.'</span>)</span><br><span class="line"><span class="comment">#김유신님의 지불하실 금액은 9000원 입니다.</span></span><br><span class="line">print(customerKim.showCustomerInfo())</span><br><span class="line"><span class="comment">#김유신님의 등급은 VIP이며, 적립된 보너스 포인트는 500점 입니다.</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="isinstance-issubclass"><a href="#isinstance-issubclass" class="headerlink" title="isinstance / issubclass"></a>isinstance / issubclass</h2><p>위의 코드를 이용하여 확인해보자.</p>
+<h3 id="isinstance"><a href="#isinstance" class="headerlink" title="isinstance"></a>isinstance</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">isinstance(object, type)</span><br><span class="line">print(isinstance(Customer, VIPCustomer)) <span class="comment">#False</span></span><br><span class="line">print(isinstance(customerLee, Customer)) <span class="comment">#True</span></span><br><span class="line">print(isinstance(customerKim, Customer)) <span class="comment">#True</span></span><br><span class="line"></span><br><span class="line">print(isinstance(customerLee, VIPCustomer)) <span class="comment">#False</span></span><br><span class="line">print(isinstance(customerKim, VIPCustomer)) <span class="comment">#True</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="issubclass"><a href="#issubclass" class="headerlink" title="issubclass"></a>issubclass</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">issubclass(sub type, super type)</span><br><span class="line">print(issubclass(VIPCustomer, Customer)) <span class="comment">#True</span></span><br><span class="line">print(issubclass(Customer, VIPCustomer)) <span class="comment">#False</span></span><br></pre></td></tr></table></figure>
+
+
+  </div>
+</article>
+<!--  utteranc comment -->
+
+<script src="https://utteranc.es/client.js"
+        repo="TaeJuneJoung/gitblog-comment"
+        issue-term="title"
+        label="Comment"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#파이썬-class의-유연성"><span class="toc-number">1.</span> <span class="toc-text">파이썬 class의 유연성</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#클래스-상속-type"><span class="toc-number">1.1.</span> <span class="toc-text">클래스 상속 type</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Override"><span class="toc-number">2.</span> <span class="toc-text">Override</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Overloading"><span class="toc-number">3.</span> <span class="toc-text">Overloading</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pratice"><span class="toc-number">4.</span> <span class="toc-text">Pratice</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#isinstance-issubclass"><span class="toc-number">5.</span> <span class="toc-text">isinstance / issubclass</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#isinstance"><span class="toc-number">5.1.</span> <span class="toc-text">isinstance</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#issubclass"><span class="toc-number">5.2.</span> <span class="toc-text">issubclass</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://TaeJuneJoung.github.io/2020/01/11/python-middle-class/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://TaeJuneJoung.github.io/2020/01/11/python-middle-class/&text=Python] Class"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://TaeJuneJoung.github.io/2020/01/11/python-middle-class/&title=Python] Class"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://TaeJuneJoung.github.io/2020/01/11/python-middle-class/&is_video=false&description=Python] Class"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Python] Class&body=Check out this article: http://TaeJuneJoung.github.io/2020/01/11/python-middle-class/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://TaeJuneJoung.github.io/2020/01/11/python-middle-class/&title=Python] Class"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://TaeJuneJoung.github.io/2020/01/11/python-middle-class/&title=Python] Class"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://TaeJuneJoung.github.io/2020/01/11/python-middle-class/&title=Python] Class"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://TaeJuneJoung.github.io/2020/01/11/python-middle-class/&title=Python] Class"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://TaeJuneJoung.github.io/2020/01/11/python-middle-class/&name=Python] Class&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://TaeJuneJoung.github.io/2020/01/11/python-middle-class/&t=Python] Class"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+          
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4111865521431436",
+    enable_page_level_ads: true
+  });
+</script>
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2021
+    TaeJune Joung
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155762921-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-155762921-1');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

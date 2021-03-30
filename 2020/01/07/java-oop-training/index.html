@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    <meta name="description" content="Object-oriented Programming, 객체 지향 프로그래밍 먼저, 궁금했던 점에 대해서 기재  출력문에서 5/3이면 int형으로 나오는지, double형으로 나오는지  1234567System.out.println(5/3); //1System.out.println(((Object) (5/3)).getClass().getTypeName());">
+<meta name="keywords" content="Java,OOP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java] OOP Training">
+<meta property="og:url" content="http://TaeJuneJoung.github.io/2020/01/07/java-oop-training/index.html">
+<meta property="og:site_name" content="Jun&#39;s Blog">
+<meta property="og:description" content="Object-oriented Programming, 객체 지향 프로그래밍 먼저, 궁금했던 점에 대해서 기재  출력문에서 5/3이면 int형으로 나오는지, double형으로 나오는지  1234567System.out.println(5/3); //1System.out.println(((Object) (5/3)).getClass().getTypeName());">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2021-03-30T16:08:57.836Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java] OOP Training">
+<meta name="twitter:description" content="Object-oriented Programming, 객체 지향 프로그래밍 먼저, 궁금했던 점에 대해서 기재  출력문에서 5/3이면 int형으로 나오는지, double형으로 나오는지  1234567System.out.println(5/3); //1System.out.println(((Object) (5/3)).getClass().getTypeName());">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Java] OOP Training</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post " href="/2020/01/07/python-middle-map-filter/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post " href="/2019/12/29/java-information-hiding/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://TaeJuneJoung.github.io/2020/01/07/java-oop-training/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://TaeJuneJoung.github.io/2020/01/07/java-oop-training/&text=Java] OOP Training"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://TaeJuneJoung.github.io/2020/01/07/java-oop-training/&title=Java] OOP Training"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://TaeJuneJoung.github.io/2020/01/07/java-oop-training/&is_video=false&description=Java] OOP Training"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Java] OOP Training&body=Check out this article: http://TaeJuneJoung.github.io/2020/01/07/java-oop-training/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://TaeJuneJoung.github.io/2020/01/07/java-oop-training/&title=Java] OOP Training"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://TaeJuneJoung.github.io/2020/01/07/java-oop-training/&title=Java] OOP Training"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://TaeJuneJoung.github.io/2020/01/07/java-oop-training/&title=Java] OOP Training"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://TaeJuneJoung.github.io/2020/01/07/java-oop-training/&title=Java] OOP Training"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://TaeJuneJoung.github.io/2020/01/07/java-oop-training/&name=Java] OOP Training&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://TaeJuneJoung.github.io/2020/01/07/java-oop-training/&t=Java] OOP Training"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Problem-01"><span class="toc-number">1.</span> <span class="toc-text">Problem 01.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Problem-02"><span class="toc-number">2.</span> <span class="toc-text">Problem 02.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Problem-03"><span class="toc-number">3.</span> <span class="toc-text">Problem 03.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Problem-04"><span class="toc-number">4.</span> <span class="toc-text">Problem 04.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Problem-05"><span class="toc-number">5.</span> <span class="toc-text">Problem 05.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Problem-06"><span class="toc-number">6.</span> <span class="toc-text">Problem 06.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Problem-07"><span class="toc-number">7.</span> <span class="toc-text">Problem 07.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Problem-08"><span class="toc-number">8.</span> <span class="toc-text">Problem 08.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Problem-09"><span class="toc-number">9.</span> <span class="toc-text">Problem 09.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Problem-10"><span class="toc-number">10.</span> <span class="toc-text">Problem 10.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Problem-11"><span class="toc-number">11.</span> <span class="toc-text">Problem 11.</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4111865521431436",
+    enable_page_level_ads: true
+  });
+</script>
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Java] OOP Training
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">TaeJune Joung</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-01-06T16:07:09.000Z" itemprop="datePublished">2020-01-07</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/Java/">Java</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/Java/">Java</a>, <a class="tag-link" href="/tags/OOP/">OOP</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p><strong>Object-oriented Programming, 객체 지향 프로그래밍</strong></p>
+<p>먼저, 궁금했던 점에 대해서 기재</p>
+<ol>
+<li><strong>출력문에서 5/3이면 int형으로 나오는지, double형으로 나오는지</strong></li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(<span class="number">5</span>/<span class="number">3</span>); <span class="comment">//1</span></span><br><span class="line">System.out.println(((Object) (<span class="number">5</span>/<span class="number">3</span>)).getClass().getTypeName()); <span class="comment">//java.lang.Integer</span></span><br><span class="line"><span class="keyword">int</span> res = <span class="number">5</span>/<span class="number">3</span>;</span><br><span class="line">System.out.println(res); <span class="comment">//1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">double</span> res = <span class="number">5</span>/<span class="number">3</span>;</span><br><span class="line">System.out.println(res); <span class="comment">//1.0</span></span><br></pre></td></tr></table></figure>
+
+<p>예상으로는 자동형변환이 이뤄져서 <code>double</code> 타입이 나올거라고 생각하였지만, <code>int</code>형이 나왔다.</p>
+<p>double형으로 선언을 하여도 받아오는 값은 1.0이었다.</p>
+<p>소수점이 계산된 값을 가져오기 위해서는 처음부터 숫자를 소수로 주어지거나 형변환을 명시적으로 주어 처리해야한다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">System.out.println((<span class="keyword">double</span>)<span class="number">5</span>/<span class="number">3</span>); <span class="comment">//1.6666666666666667</span></span><br><span class="line">System.out.println(<span class="number">5.0</span>/<span class="number">3</span>); <span class="comment">//1.6666666666666667</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><strong>반올림 방법</strong></li>
+</ol>
+<p>그렇다면 반올림은 <code>Math.round()</code>을 통해 하면 될텐데, 2째 자리까지 보여지게 하려면 어떻게 해야할까?</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(Math.round(<span class="number">5.0</span>/<span class="number">3</span>*<span class="number">100</span>)/<span class="number">100.0</span>); <span class="comment">//1.67</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 이해를 돕기위해 소수점 셋째자리까지</span></span><br><span class="line">System.out.println(Math.round(<span class="number">5.0</span>/<span class="number">3</span>*<span class="number">1000</span>)/<span class="number">1000.0</span>); <span class="comment">//1.667</span></span><br></pre></td></tr></table></figure>
+
+<p>위와 같이 보여질 자리수만큼 곱해주었다가 나눠주면 된다.</p>
+<h2 id="Problem-01"><a href="#Problem-01" class="headerlink" title="Problem 01."></a>Problem 01.</h2><p>다음은 컴퓨터 게임의 병사(marine)를 클래스로 정의한 것이다. 이 클래스의 멤버 중에 static을 붙여야 하는 것은 어떤 것들이고 그 이유는 무엇인가? (단, 모든 병사의 공격력과 방어력은 같아야 한다.)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Marine</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x = <span class="number">0</span>, y = <span class="number">0</span>; <span class="comment">//위치 좌표(x,y)</span></span><br><span class="line">    <span class="keyword">int</span> hp = <span class="number">60</span>; <span class="comment">//현재 체력</span></span><br><span class="line">    <span class="keyword">int</span> weapon = <span class="number">6</span>; <span class="comment">//공격력</span></span><br><span class="line">    <span class="keyword">int</span> armor = <span class="number">0</span>; <span class="comment">//방어력</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">weaponUp</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        weapon++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">armorUp</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        armor++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">move</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.x = x;</span><br><span class="line">        <span class="keyword">this</span>.y = y;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>모든 병사의 공격력과 방어력은 같다고 하였기에 인스턴스 변수가 아닌 static으로 선언해준다. 인스턴스 변수일 경우에는 각 객체마다 가지고 있는 공격력과 방어력이 다를 수 있기에…</p>
+<p>그리고 static변수로 바꿔준 공격력과 방어력 변수를 사용하는 Instance Method에 static Method로 변경해준다.</p>
+<p><strong>답안]</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Marine</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x = <span class="number">0</span>, y = <span class="number">0</span>; <span class="comment">//위치 좌표(x,y)</span></span><br><span class="line">    <span class="keyword">int</span> hp = <span class="number">60</span>; <span class="comment">//현재 체력</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> weapon = <span class="number">6</span>; <span class="comment">//공격력</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> armor = <span class="number">0</span>; <span class="comment">//방어력</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">weaponUp</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        weapon++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">armorUp</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        armor++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">move</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.x = x;</span><br><span class="line">        <span class="keyword">this</span>.y = y;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Problem-02"><a href="#Problem-02" class="headerlink" title="Problem 02."></a>Problem 02.</h2><p>다음 중 생성자에 대한 설명으로 옳지 않은 것은? (모두 고르시오)</p>
+<ol>
+<li>모든 생성자의 이름은 클래스의 이름과 동일해야한다.</li>
+<li>생성자는 객체를 생성하기 위한 것이다.</li>
+<li>클래스에는 생성자가 반드시 하나 이상 있어야 한다.</li>
+<li>생성자가 없는 클래스는 컴파일러가 기본 생성자를 추가한다.</li>
+<li>생성자는 오버로딩 할 수 없다.</li>
+</ol>
+<p>생성자는 객체를 생성할 때 사용되기는 하지만, 객체를 초기화할 목적으로 사용된다.</p>
+<p>객체를 생성하는 것은 <code>new</code> 연산자이다.</p>
+<p>생성자는 오버로딩이 가능하여 하나의 클래스에 여러 개의 생성자를 정의할 수 있다.</p>
+<p><strong>답안]</strong> 2, 5</p>
+<h2 id="Problem-03"><a href="#Problem-03" class="headerlink" title="Problem 03."></a>Problem 03.</h2><p>다음 중 this에 대한 설명으로 맞지 않은 것은? (모두 고르시오)</p>
+<ol>
+<li>객체 자신을 가리키는 참조변수이다.</li>
+<li>클래스 내에서라면 어디서든 사용할 수 있다.</li>
+<li>지역변수와 인스턴스변수를 구별할 때 사용한다.</li>
+<li>클래스 메서드 내에서는 사용할 수 없다.</li>
+</ol>
+<p>this는 클래스 멤버(static이 붙은 변수나 메소드)에는 사용할 수 없다.</p>
+<p><strong>답안]</strong> 2</p>
+<h2 id="Problem-04"><a href="#Problem-04" class="headerlink" title="Problem 04."></a>Problem 04.</h2><p>다음 중 오버로딩이 성립하기 위한 조건이 아닌 것은? (모두 고르시오)</p>
+<ol>
+<li>메서드의 이름이 같아야 한다.</li>
+<li>매개변수의 개수나 타입이 달라야 한다.</li>
+<li>리턴타입이 달라야 한다.</li>
+<li>매개변수의 이름이 달라야 한다.</li>
+</ol>
+<p>오버라이딩의 조건</p>
+<ol>
+<li><p>메서드 이름이 같아야 한다.</p>
+</li>
+<li><p>매개변수의 개수 또는 타입이 달라야 한다.</p>
+</li>
+<li><p>매개변수는 같고 리턴타입이 다른 경우는 오버로딩이 성립되지 않는다.</p>
+<p>(리턴타입은 오버로딩을 구현하는데 아무런 영향을 주지 못한다.)</p>
+</li>
+</ol>
+<p><strong>답안]</strong> 3, 4</p>
+<h2 id="Problem-05"><a href="#Problem-05" class="headerlink" title="Problem 05."></a>Problem 05.</h2><p>다음 중 아래의 add 메서드를 올바르게 오버로딩 한 것은? (모두 고르시오)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">long</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123; <span class="keyword">return</span> a+b; &#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>long add(int x, int y) { return x+y; }</li>
+<li>long add(long a, long b) { return a+b; }</li>
+<li>int add(byte a, byte b) { return a+b; }</li>
+<li>int add(long a, int b) { return (int)(a+b); }</li>
+</ol>
+<p>오버라이딩의 조건</p>
+<ol>
+<li><p>메서드 이름이 같아야 한다.</p>
+</li>
+<li><p>매개변수의 개수 또는 타입이 달라야 한다.</p>
+</li>
+<li><p>매개변수는 같고 리턴타입이 다른 경우는 오버로딩이 성립되지 않는다.</p>
+<p>(리턴타입은 오버로딩을 구현하는데 아무런 영향을 주지 못한다.)</p>
+</li>
+</ol>
+<p><strong>답안]</strong> 2, 3, 4</p>
+<h2 id="Problem-06"><a href="#Problem-06" class="headerlink" title="Problem 06."></a>Problem 06.</h2><p>다음 중 초기화에 대한 설명으로 옳지 않은 것은? (모두 고르시오)</p>
+<ol>
+<li>멤버변수는 자동 초기화되므로 초기화하지 않고도 값을 참조할 수 있다.</li>
+<li>지역변수는 사용하기 전에 반드시 초기화해야 한다.</li>
+<li>초기화 블럭보다 생성자가 먼저 수행된다.</li>
+<li>명시적 초기화를 제일 우선적으로 고려해야 한다.</li>
+<li>클래스변수보다 인스턴스변수가 먼저 초기화된다.</li>
+</ol>
+<p>클래스 변수는 클래스가 처음 메모리에 로딩될 때, 자동 초기화되므로 인스턴스 변수보다 먼저 초기화 된다. 그리고 생성자는 초기화 블럭이 수행된 다음에 수행된다.</p>
+<p><strong>답안]</strong> 3, 5</p>
+<h2 id="Problem-07"><a href="#Problem-07" class="headerlink" title="Problem 07."></a>Problem 07.</h2><p>다음중 인스턴스 변수의 초기화 순서가 올바른 것은?</p>
+<ol>
+<li>기본값 - 명시적 초기화 - 초기화 블럭 - 생성자</li>
+<li>기본값 - 명시적 초기화 - 생성자 - 초기화 블럭</li>
+<li>기본값 - 초기화 블럭 - 명시적 초기화 - 생성자</li>
+<li>기본값 - 초기화 블럭 - 생성자 - 명시적 초기화</li>
+</ol>
+<p>클래스 변수의 초기화 시점 : 클래스가 처음 로딩될 때 단 한번 초기화 된다.</p>
+<p>인스턴스 변수의 초기화 시점 : 인스턴스가 생성될 때마다 각 인스턴스별로 초기화가 이뤄진다.</p>
+<p>클래스 변수의 초기화 순서 : 기본값 -&gt; 명시적 초기화 -&gt; 클래스 초기화 블럭</p>
+<p>인스턴스 변수의 초기화 순서 : 기본값 -&gt; 명시적 초기화 -&gt; 인스턴스 초기화 블럭 -&gt; 생성자</p>
+<p><strong>답안]</strong> 1</p>
+<h2 id="Problem-08"><a href="#Problem-08" class="headerlink" title="Problem 08."></a>Problem 08.</h2><p>다음 중 지역변수에 대한 설명으로 옳지 않은 것은? (모두 고르시오)</p>
+<ol>
+<li>자동 초기화되므로 별도의 초기화가 필요없다.</li>
+<li>지역변수가 선언된 메서드가 종료되면 지역변수도 함께 소멸된다.</li>
+<li>메서드의 매개변수로 선언된 변수도 지역변수이다.</li>
+<li>클래스변수나 인스턴스변수보다 메모리 부담이 적다.</li>
+<li>힙(heap)영역에 생성되며 가비지 컬렉터에 의해 소멸된다.</li>
+</ol>
+<p>지역변수는 자동 초기화 되지 않기 때문에 사용하기 전에 반드시 적절한 값으로 초기화 해주어야한다. 지역변수는 자신이 선언된 블럭이나 메서드가 종료되면 소멸되므로 메모리 부담이 적다. 힙(heap) 영역에는 인스턴스(인스턴스 변수)가 생성되는 영역이며, 지역변수는 호출스택(call stack)에 생성된다.</p>
+<p><strong>답안]</strong> 1, 5</p>
+<h2 id="Problem-09"><a href="#Problem-09" class="headerlink" title="Problem 09."></a>Problem 09.</h2><p>호출스택이 다음과 같은 상황일 때 옳지 않은 설명은? (모두 고르시오)</p>
+<table>
+<thead>
+<tr>
+<th>[CallStack]</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>println</td>
+</tr>
+<tr>
+<td>method1</td>
+</tr>
+<tr>
+<td>method2</td>
+</tr>
+<tr>
+<td>main</td>
+</tr>
+</tbody></table>
+<ol>
+<li>제일 먼저 호출스택에 저장된 것은 main메서드이다.</li>
+<li>println메서드를 제외한 나머지 메서드들은 모두 종료된 상태이다.</li>
+<li>method2메서드를 호출한 것은 main메서드이다.</li>
+<li>println메서드가 종료되면 method1메서드가 수행을 재개한다.</li>
+<li>main-method2-method1-println의 순서로 호출되었다.</li>
+<li>현재 실행중인 메서드는 println뿐이다.</li>
+</ol>
+<p>호출스택의 제일 위에 있는 메서드가 현재 수행중인 메서드이며, 호출스택 안의 나머지 메서드들은 대기상태이다.</p>
+<p><strong>답안]</strong> 2</p>
+<h2 id="Problem-10"><a href="#Problem-10" class="headerlink" title="Problem 10."></a>Problem 10.</h2><p>다음과 같이 정의된 메서드를 작성하고 테스트하시오.</p>
+<p>메서드명 : shuffle</p>
+<p>기능 : 주어진 배열에 담긴 값의 위치를 바꾸는 작업을 반복하여 뒤섞이게 한다. 처리한 배열을 반환한다.</p>
+<p>반환타입 : int[]</p>
+<p>매개변수 : int[] arr - 정수값이 담긴 배열</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Card</span> </span>&#123;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    *  shuffle 메서드를 작성하시오.</span></span><br><span class="line"><span class="comment">    * */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] original = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>&#125;;</span><br><span class="line">        System.out.println(Arrays.toString(original));</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span>[] result = shuffle(original);</span><br><span class="line">        System.out.println(Arrays.toString(result));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>답안]</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Card</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span>[] shuffle(<span class="keyword">int</span>[] arr) &#123;</span><br><span class="line">        <span class="keyword">if</span>(arr == <span class="keyword">null</span> || arr.length == <span class="number">0</span>) &#123; <span class="comment">//유효성 체크</span></span><br><span class="line">            <span class="keyword">return</span> arr;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;arr.length*<span class="number">2</span>; i++) &#123; <span class="comment">//*2만큼 하면 충분히 섞이기에</span></span><br><span class="line">            <span class="keyword">int</span> x = (<span class="keyword">int</span>)(Math.random()*arr.length);</span><br><span class="line">            <span class="keyword">int</span> y = (<span class="keyword">int</span>)(Math.random()*arr.length);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">int</span> temp = arr[x];</span><br><span class="line">            arr[x] = arr[y];</span><br><span class="line">            arr[y] = temp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> arr;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] original = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>&#125;;</span><br><span class="line">        System.out.println(Arrays.toString(original));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span>[] result = shuffle(original);</span><br><span class="line">        System.out.println(Arrays.toString(result));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Problem-11"><a href="#Problem-11" class="headerlink" title="Problem 11."></a>Problem 11.</h2><p>다음과 같이 정의된 메서드를 작성하고 테스트하시오.</p>
+<p>메서드명 : isNumber</p>
+<p>기능 : 주어진 문자열이 모두 숫자로만 이루어져 있는지 확인한다. 모두 숫자로만 이루어져 있으면 true 반환, 아니라면 false 반환</p>
+<p> 만일 주어진 문자열이 null이거나 빈문자열 ‘’이라면 false 반환</p>
+<p>반환타입 : boolean</p>
+<p>매개변수 : String str - 검사할 문자열</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class Test &#123;</span><br><span class="line">    </span><br><span class="line">    //isNumber 메서드를 작성하시오.</span><br><span class="line">    </span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        String str = &quot;123&quot;;</span><br><span class="line">        System.out.println(str + &quot;는 숫자입니까?&quot; + isNumber(str));</span><br><span class="line">        </span><br><span class="line">        str = &quot;1234o&quot;;</span><br><span class="line">        System.out.println(str + &quot;는 숫자입니까?&quot; + isNumber(str));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>답안]</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isNumber</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i &lt; str.length(); i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="string">'0'</span> &lt;= str.charAt(i) &amp;&amp; str.charAt(i) &lt;= <span class="string">'9'</span>) &#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String str = <span class="string">"123"</span>;</span><br><span class="line">        System.out.println(str + <span class="string">"는 숫자입니까?"</span> + isNumber(str));</span><br><span class="line"></span><br><span class="line">        str = <span class="string">"1234o"</span>;</span><br><span class="line">        System.out.println(str + <span class="string">"는 숫자입니까?"</span> + isNumber(str));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  </div>
+</article>
+<!--  utteranc comment -->
+
+<script src="https://utteranc.es/client.js"
+        repo="TaeJuneJoung/gitblog-comment"
+        issue-term="title"
+        label="Comment"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Problem-01"><span class="toc-number">1.</span> <span class="toc-text">Problem 01.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Problem-02"><span class="toc-number">2.</span> <span class="toc-text">Problem 02.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Problem-03"><span class="toc-number">3.</span> <span class="toc-text">Problem 03.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Problem-04"><span class="toc-number">4.</span> <span class="toc-text">Problem 04.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Problem-05"><span class="toc-number">5.</span> <span class="toc-text">Problem 05.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Problem-06"><span class="toc-number">6.</span> <span class="toc-text">Problem 06.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Problem-07"><span class="toc-number">7.</span> <span class="toc-text">Problem 07.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Problem-08"><span class="toc-number">8.</span> <span class="toc-text">Problem 08.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Problem-09"><span class="toc-number">9.</span> <span class="toc-text">Problem 09.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Problem-10"><span class="toc-number">10.</span> <span class="toc-text">Problem 10.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Problem-11"><span class="toc-number">11.</span> <span class="toc-text">Problem 11.</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://TaeJuneJoung.github.io/2020/01/07/java-oop-training/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://TaeJuneJoung.github.io/2020/01/07/java-oop-training/&text=Java] OOP Training"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://TaeJuneJoung.github.io/2020/01/07/java-oop-training/&title=Java] OOP Training"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://TaeJuneJoung.github.io/2020/01/07/java-oop-training/&is_video=false&description=Java] OOP Training"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Java] OOP Training&body=Check out this article: http://TaeJuneJoung.github.io/2020/01/07/java-oop-training/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://TaeJuneJoung.github.io/2020/01/07/java-oop-training/&title=Java] OOP Training"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://TaeJuneJoung.github.io/2020/01/07/java-oop-training/&title=Java] OOP Training"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://TaeJuneJoung.github.io/2020/01/07/java-oop-training/&title=Java] OOP Training"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://TaeJuneJoung.github.io/2020/01/07/java-oop-training/&title=Java] OOP Training"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://TaeJuneJoung.github.io/2020/01/07/java-oop-training/&name=Java] OOP Training&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://TaeJuneJoung.github.io/2020/01/07/java-oop-training/&t=Java] OOP Training"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+          
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4111865521431436",
+    enable_page_level_ads: true
+  });
+</script>
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2021
+    TaeJune Joung
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155762921-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-155762921-1');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

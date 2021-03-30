@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    <meta name="description" content="Problem1234567891011121314151617181920212223242526272829303132int x = 2;int y = 5;char c = &apos;A&apos;; //65// 1번System.out.println(1 + x &amp;lt;&amp;lt; 33);// 2번System.out.println(y += 10 - x++);// 3번System.out.pr">
+<meta name="keywords" content="Java,Operator">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java] Operator Training">
+<meta property="og:url" content="http://TaeJuneJoung.github.io/2019/12/27/java-operator-traning/index.html">
+<meta property="og:site_name" content="Jun&#39;s Blog">
+<meta property="og:description" content="Problem1234567891011121314151617181920212223242526272829303132int x = 2;int y = 5;char c = &apos;A&apos;; //65// 1번System.out.println(1 + x &amp;lt;&amp;lt; 33);// 2번System.out.println(y += 10 - x++);// 3번System.out.pr">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2021-03-30T15:59:26.232Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java] Operator Training">
+<meta name="twitter:description" content="Problem1234567891011121314151617181920212223242526272829303132int x = 2;int y = 5;char c = &apos;A&apos;; //65// 1번System.out.println(1 + x &amp;lt;&amp;lt; 33);// 2번System.out.println(y += 10 - x++);// 3번System.out.pr">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Java] Operator Training</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post " href="/2019/12/28/java-loop/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post " href="/2019/12/27/java-operator/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://TaeJuneJoung.github.io/2019/12/27/java-operator-traning/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://TaeJuneJoung.github.io/2019/12/27/java-operator-traning/&text=Java] Operator Training"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://TaeJuneJoung.github.io/2019/12/27/java-operator-traning/&title=Java] Operator Training"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://TaeJuneJoung.github.io/2019/12/27/java-operator-traning/&is_video=false&description=Java] Operator Training"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Java] Operator Training&body=Check out this article: http://TaeJuneJoung.github.io/2019/12/27/java-operator-traning/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://TaeJuneJoung.github.io/2019/12/27/java-operator-traning/&title=Java] Operator Training"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://TaeJuneJoung.github.io/2019/12/27/java-operator-traning/&title=Java] Operator Training"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://TaeJuneJoung.github.io/2019/12/27/java-operator-traning/&title=Java] Operator Training"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://TaeJuneJoung.github.io/2019/12/27/java-operator-traning/&title=Java] Operator Training"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://TaeJuneJoung.github.io/2019/12/27/java-operator-traning/&name=Java] Operator Training&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://TaeJuneJoung.github.io/2019/12/27/java-operator-traning/&t=Java] Operator Training"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Problem"><span class="toc-number">1.</span> <span class="toc-text">Problem</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1번-1-x-lt-lt-33"><span class="toc-number">1.1.</span> <span class="toc-text">1번. 1 + x &lt;&lt; 33</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2번-y-10-x"><span class="toc-number">1.2.</span> <span class="toc-text">2번. y += 10 - x++</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3번-x-2"><span class="toc-number">1.3.</span> <span class="toc-text">3번. x += 2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4번-‘C’-c"><span class="toc-number">1.4.</span> <span class="toc-text">4번. ‘C’ - c</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5번-‘5’-‘0’"><span class="toc-number">1.5.</span> <span class="toc-text">5번. ‘5’ - ‘0’</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6번-c-1"><span class="toc-number">1.6.</span> <span class="toc-text">6번. c+1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7번-c"><span class="toc-number">1.7.</span> <span class="toc-text">7번. ++c</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8번-c"><span class="toc-number">1.8.</span> <span class="toc-text">8번. c++</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9번-c"><span class="toc-number">1.9.</span> <span class="toc-text">9번. c</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4111865521431436",
+    enable_page_level_ads: true
+  });
+</script>
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Java] Operator Training
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">TaeJune Joung</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-12-26T15:58:35.000Z" itemprop="datePublished">2019-12-27</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/Java/">Java</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/Java/">Java</a>, <a class="tag-link" href="/tags/Operator/">Operator</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> x = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">int</span> y = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">char</span> c = <span class="string">'A'</span>; <span class="comment">//65</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 1번</span></span><br><span class="line">System.out.println(<span class="number">1</span> + x &lt;&lt; <span class="number">33</span>);</span><br><span class="line"><span class="comment">// 2번</span></span><br><span class="line">System.out.println(y += <span class="number">10</span> - x++);</span><br><span class="line"><span class="comment">// 3번</span></span><br><span class="line">System.out.println(x += <span class="number">2</span>);</span><br><span class="line"><span class="comment">// 4번</span></span><br><span class="line">System.out.println(<span class="string">'C'</span> - c);</span><br><span class="line"><span class="comment">// 5번</span></span><br><span class="line">System.out.println(<span class="string">'5'</span> - <span class="string">'0'</span>);</span><br><span class="line"><span class="comment">// 6번</span></span><br><span class="line">System.out.println(c+<span class="number">1</span>);</span><br><span class="line"><span class="comment">// 7번</span></span><br><span class="line">System.out.println(++c);</span><br><span class="line"><span class="comment">// 8번</span></span><br><span class="line">System.out.println(c++);</span><br><span class="line"><span class="comment">// 9번</span></span><br><span class="line">System.out.println(c);</span><br><span class="line"># 답</span><br><span class="line"><span class="number">1</span>. <span class="number">6</span></span><br><span class="line"><span class="number">2</span>. <span class="number">13</span></span><br><span class="line"><span class="number">3</span>. <span class="number">5</span></span><br><span class="line"><span class="number">4</span>. <span class="number">2</span></span><br><span class="line"><span class="number">5</span>. <span class="number">5</span></span><br><span class="line"><span class="number">6</span>. <span class="number">66</span></span><br><span class="line"><span class="number">7</span>. B</span><br><span class="line"><span class="number">8</span>. B</span><br><span class="line"><span class="number">9</span>. C</span><br></pre></td></tr></table></figure>
+
+<h3 id="1번-1-x-lt-lt-33"><a href="#1번-1-x-lt-lt-33" class="headerlink" title="1번. 1 + x &lt;&lt; 33"></a>1번. 1 + x &lt;&lt; 33</h3><p>+와 += 의 연산자 우선순위가 다르다.</p>
+<p>+는 비트 쉬프트 연산자보다 우선순위가 빠르지만, +=는 느리다.</p>
+<p>(1 + 2) &lt;&lt; 33으로 나타낼 수 있고, int의 비트는 32까지이므로 결국은 1번 왼쪽으로 보낸 결과</p>
+<p>즉, (1 + 2) * 2의 결과와 같다고 보면 된다.</p>
+<p><strong>답: 6</strong></p>
+<h3 id="2번-y-10-x"><a href="#2번-y-10-x" class="headerlink" title="2번. y += 10 - x++"></a>2번. y += 10 - x++</h3><p>y += 10이 오류가 날 것이라고 예상하였지만 아니다.</p>
+<p>값을 초기화하면서 출력이 가능하다.</p>
+<p>5 - 2 + 10 의 결과인 13이 나온다.</p>
+<p>x++은 후위 증감 연산자로 후위식은 해당 값 처리 후, 증가된다.</p>
+<p><strong>답: 13</strong></p>
+<h3 id="3번-x-2"><a href="#3번-x-2" class="headerlink" title="3번. x += 2"></a>3번. x += 2</h3><p>위에서 후위 증가되었다는 것을 잊어서는 안된다.</p>
+<p><strong>답: 5</strong></p>
+<h3 id="4번-‘C’-c"><a href="#4번-‘C’-c" class="headerlink" title="4번. ‘C’ - c"></a>4번. ‘C’ - c</h3><p>A와 C는 2개의 차이가 있다.</p>
+<p><strong>답: 2</strong></p>
+<h3 id="5번-‘5’-‘0’"><a href="#5번-‘5’-‘0’" class="headerlink" title="5번. ‘5’ - ‘0’"></a>5번. ‘5’ - ‘0’</h3><p>5와 0은 5개의 차이가 있다.</p>
+<p><strong>답: 5</strong></p>
+<h3 id="6번-c-1"><a href="#6번-c-1" class="headerlink" title="6번. c+1"></a>6번. c+1</h3><p>c는 ‘A’이고 A는 int형으로 65의 값을 가지고 있다.</p>
+<p>Promotion(타입 확장)이 이뤄져서 int형의 값이 나오게 된다.</p>
+<p><strong>답: 66</strong></p>
+<h3 id="7번-c"><a href="#7번-c" class="headerlink" title="7번. ++c"></a>7번. ++c</h3><p>c가 가지고 있는 값에서 전위 증가로 1을 더한 값을 만들어 주면 된다.</p>
+<p>c는 <code>char type</code>이기에 계산을 위해서 65 + 1이 된 int형을 가졌다가 c 변수가 가지고 있는 char형으로 Casting(타입 축소)가 이뤄진다.</p>
+<p><strong>답: B</strong></p>
+<h3 id="8번-c"><a href="#8번-c" class="headerlink" title="8번. c++"></a>8번. c++</h3><p>위와 비슷하나 후위 증가는 해당 값이 처리되고 나서 증가하기에 현재 나오는 값의 변화는 생기지 않는다.</p>
+<p><strong>답: B</strong></p>
+<h3 id="9번-c"><a href="#9번-c" class="headerlink" title="9번. c"></a>9번. c</h3><p>위에서 후위 증가가 이뤄졌기 때문에 1을 더한 값이 나온다.</p>
+<p>7번과 같은 이유로 char 타입이 나온다.</p>
+<p><strong>답: C</strong></p>
+
+  </div>
+</article>
+<!--  utteranc comment -->
+
+<script src="https://utteranc.es/client.js"
+        repo="TaeJuneJoung/gitblog-comment"
+        issue-term="title"
+        label="Comment"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Problem"><span class="toc-number">1.</span> <span class="toc-text">Problem</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1번-1-x-lt-lt-33"><span class="toc-number">1.1.</span> <span class="toc-text">1번. 1 + x &lt;&lt; 33</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2번-y-10-x"><span class="toc-number">1.2.</span> <span class="toc-text">2번. y += 10 - x++</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3번-x-2"><span class="toc-number">1.3.</span> <span class="toc-text">3번. x += 2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4번-‘C’-c"><span class="toc-number">1.4.</span> <span class="toc-text">4번. ‘C’ - c</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5번-‘5’-‘0’"><span class="toc-number">1.5.</span> <span class="toc-text">5번. ‘5’ - ‘0’</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6번-c-1"><span class="toc-number">1.6.</span> <span class="toc-text">6번. c+1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7번-c"><span class="toc-number">1.7.</span> <span class="toc-text">7번. ++c</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8번-c"><span class="toc-number">1.8.</span> <span class="toc-text">8번. c++</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9번-c"><span class="toc-number">1.9.</span> <span class="toc-text">9번. c</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://TaeJuneJoung.github.io/2019/12/27/java-operator-traning/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://TaeJuneJoung.github.io/2019/12/27/java-operator-traning/&text=Java] Operator Training"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://TaeJuneJoung.github.io/2019/12/27/java-operator-traning/&title=Java] Operator Training"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://TaeJuneJoung.github.io/2019/12/27/java-operator-traning/&is_video=false&description=Java] Operator Training"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Java] Operator Training&body=Check out this article: http://TaeJuneJoung.github.io/2019/12/27/java-operator-traning/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://TaeJuneJoung.github.io/2019/12/27/java-operator-traning/&title=Java] Operator Training"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://TaeJuneJoung.github.io/2019/12/27/java-operator-traning/&title=Java] Operator Training"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://TaeJuneJoung.github.io/2019/12/27/java-operator-traning/&title=Java] Operator Training"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://TaeJuneJoung.github.io/2019/12/27/java-operator-traning/&title=Java] Operator Training"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://TaeJuneJoung.github.io/2019/12/27/java-operator-traning/&name=Java] Operator Training&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://TaeJuneJoung.github.io/2019/12/27/java-operator-traning/&t=Java] Operator Training"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+          
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4111865521431436",
+    enable_page_level_ads: true
+  });
+</script>
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2021
+    TaeJune Joung
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155762921-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-155762921-1');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    <meta name="description" content="생성방법123456d1 = &amp;#123; &apos;a&apos;:1, &apos;b&apos;:2, &apos;c&apos;:3 &amp;#125;d2 = dict([(&apos;a&apos;,1), (&apos;b&apos;,2), (&apos;c&apos;,3)])d3 = dict(a=1, b=2, c=3)d4 = dict(zip([&apos;a&apos;,&apos;b&apos;,&apos;c&apos;], [1,2,3]))print(d1 == d2 == d3 == d4) #True  파이썬 3.7부터 diction">
+<meta name="keywords" content="Python,Dictionary">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python] Dictionary">
+<meta property="og:url" content="http://TaeJuneJoung.github.io/2020/01/11/python-middle-dict/index.html">
+<meta property="og:site_name" content="Jun&#39;s Blog">
+<meta property="og:description" content="생성방법123456d1 = &amp;#123; &apos;a&apos;:1, &apos;b&apos;:2, &apos;c&apos;:3 &amp;#125;d2 = dict([(&apos;a&apos;,1), (&apos;b&apos;,2), (&apos;c&apos;,3)])d3 = dict(a=1, b=2, c=3)d4 = dict(zip([&apos;a&apos;,&apos;b&apos;,&apos;c&apos;], [1,2,3]))print(d1 == d2 == d3 == d4) #True  파이썬 3.7부터 diction">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2021-03-30T17:12:05.854Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python] Dictionary">
+<meta name="twitter:description" content="생성방법123456d1 = &amp;#123; &apos;a&apos;:1, &apos;b&apos;:2, &apos;c&apos;:3 &amp;#125;d2 = dict([(&apos;a&apos;,1), (&apos;b&apos;,2), (&apos;c&apos;,3)])d3 = dict(a=1, b=2, c=3)d4 = dict(zip([&apos;a&apos;,&apos;b&apos;,&apos;c&apos;], [1,2,3]))print(d1 == d2 == d3 == d4) #True  파이썬 3.7부터 diction">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Python] Dictionary</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post " href="/2020/01/11/python-middle-class/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post " href="/2020/01/10/java-inheritance/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://TaeJuneJoung.github.io/2020/01/11/python-middle-dict/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://TaeJuneJoung.github.io/2020/01/11/python-middle-dict/&text=Python] Dictionary"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://TaeJuneJoung.github.io/2020/01/11/python-middle-dict/&title=Python] Dictionary"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://TaeJuneJoung.github.io/2020/01/11/python-middle-dict/&is_video=false&description=Python] Dictionary"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Python] Dictionary&body=Check out this article: http://TaeJuneJoung.github.io/2020/01/11/python-middle-dict/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://TaeJuneJoung.github.io/2020/01/11/python-middle-dict/&title=Python] Dictionary"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://TaeJuneJoung.github.io/2020/01/11/python-middle-dict/&title=Python] Dictionary"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://TaeJuneJoung.github.io/2020/01/11/python-middle-dict/&title=Python] Dictionary"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://TaeJuneJoung.github.io/2020/01/11/python-middle-dict/&title=Python] Dictionary"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://TaeJuneJoung.github.io/2020/01/11/python-middle-dict/&name=Python] Dictionary&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://TaeJuneJoung.github.io/2020/01/11/python-middle-dict/&t=Python] Dictionary"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#생성방법"><span class="toc-number">1.</span> <span class="toc-text">생성방법</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Default-Dictionary"><span class="toc-number">1.1.</span> <span class="toc-text">Default Dictionary</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#setdefault-k-default"><span class="toc-number">1.1.1.</span> <span class="toc-text">setdefault(k, default)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#defaultdict"><span class="toc-number">1.1.2.</span> <span class="toc-text">defaultdict()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dictionary-sort"><span class="toc-number">1.2.</span> <span class="toc-text">Dictionary sort</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#왜-알아야하는가"><span class="toc-number">1.2.1.</span> <span class="toc-text">왜 알아야하는가?</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#zip함수"><span class="toc-number">2.</span> <span class="toc-text">zip함수</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4111865521431436",
+    enable_page_level_ads: true
+  });
+</script>
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Python] Dictionary
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">TaeJune Joung</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-01-10T17:10:32.000Z" itemprop="datePublished">2020-01-11</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/Python/">Python</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/Dictionary/">Dictionary</a>, <a class="tag-link" href="/tags/Python/">Python</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="생성방법"><a href="#생성방법" class="headerlink" title="생성방법"></a>생성방법</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">d1 = &#123; <span class="string">'a'</span>:<span class="number">1</span>, <span class="string">'b'</span>:<span class="number">2</span>, <span class="string">'c'</span>:<span class="number">3</span> &#125;</span><br><span class="line">d2 = dict([(<span class="string">'a'</span>,<span class="number">1</span>), (<span class="string">'b'</span>,<span class="number">2</span>), (<span class="string">'c'</span>,<span class="number">3</span>)])</span><br><span class="line">d3 = dict(a=<span class="number">1</span>, b=<span class="number">2</span>, c=<span class="number">3</span>)</span><br><span class="line">d4 = dict(zip([<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>], [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]))</span><br><span class="line"></span><br><span class="line">print(d1 == d2 == d3 == d4) <span class="comment">#True</span></span><br></pre></td></tr></table></figure>
+
+<p>파이썬 3.7부터 dictionary의 순서를 보장하고 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">d1 = &#123;<span class="string">'a'</span>:<span class="number">1</span>, <span class="string">'b'</span>:<span class="number">2</span>, <span class="string">'c'</span>:<span class="number">3</span>&#125;</span><br><span class="line">d2 = &#123;<span class="string">'c'</span>:<span class="number">1</span>, <span class="string">'b'</span>:<span class="number">2</span>, <span class="string">'a'</span>:<span class="number">3</span>&#125;</span><br><span class="line"></span><br><span class="line">print(d1, d2) <span class="comment">#&#123;'a': 1, 'b': 2, 'c': 3&#125; &#123;'c': 1, 'b': 2, 'a': 3&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Default-Dictionary"><a href="#Default-Dictionary" class="headerlink" title="Default Dictionary"></a>Default Dictionary</h3><p>주어진 사람들의 혈액형별 숫자를 구하는 식을 나타내시오.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">person_list = [<span class="string">'A'</span>, <span class="string">'A'</span>, <span class="string">'AB'</span>, <span class="string">'B'</span>, <span class="string">'O'</span>, <span class="string">'B'</span>, <span class="string">'B'</span>, <span class="string">'A'</span>, <span class="string">'A'</span>, <span class="string">'AB'</span>, <span class="string">'A'</span>]</span><br><span class="line">person_dict = &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> blood <span class="keyword">in</span> person_list:</span><br><span class="line">    <span class="keyword">if</span> blood <span class="keyword">in</span> person_dict:</span><br><span class="line">        person_dict[blood] += <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        person_dict[blood] = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">print(person_dict) <span class="comment">#&#123;'A': 5, 'AB': 2, 'B': 3, 'O': 1&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="setdefault-k-default"><a href="#setdefault-k-default" class="headerlink" title="setdefault(k, default)"></a>setdefault(k, default)</h4><p>k : 키 값</p>
+<p>default : default값</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">person_dict = &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> blood <span class="keyword">in</span> person_list:</span><br><span class="line">    person_dict[blood] = person_dict.setdefault(blood, <span class="number">0</span>) + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">print(person_dict) <span class="comment">#&#123;'A': 5, 'AB': 2, 'B': 3, 'O': 1&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="defaultdict"><a href="#defaultdict" class="headerlink" title="defaultdict()"></a>defaultdict()</h4><p>인자는 3가지를 받을 수 있으나, 아래의 예제만 보자면 함수를 넣으면 된다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#사용법, 쉬운 예제</span></span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> defaultdict</span><br><span class="line"></span><br><span class="line">d = defaultdict(<span class="keyword">lambda</span>: <span class="number">5</span>)</span><br><span class="line">print(d[<span class="string">'a'</span>]) <span class="comment">#5</span></span><br><span class="line">print(d[<span class="string">'c'</span>]) <span class="comment">#5</span></span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> defaultdict</span><br><span class="line"></span><br><span class="line">person_dict = defaultdict(int)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> blood <span class="keyword">in</span> person_list:</span><br><span class="line">    person_dict[blood] += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">print(person_dict) <span class="comment">#defaultdict(&lt;class 'int'&gt;, &#123;'A': 5, 'AB': 2, 'B': 3, 'O': 1&#125;)</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Dictionary-sort"><a href="#Dictionary-sort" class="headerlink" title="Dictionary sort"></a>Dictionary sort</h3><p>버전 3.7이전에는 딕셔너리는 순서를 보장하지 않았다.</p>
+<p>이전의 버전에서는 순서를 유지하기 위해서 OrderedDict라는 것을 생성해서 사용했다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> OrderedDict</span><br><span class="line"></span><br><span class="line">od = OrderedDict() <span class="comment">#OrderedDict 객체 생성</span></span><br><span class="line">od[<span class="string">'c'</span>] = <span class="number">1</span></span><br><span class="line">od[<span class="string">'b'</span>] = <span class="number">2</span></span><br><span class="line">od[<span class="string">'a'</span>] = <span class="number">3</span></span><br><span class="line"></span><br><span class="line">print(od) <span class="comment">#OrderedDict([('c', 1), ('b', 2), ('a', 3)])</span></span><br></pre></td></tr></table></figure>
+
+<p>사용법은 딕셔너리와 똑같다. items()를 통해 for문을 이용할 수도 있고 키값으로 값에 접근도 가능하다.</p>
+<h4 id="왜-알아야하는가"><a href="#왜-알아야하는가" class="headerlink" title="왜 알아야하는가?"></a>왜 알아야하는가?</h4><p>버전 3.7에서는 순서를 보장하는데 굳이 왜 순서를 보장하는 이전의 방법을 알아야하는가?</p>
+<ol>
+<li><strong>순서 보장, 값의 비교</strong></li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">d1 = &#123; <span class="string">'a'</span>:<span class="number">1</span>, <span class="string">'b'</span>:<span class="number">2</span>, <span class="string">'c'</span>:<span class="number">3</span> &#125;</span><br><span class="line">d2 = dict([(<span class="string">'b'</span>,<span class="number">2</span>), (<span class="string">'a'</span>,<span class="number">1</span>), (<span class="string">'c'</span>,<span class="number">3</span>)])</span><br><span class="line">d3 = dict(b=<span class="number">2</span>, c=<span class="number">3</span>, a=<span class="number">1</span>)</span><br><span class="line">d4 = dict(zip([<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>], [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]))</span><br><span class="line"></span><br><span class="line">print(d1) <span class="comment">#&#123;'a': 1, 'b': 2, 'c': 3&#125;</span></span><br><span class="line">print(d2) <span class="comment">#&#123;'b': 2, 'a': 1, 'c': 3&#125;</span></span><br><span class="line">print(d3) <span class="comment">#&#123;'b': 2, 'c': 3, 'a': 1&#125;</span></span><br><span class="line">print(d4) <span class="comment">#&#123;'a': 1, 'b': 2, 'c': 3&#125;</span></span><br><span class="line"></span><br><span class="line">print(d1 == d2) <span class="comment">#True</span></span><br><span class="line">print(d1 == d2 == d3 == d4) <span class="comment">#True</span></span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> OrderedDict</span><br><span class="line"></span><br><span class="line">od1 = OrderedDict() <span class="comment">#OrderedDict 객체 생성</span></span><br><span class="line">od1[<span class="string">'c'</span>] = <span class="number">1</span></span><br><span class="line">od1[<span class="string">'b'</span>] = <span class="number">2</span></span><br><span class="line">od1[<span class="string">'a'</span>] = <span class="number">3</span></span><br><span class="line"></span><br><span class="line">od2 = OrderedDict()</span><br><span class="line">od2[<span class="string">'a'</span>] = <span class="number">3</span></span><br><span class="line">od2[<span class="string">'c'</span>] = <span class="number">1</span></span><br><span class="line">od2[<span class="string">'b'</span>] = <span class="number">2</span></span><br><span class="line"></span><br><span class="line">print(od1) <span class="comment">#OrderedDict([('c', 1), ('b', 2), ('a', 3)])</span></span><br><span class="line">print(od2) <span class="comment">#OrderedDict([('a', 3), ('c', 1), ('b', 2)])</span></span><br><span class="line">print(od1 == od2) <span class="comment">#False</span></span><br></pre></td></tr></table></figure>
+
+<p>OrderedDict는 순서도 보장하지만, 값에 대한 순서 비교도 보장하고 있음을 알 수 있다.</p>
+<ol>
+<li><strong>저장 순서 변경 가능</strong></li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> OrderedDict</span><br><span class="line"></span><br><span class="line">od = OrderedDict() <span class="comment">#OrderedDict 객체 생성</span></span><br><span class="line">od[<span class="string">'c'</span>] = <span class="number">1</span></span><br><span class="line">od[<span class="string">'b'</span>] = <span class="number">2</span></span><br><span class="line">od[<span class="string">'a'</span>] = <span class="number">3</span></span><br><span class="line"></span><br><span class="line">print(od) <span class="comment">#OrderedDict([('c', 1), ('b', 2), ('a', 3)])</span></span><br><span class="line"></span><br><span class="line">od.move_to_end(<span class="string">'b'</span>, last=<span class="literal">True</span>)</span><br><span class="line">print(od) <span class="comment">#OrderedDict([('c', 1), ('a', 3), ('b', 2)])</span></span><br><span class="line"></span><br><span class="line">od.move_to_end(<span class="string">'a'</span>, last=<span class="literal">False</span>)</span><br><span class="line">print(od) <span class="comment">#OrderedDict([('a', 3), ('c', 1), ('b', 2)])</span></span><br></pre></td></tr></table></figure>
+
+<p><code>move_to_end(key, last=True/False)</code>를 이용하여 저장 순서를 변경할 수도 있다.</p>
+<p>last를 True로 하면 제일 뒤로 보내지고, False로 하면 제일 앞으로 보내지게 된다.</p>
+<h2 id="zip함수"><a href="#zip함수" class="headerlink" title="zip함수"></a>zip함수</h2><p><strong><code>zip(\*iterable)</code></strong>은 동일한 개수로 이루어진 자료형을 묶어 주는 역할을 하는 함수</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>]</span><br><span class="line">b = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">c = <span class="string">"ABC"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> zip(a,b,c):</span><br><span class="line">    print(i)</span><br><span class="line">    </span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">[출력]</span></span><br><span class="line"><span class="string">('a', 1, 'A')</span></span><br><span class="line"><span class="string">('b', 2, 'B')</span></span><br><span class="line"><span class="string">('c', 3, 'C')</span></span><br></pre></td></tr></table></figure>
+  </div>
+</article>
+<!--  utteranc comment -->
+
+<script src="https://utteranc.es/client.js"
+        repo="TaeJuneJoung/gitblog-comment"
+        issue-term="title"
+        label="Comment"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#생성방법"><span class="toc-number">1.</span> <span class="toc-text">생성방법</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Default-Dictionary"><span class="toc-number">1.1.</span> <span class="toc-text">Default Dictionary</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#setdefault-k-default"><span class="toc-number">1.1.1.</span> <span class="toc-text">setdefault(k, default)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#defaultdict"><span class="toc-number">1.1.2.</span> <span class="toc-text">defaultdict()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dictionary-sort"><span class="toc-number">1.2.</span> <span class="toc-text">Dictionary sort</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#왜-알아야하는가"><span class="toc-number">1.2.1.</span> <span class="toc-text">왜 알아야하는가?</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#zip함수"><span class="toc-number">2.</span> <span class="toc-text">zip함수</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://TaeJuneJoung.github.io/2020/01/11/python-middle-dict/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://TaeJuneJoung.github.io/2020/01/11/python-middle-dict/&text=Python] Dictionary"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://TaeJuneJoung.github.io/2020/01/11/python-middle-dict/&title=Python] Dictionary"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://TaeJuneJoung.github.io/2020/01/11/python-middle-dict/&is_video=false&description=Python] Dictionary"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Python] Dictionary&body=Check out this article: http://TaeJuneJoung.github.io/2020/01/11/python-middle-dict/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://TaeJuneJoung.github.io/2020/01/11/python-middle-dict/&title=Python] Dictionary"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://TaeJuneJoung.github.io/2020/01/11/python-middle-dict/&title=Python] Dictionary"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://TaeJuneJoung.github.io/2020/01/11/python-middle-dict/&title=Python] Dictionary"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://TaeJuneJoung.github.io/2020/01/11/python-middle-dict/&title=Python] Dictionary"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://TaeJuneJoung.github.io/2020/01/11/python-middle-dict/&name=Python] Dictionary&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://TaeJuneJoung.github.io/2020/01/11/python-middle-dict/&t=Python] Dictionary"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+          
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4111865521431436",
+    enable_page_level_ads: true
+  });
+</script>
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2021
+    TaeJune Joung
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155762921-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-155762921-1');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

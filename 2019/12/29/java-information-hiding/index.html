@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    <meta name="description" content="Access Control Specifiers, 접근 제어 지시자   지시자 클래스 내부 동일 패키지 상속받은 클래스 이외의 영역    public 🟢 🟢 🟢 🟢   protected 🟢 🟢 🟢 ✖️   default 🟢 🟢 ✖️ ✖️   private 🟢 ✖️ ✖️ ✖️   인스턴스 변수는 정보은닉의 대상으로 외부에서는 허용한 메서드(A">
+<meta name="keywords" content="Java,Information hiding">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java] Information hiding, 정보 은닉">
+<meta property="og:url" content="http://TaeJuneJoung.github.io/2019/12/29/java-information-hiding/index.html">
+<meta property="og:site_name" content="Jun&#39;s Blog">
+<meta property="og:description" content="Access Control Specifiers, 접근 제어 지시자   지시자 클래스 내부 동일 패키지 상속받은 클래스 이외의 영역    public 🟢 🟢 🟢 🟢   protected 🟢 🟢 🟢 ✖️   default 🟢 🟢 ✖️ ✖️   private 🟢 ✖️ ✖️ ✖️   인스턴스 변수는 정보은닉의 대상으로 외부에서는 허용한 메서드(A">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2021-03-30T16:06:13.257Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java] Information hiding, 정보 은닉">
+<meta name="twitter:description" content="Access Control Specifiers, 접근 제어 지시자   지시자 클래스 내부 동일 패키지 상속받은 클래스 이외의 영역    public 🟢 🟢 🟢 🟢   protected 🟢 🟢 🟢 ✖️   default 🟢 🟢 ✖️ ✖️   private 🟢 ✖️ ✖️ ✖️   인스턴스 변수는 정보은닉의 대상으로 외부에서는 허용한 메서드(A">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Java] Information hiding, 정보 은닉</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post " href="/2020/01/07/java-oop-training/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post " href="/2019/12/29/java-class-instance/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://TaeJuneJoung.github.io/2019/12/29/java-information-hiding/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://TaeJuneJoung.github.io/2019/12/29/java-information-hiding/&text=Java] Information hiding, 정보 은닉"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://TaeJuneJoung.github.io/2019/12/29/java-information-hiding/&title=Java] Information hiding, 정보 은닉"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://TaeJuneJoung.github.io/2019/12/29/java-information-hiding/&is_video=false&description=Java] Information hiding, 정보 은닉"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Java] Information hiding, 정보 은닉&body=Check out this article: http://TaeJuneJoung.github.io/2019/12/29/java-information-hiding/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://TaeJuneJoung.github.io/2019/12/29/java-information-hiding/&title=Java] Information hiding, 정보 은닉"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://TaeJuneJoung.github.io/2019/12/29/java-information-hiding/&title=Java] Information hiding, 정보 은닉"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://TaeJuneJoung.github.io/2019/12/29/java-information-hiding/&title=Java] Information hiding, 정보 은닉"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://TaeJuneJoung.github.io/2019/12/29/java-information-hiding/&title=Java] Information hiding, 정보 은닉"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://TaeJuneJoung.github.io/2019/12/29/java-information-hiding/&name=Java] Information hiding, 정보 은닉&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://TaeJuneJoung.github.io/2019/12/29/java-information-hiding/&t=Java] Information hiding, 정보 은닉"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Access-Control-Specifiers-접근-제어-지시자"><span class="toc-number">1.</span> <span class="toc-text">Access Control Specifiers, 접근 제어 지시자</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#클래스가-default로-생성-생성자가-public이라면"><span class="toc-number">1.1.</span> <span class="toc-text">클래스가 default로 생성, 생성자가 public이라면?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#어떤-클래스를-public으로-선언할까"><span class="toc-number">2.</span> <span class="toc-text">어떤 클래스를 public으로 선언할까?</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4111865521431436",
+    enable_page_level_ads: true
+  });
+</script>
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Java] Information hiding, 정보 은닉
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">TaeJune Joung</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-12-28T16:05:16.000Z" itemprop="datePublished">2019-12-29</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/Java/">Java</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/Information-hiding/">Information hiding</a>, <a class="tag-link" href="/tags/Java/">Java</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="Access-Control-Specifiers-접근-제어-지시자"><a href="#Access-Control-Specifiers-접근-제어-지시자" class="headerlink" title="Access Control Specifiers, 접근 제어 지시자"></a>Access Control Specifiers, 접근 제어 지시자</h2><table>
+<thead>
+<tr>
+<th>지시자</th>
+<th>클래스 내부</th>
+<th>동일 패키지</th>
+<th>상속받은 클래스</th>
+<th>이외의 영역</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public</td>
+<td>🟢</td>
+<td>🟢</td>
+<td>🟢</td>
+<td>🟢</td>
+</tr>
+<tr>
+<td>protected</td>
+<td>🟢</td>
+<td>🟢</td>
+<td>🟢</td>
+<td>✖️</td>
+</tr>
+<tr>
+<td>default</td>
+<td>🟢</td>
+<td>🟢</td>
+<td>✖️</td>
+<td>✖️</td>
+</tr>
+<tr>
+<td>private</td>
+<td>🟢</td>
+<td>✖️</td>
+<td>✖️</td>
+<td>✖️</td>
+</tr>
+</tbody></table>
+<p>인스턴스 변수는 정보은닉의 대상으로 외부에서는 허용한 메서드(Access Method)를 통해 간접 접근을 이용하여야 한다.</p>
+<p>이를 통해 동일한 클래스 명을 사용할 수 있게 경로(Path)를 나눠서 사용할수도 있으며, 외부에서 클래스 내부의 정보에 함부록 접근하지 못하도록 한다.</p>
+<ul>
+<li>동일 클래스명 사용 가능(패키지 이용)</li>
+<li>클래스 내부 정보 함부록 접근 방지</li>
+<li>클래스 내부 데이터 잘못된 사용으로 인한 오류 방지</li>
+</ul>
+<h3 id="클래스가-default로-생성-생성자가-public이라면"><a href="#클래스가-default로-생성-생성자가-public이라면" class="headerlink" title="클래스가 default로 생성, 생성자가 public이라면?"></a>클래스가 default로 생성, 생성자가 public이라면?</h3><p>동일 패키지에서만 인스턴스가 생성 가능하다.</p>
+<p>이처럼, 더 큰 범위가 어떠한 접근 제어 지시자를 가지고 있는지 확인하고 그 아랫 범위들이 사용 목적에 맞게 설정되어야한다.</p>
+<h2 id="어떤-클래스를-public으로-선언할까"><a href="#어떤-클래스를-public으로-선언할까" class="headerlink" title="어떤 클래스를 public으로 선언할까?"></a>어떤 클래스를 public으로 선언할까?</h2><p>public으로 클래스가 선언된다면 모든 영역에서 사용이 가능하기에 다른 Class가 동일 이름을 가지지 못한다.</p>
+<p>클래스를 public으로 구현할 때는 주로, <strong>라이브러리를 만들 때</strong>이다.</p>
+<p>간단한 더하기 빼기 계산기를 만들어보자.</p>
+<p><strong>Calculator.java</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> taejunejoung.calc;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Calculator</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Adder adder;</span><br><span class="line">    <span class="keyword">private</span> Subtractor subtractor;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Calculator</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        adder = <span class="keyword">new</span> Adder();</span><br><span class="line">        subtractor = <span class="keyword">new</span> Subtractor();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">addNum</span><span class="params">(<span class="keyword">int</span> num1, <span class="keyword">int</span> num2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> adder.addNum(num1, num2);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">subNum</span><span class="params">(<span class="keyword">int</span> num1, <span class="keyword">int</span> num2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> subtractor.subNum(num1, num2);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showOperating</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"덧셈 횟수: "</span> + adder.getAddCnt());</span><br><span class="line">        System.out.println(<span class="string">"뺄셈 횟수: "</span> + subtractor.getSubCnt());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Adder.java</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> taejunejoung.calc;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Adder</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> addCnt;</span><br><span class="line"></span><br><span class="line">    Adder() &#123;</span><br><span class="line">        addCnt = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">addNum</span><span class="params">(<span class="keyword">int</span> num1, <span class="keyword">int</span> num2)</span> </span>&#123;</span><br><span class="line">        addCnt++;</span><br><span class="line">        <span class="keyword">return</span> num1 + num2;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getAddCnt</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> addCnt;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Subtractor.java</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> taejunejoung.calc;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Subtractor</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> subCnt;</span><br><span class="line"></span><br><span class="line">    Subtractor() &#123;</span><br><span class="line">        subCnt = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">subNum</span><span class="params">(<span class="keyword">int</span> num1, <span class="keyword">int</span> num2)</span> </span>&#123;</span><br><span class="line">        subCnt++;</span><br><span class="line">        <span class="keyword">return</span> num1 - num2;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getSubCnt</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> subCnt;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>CalcTest.java</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> taejunejoung.calc;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CalcTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Calculator calc = <span class="keyword">new</span> Calculator();</span><br><span class="line">        System.out.println(calc.addNum(<span class="number">5</span>,<span class="number">3</span>)); <span class="comment">//8</span></span><br><span class="line">        System.out.println(calc.subNum(<span class="number">5</span>,<span class="number">3</span>)); <span class="comment">//2</span></span><br><span class="line">        System.out.println(calc.addNum(<span class="number">7</span>,<span class="number">0</span>)); <span class="comment">//7</span></span><br><span class="line"></span><br><span class="line">        calc.showOperating();</span><br><span class="line">        <span class="comment">//덧셈 횟수: 2</span></span><br><span class="line">        <span class="comment">//뺄셈 횟수: 1</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>다른 Class들은 (default)로 사용하여 패키지 내에서만 사용할 수 있게 만들고, 하나의 Class만을 접근할 수 있게 Public으로 두었다. 노출할 Class만 public으로 두는 것이 좋다.</p>
+<ul>
+<li><p>유지보수가 편하다.</p>
+<blockquote>
+<p>변경되는 클래스의 범위를 최소화</p>
+</blockquote>
+</li>
+<li><p>작은 크기의 클래스를 다른 클래스의 정의에도 활용할 수 있다.</p>
+</li>
+</ul>
+
+  </div>
+</article>
+<!--  utteranc comment -->
+
+<script src="https://utteranc.es/client.js"
+        repo="TaeJuneJoung/gitblog-comment"
+        issue-term="title"
+        label="Comment"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Access-Control-Specifiers-접근-제어-지시자"><span class="toc-number">1.</span> <span class="toc-text">Access Control Specifiers, 접근 제어 지시자</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#클래스가-default로-생성-생성자가-public이라면"><span class="toc-number">1.1.</span> <span class="toc-text">클래스가 default로 생성, 생성자가 public이라면?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#어떤-클래스를-public으로-선언할까"><span class="toc-number">2.</span> <span class="toc-text">어떤 클래스를 public으로 선언할까?</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://TaeJuneJoung.github.io/2019/12/29/java-information-hiding/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://TaeJuneJoung.github.io/2019/12/29/java-information-hiding/&text=Java] Information hiding, 정보 은닉"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://TaeJuneJoung.github.io/2019/12/29/java-information-hiding/&title=Java] Information hiding, 정보 은닉"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://TaeJuneJoung.github.io/2019/12/29/java-information-hiding/&is_video=false&description=Java] Information hiding, 정보 은닉"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Java] Information hiding, 정보 은닉&body=Check out this article: http://TaeJuneJoung.github.io/2019/12/29/java-information-hiding/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://TaeJuneJoung.github.io/2019/12/29/java-information-hiding/&title=Java] Information hiding, 정보 은닉"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://TaeJuneJoung.github.io/2019/12/29/java-information-hiding/&title=Java] Information hiding, 정보 은닉"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://TaeJuneJoung.github.io/2019/12/29/java-information-hiding/&title=Java] Information hiding, 정보 은닉"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://TaeJuneJoung.github.io/2019/12/29/java-information-hiding/&title=Java] Information hiding, 정보 은닉"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://TaeJuneJoung.github.io/2019/12/29/java-information-hiding/&name=Java] Information hiding, 정보 은닉&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://TaeJuneJoung.github.io/2019/12/29/java-information-hiding/&t=Java] Information hiding, 정보 은닉"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+          
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4111865521431436",
+    enable_page_level_ads: true
+  });
+</script>
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2021
+    TaeJune Joung
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155762921-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-155762921-1');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    <meta name="description" content="Console Outputprintf   서식 문자 출력의 형태    %d 10진수 정수 형태의 출력   %o 8진수 정수 형태의 출력   %x 16진수 정수 형태의 출력   %f 실수의 출력   %e e표기법 기반의 실수 출력   %g 출력의 대상에 따라서 %e 또는 %f 형태의 출력   %s 문자열 출력   %c 문자 출력   Console InputB">
+<meta name="keywords" content="Java,Console I&#x2F;O">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java] Console I&#x2F;O">
+<meta property="og:url" content="http://TaeJuneJoung.github.io/2020/01/09/java-console-io/index.html">
+<meta property="og:site_name" content="Jun&#39;s Blog">
+<meta property="og:description" content="Console Outputprintf   서식 문자 출력의 형태    %d 10진수 정수 형태의 출력   %o 8진수 정수 형태의 출력   %x 16진수 정수 형태의 출력   %f 실수의 출력   %e e표기법 기반의 실수 출력   %g 출력의 대상에 따라서 %e 또는 %f 형태의 출력   %s 문자열 출력   %c 문자 출력   Console InputB">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2021-03-30T16:59:37.615Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java] Console I&#x2F;O">
+<meta name="twitter:description" content="Console Outputprintf   서식 문자 출력의 형태    %d 10진수 정수 형태의 출력   %o 8진수 정수 형태의 출력   %x 16진수 정수 형태의 출력   %f 실수의 출력   %e e표기법 기반의 실수 출력   %g 출력의 대상에 따라서 %e 또는 %f 형태의 출력   %s 문자열 출력   %c 문자 출력   Console InputB">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Java] Console I/O</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post " href="/2020/01/09/java-array/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post " href="/2020/01/09/java-overloading/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://TaeJuneJoung.github.io/2020/01/09/java-console-io/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://TaeJuneJoung.github.io/2020/01/09/java-console-io/&text=Java] Console I/O"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://TaeJuneJoung.github.io/2020/01/09/java-console-io/&title=Java] Console I/O"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://TaeJuneJoung.github.io/2020/01/09/java-console-io/&is_video=false&description=Java] Console I/O"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Java] Console I/O&body=Check out this article: http://TaeJuneJoung.github.io/2020/01/09/java-console-io/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://TaeJuneJoung.github.io/2020/01/09/java-console-io/&title=Java] Console I/O"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://TaeJuneJoung.github.io/2020/01/09/java-console-io/&title=Java] Console I/O"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://TaeJuneJoung.github.io/2020/01/09/java-console-io/&title=Java] Console I/O"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://TaeJuneJoung.github.io/2020/01/09/java-console-io/&title=Java] Console I/O"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://TaeJuneJoung.github.io/2020/01/09/java-console-io/&name=Java] Console I/O&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://TaeJuneJoung.github.io/2020/01/09/java-console-io/&t=Java] Console I/O"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Console-Output"><span class="toc-number">1.</span> <span class="toc-text">Console Output</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#printf"><span class="toc-number">1.1.</span> <span class="toc-text">printf</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Console-Input"><span class="toc-number">2.</span> <span class="toc-text">Console Input</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#BufferedReader"><span class="toc-number">2.1.</span> <span class="toc-text">BufferedReader</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Scanner"><span class="toc-number">2.2.</span> <span class="toc-text">Scanner</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4111865521431436",
+    enable_page_level_ads: true
+  });
+</script>
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Java] Console I/O
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">TaeJune Joung</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-01-08T16:58:21.000Z" itemprop="datePublished">2020-01-09</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/Java/">Java</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/Console-I-O/">Console I/O</a>, <a class="tag-link" href="/tags/Java/">Java</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="Console-Output"><a href="#Console-Output" class="headerlink" title="Console Output"></a>Console Output</h2><h3 id="printf"><a href="#printf" class="headerlink" title="printf"></a>printf</h3><table>
+<thead>
+<tr>
+<th>서식 문자</th>
+<th>출력의 형태</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>%d</td>
+<td>10진수 정수 형태의 출력</td>
+</tr>
+<tr>
+<td>%o</td>
+<td>8진수 정수 형태의 출력</td>
+</tr>
+<tr>
+<td>%x</td>
+<td>16진수 정수 형태의 출력</td>
+</tr>
+<tr>
+<td>%f</td>
+<td>실수의 출력</td>
+</tr>
+<tr>
+<td>%e</td>
+<td>e표기법 기반의 실수 출력</td>
+</tr>
+<tr>
+<td>%g</td>
+<td>출력의 대상에 따라서 %e 또는 %f 형태의 출력</td>
+</tr>
+<tr>
+<td>%s</td>
+<td>문자열 출력</td>
+</tr>
+<tr>
+<td>%c</td>
+<td>문자 출력</td>
+</tr>
+</tbody></table>
+<h2 id="Console-Input"><a href="#Console-Input" class="headerlink" title="Console Input"></a>Console Input</h2><h3 id="BufferedReader"><a href="#BufferedReader" class="headerlink" title="BufferedReader"></a>BufferedReader</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.BufferedReader;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStreamReader;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        InputStreamReader isr = <span class="keyword">new</span> InputStreamReader(System.in);</span><br><span class="line">        BufferedReader br = <span class="keyword">new</span> BufferedReader(isr);</span><br><span class="line">        String str;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            str = br.readLine();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            str = <span class="string">"Exception 발생"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(str);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>BufferedReader를 다루기에는 익숙하지 않으면 불편한 점이 다소 있다.</p>
+<ul>
+<li>자바I/O</li>
+<li>Wrapper 클래스</li>
+<li>String 처리</li>
+<li>예외 처리</li>
+</ul>
+<p>에 대해서 알고 있어야 하기 때문이다.</p>
+<h3 id="Scanner"><a href="#Scanner" class="headerlink" title="Scanner"></a>Scanner</h3><p>이러한 불편한 점을 쉽게 처리해주는 것이 Scanner이다.</p>
+<p>(단, 속도나 메모리에 대해서는 BufferedReader가 성능이 더 좋다는 점을 잊어서는 안된다.)</p>
+<ul>
+<li>Scanner(File source)</li>
+<li>Scanner(InputStream source)</li>
+<li>Scanner(Readable source)</li>
+<li>Scanner(String source)</li>
+</ul>
+<p>Scanner는 키보드의 입력만을 위해서 만들어진 클래스가 아니다.</p>
+<p>다양한 입력을 받아 처리할 수 있다.</p>
+
+  </div>
+</article>
+<!--  utteranc comment -->
+
+<script src="https://utteranc.es/client.js"
+        repo="TaeJuneJoung/gitblog-comment"
+        issue-term="title"
+        label="Comment"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Console-Output"><span class="toc-number">1.</span> <span class="toc-text">Console Output</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#printf"><span class="toc-number">1.1.</span> <span class="toc-text">printf</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Console-Input"><span class="toc-number">2.</span> <span class="toc-text">Console Input</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#BufferedReader"><span class="toc-number">2.1.</span> <span class="toc-text">BufferedReader</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Scanner"><span class="toc-number">2.2.</span> <span class="toc-text">Scanner</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://TaeJuneJoung.github.io/2020/01/09/java-console-io/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://TaeJuneJoung.github.io/2020/01/09/java-console-io/&text=Java] Console I/O"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://TaeJuneJoung.github.io/2020/01/09/java-console-io/&title=Java] Console I/O"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://TaeJuneJoung.github.io/2020/01/09/java-console-io/&is_video=false&description=Java] Console I/O"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Java] Console I/O&body=Check out this article: http://TaeJuneJoung.github.io/2020/01/09/java-console-io/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://TaeJuneJoung.github.io/2020/01/09/java-console-io/&title=Java] Console I/O"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://TaeJuneJoung.github.io/2020/01/09/java-console-io/&title=Java] Console I/O"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://TaeJuneJoung.github.io/2020/01/09/java-console-io/&title=Java] Console I/O"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://TaeJuneJoung.github.io/2020/01/09/java-console-io/&title=Java] Console I/O"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://TaeJuneJoung.github.io/2020/01/09/java-console-io/&name=Java] Console I/O&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://TaeJuneJoung.github.io/2020/01/09/java-console-io/&t=Java] Console I/O"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+          
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4111865521431436",
+    enable_page_level_ads: true
+  });
+</script>
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2021
+    TaeJune Joung
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155762921-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-155762921-1');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

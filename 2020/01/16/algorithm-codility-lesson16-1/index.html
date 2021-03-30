@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    <meta name="description" content="Lession16. MaxNonoverlappingSegmentsGreedy algorithmsA 배열에는 시작점이 들어가 있고, B 배열에는 끝점이 들어가 있다. 주어진 갯수만큼 선들이 있으며, 겹치지 않고 가질 수 있는 최대의 갯수를 구하는 문제이다.    해결 소스12345678910111213141516171819def solution(A, B):">
+<meta name="keywords" content="Codility">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Codility] MaxNonoverlappingSegments">
+<meta property="og:url" content="http://TaeJuneJoung.github.io/2020/01/16/algorithm-codility-lesson16-1/index.html">
+<meta property="og:site_name" content="Jun&#39;s Blog">
+<meta property="og:description" content="Lession16. MaxNonoverlappingSegmentsGreedy algorithmsA 배열에는 시작점이 들어가 있고, B 배열에는 끝점이 들어가 있다. 주어진 갯수만큼 선들이 있으며, 겹치지 않고 가질 수 있는 최대의 갯수를 구하는 문제이다.    해결 소스12345678910111213141516171819def solution(A, B):">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://taejunejoung.github.io/2020/01/16/algorithm-codility-lesson16-1/problem01.png">
+<meta property="og:image" content="http://taejunejoung.github.io/2020/01/16/algorithm-codility-lesson16-1/result.png">
+<meta property="og:updated_time" content="2021-03-30T17:19:00.574Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Codility] MaxNonoverlappingSegments">
+<meta name="twitter:description" content="Lession16. MaxNonoverlappingSegmentsGreedy algorithmsA 배열에는 시작점이 들어가 있고, B 배열에는 끝점이 들어가 있다. 주어진 갯수만큼 선들이 있으며, 겹치지 않고 가질 수 있는 최대의 갯수를 구하는 문제이다.    해결 소스12345678910111213141516171819def solution(A, B):">
+<meta name="twitter:image" content="http://taejunejoung.github.io/2020/01/16/algorithm-codility-lesson16-1/problem01.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Codility] MaxNonoverlappingSegments</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post " href="/2020/01/16/algorithm-codility-lesson16-2/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post " href="/2020/01/11/python-middle-class/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://TaeJuneJoung.github.io/2020/01/16/algorithm-codility-lesson16-1/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://TaeJuneJoung.github.io/2020/01/16/algorithm-codility-lesson16-1/&text=Codility] MaxNonoverlappingSegments"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://TaeJuneJoung.github.io/2020/01/16/algorithm-codility-lesson16-1/&title=Codility] MaxNonoverlappingSegments"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://TaeJuneJoung.github.io/2020/01/16/algorithm-codility-lesson16-1/&is_video=false&description=Codility] MaxNonoverlappingSegments"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Codility] MaxNonoverlappingSegments&body=Check out this article: http://TaeJuneJoung.github.io/2020/01/16/algorithm-codility-lesson16-1/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://TaeJuneJoung.github.io/2020/01/16/algorithm-codility-lesson16-1/&title=Codility] MaxNonoverlappingSegments"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://TaeJuneJoung.github.io/2020/01/16/algorithm-codility-lesson16-1/&title=Codility] MaxNonoverlappingSegments"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://TaeJuneJoung.github.io/2020/01/16/algorithm-codility-lesson16-1/&title=Codility] MaxNonoverlappingSegments"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://TaeJuneJoung.github.io/2020/01/16/algorithm-codility-lesson16-1/&title=Codility] MaxNonoverlappingSegments"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://TaeJuneJoung.github.io/2020/01/16/algorithm-codility-lesson16-1/&name=Codility] MaxNonoverlappingSegments&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://TaeJuneJoung.github.io/2020/01/16/algorithm-codility-lesson16-1/&t=Codility] MaxNonoverlappingSegments"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Lession16-MaxNonoverlappingSegments"><span class="toc-number">1.</span> <span class="toc-text">Lession16. MaxNonoverlappingSegments</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Greedy-algorithms"><span class="toc-number">1.1.</span> <span class="toc-text">Greedy algorithms</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#해결-소스"><span class="toc-number">1.2.</span> <span class="toc-text">해결 소스</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#소스-설명"><span class="toc-number">1.3.</span> <span class="toc-text">소스 설명</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#범위-설정"><span class="toc-number">1.3.1.</span> <span class="toc-text">범위 설정</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Sorting"><span class="toc-number">1.3.2.</span> <span class="toc-text">Sorting</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#갯수-세기"><span class="toc-number">1.3.3.</span> <span class="toc-text">갯수 세기</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4111865521431436",
+    enable_page_level_ads: true
+  });
+</script>
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Codility] MaxNonoverlappingSegments
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">TaeJune Joung</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-01-15T17:14:12.000Z" itemprop="datePublished">2020-01-16</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/Algorithm/">Algorithm</a> › <a class="category-link" href="/categories/Algorithm/Codility/">Codility</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/Codility/">Codility</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="Lession16-MaxNonoverlappingSegments"><a href="#Lession16-MaxNonoverlappingSegments" class="headerlink" title="Lession16. MaxNonoverlappingSegments"></a>Lession16. MaxNonoverlappingSegments</h2><h3 id="Greedy-algorithms"><a href="#Greedy-algorithms" class="headerlink" title="Greedy algorithms"></a>Greedy algorithms</h3><p>A 배열에는 시작점이 들어가 있고, B 배열에는 끝점이 들어가 있다.</p>
+<p>주어진 갯수만큼 선들이 있으며, <strong>겹치지 않고 가질 수 있는 최대의 갯수</strong>를 구하는 문제이다.</p>
+<img src="/2020/01/16/algorithm-codility-lesson16-1/problem01.png" class="slug">
+
+
+<h3 id="해결-소스"><a href="#해결-소스" class="headerlink" title="해결 소스"></a>해결 소스</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">solution</span><span class="params">(A, B)</span>:</span></span><br><span class="line">    N = len(A)</span><br><span class="line">    <span class="keyword">if</span> N == <span class="number">0</span>: <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">if</span> N == <span class="number">1</span>: <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    LINE = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(N):</span><br><span class="line">        LINE.append([A[i], B[i]])</span><br><span class="line"></span><br><span class="line">    LINE.sort(key=<span class="keyword">lambda</span> x: (x[<span class="number">1</span>], x[<span class="number">0</span>]))</span><br><span class="line"></span><br><span class="line">    end_point = LINE[<span class="number">0</span>][<span class="number">1</span>]</span><br><span class="line">    cnt = <span class="number">1</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, N):</span><br><span class="line">        <span class="keyword">if</span> end_point &lt; LINE[i][<span class="number">0</span>]:</span><br><span class="line">            end_point = LINE[i][<span class="number">1</span>]</span><br><span class="line">            cnt += <span class="number">1</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> cnt</span><br></pre></td></tr></table></figure>
+
+<h3 id="소스-설명"><a href="#소스-설명" class="headerlink" title="소스 설명"></a>소스 설명</h3><h4 id="범위-설정"><a href="#범위-설정" class="headerlink" title="범위 설정"></a>범위 설정</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">N = len(A)</span><br><span class="line"><span class="keyword">if</span> N == <span class="number">0</span>: <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"><span class="keyword">if</span> N == <span class="number">1</span>: <span class="keyword">return</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>배열의 크기가 선의 갯수이기에 N을 만들었다.</p>
+<p>N의 범위는 0 &lt;= N &lt;= 30,000이므로 0일 때는 갯수가 0, 1일 때는 갯수가 1이기에 바로 처리해주었다.</p>
+<p>바로 처리해주지 않고 아래로 내려가면 인덱스 오류가 발생한다.</p>
+<h4 id="Sorting"><a href="#Sorting" class="headerlink" title="Sorting"></a>Sorting</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(N):</span><br><span class="line">	LINE.append([A[i], B[i]])</span><br><span class="line">        </span><br><span class="line">LINE.sort(key=<span class="keyword">lambda</span> x: (x[<span class="number">1</span>], x[<span class="number">0</span>]))</span><br></pre></td></tr></table></figure>
+
+<p>탐욕적으로 생각해보았을 때 최대의 갯수만 가지면 된다.</p>
+<p>시간복잡도를 고려, 라인의 끝점이 작으면서 시작점이 작은 순으로 정리한 후에 처리하면 된다고 생각하였다.</p>
+<p>sort함수를 이용하여 끝점을 처음 기준, 다음은 시작점을 기준으로 정렬해주었다.</p>
+<h4 id="갯수-세기"><a href="#갯수-세기" class="headerlink" title="갯수 세기"></a>갯수 세기</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">end_point = LINE[<span class="number">0</span>][<span class="number">1</span>]</span><br><span class="line">cnt = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, N):</span><br><span class="line">    <span class="keyword">if</span> end_point &lt; LINE[i][<span class="number">0</span>]:</span><br><span class="line">        end_point = LINE[i][<span class="number">1</span>]</span><br><span class="line">        cnt += <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>가장 먼저 온 라인이 가장 작을 것이므로 갯수를 하나 증가시키며, 끝점으로 잡아준다.</p>
+<p>이제 for문을 통해 그 다음 라인부터 확인하며 시작점이 현재 내가 가지고 있는 끝점보다 클 경우에는 갯수를 증가시키며 끝점을 바꿔준다.</p>
+<p>그렇게 다 돌고 난 후 return cnt를 하면 완성</p>
+<img src="/2020/01/16/algorithm-codility-lesson16-1/result.png" class="slug">
+  </div>
+</article>
+<!--  utteranc comment -->
+
+<script src="https://utteranc.es/client.js"
+        repo="TaeJuneJoung/gitblog-comment"
+        issue-term="title"
+        label="Comment"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Lession16-MaxNonoverlappingSegments"><span class="toc-number">1.</span> <span class="toc-text">Lession16. MaxNonoverlappingSegments</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Greedy-algorithms"><span class="toc-number">1.1.</span> <span class="toc-text">Greedy algorithms</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#해결-소스"><span class="toc-number">1.2.</span> <span class="toc-text">해결 소스</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#소스-설명"><span class="toc-number">1.3.</span> <span class="toc-text">소스 설명</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#범위-설정"><span class="toc-number">1.3.1.</span> <span class="toc-text">범위 설정</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Sorting"><span class="toc-number">1.3.2.</span> <span class="toc-text">Sorting</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#갯수-세기"><span class="toc-number">1.3.3.</span> <span class="toc-text">갯수 세기</span></a></li></ol></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://TaeJuneJoung.github.io/2020/01/16/algorithm-codility-lesson16-1/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://TaeJuneJoung.github.io/2020/01/16/algorithm-codility-lesson16-1/&text=Codility] MaxNonoverlappingSegments"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://TaeJuneJoung.github.io/2020/01/16/algorithm-codility-lesson16-1/&title=Codility] MaxNonoverlappingSegments"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://TaeJuneJoung.github.io/2020/01/16/algorithm-codility-lesson16-1/&is_video=false&description=Codility] MaxNonoverlappingSegments"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Codility] MaxNonoverlappingSegments&body=Check out this article: http://TaeJuneJoung.github.io/2020/01/16/algorithm-codility-lesson16-1/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://TaeJuneJoung.github.io/2020/01/16/algorithm-codility-lesson16-1/&title=Codility] MaxNonoverlappingSegments"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://TaeJuneJoung.github.io/2020/01/16/algorithm-codility-lesson16-1/&title=Codility] MaxNonoverlappingSegments"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://TaeJuneJoung.github.io/2020/01/16/algorithm-codility-lesson16-1/&title=Codility] MaxNonoverlappingSegments"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://TaeJuneJoung.github.io/2020/01/16/algorithm-codility-lesson16-1/&title=Codility] MaxNonoverlappingSegments"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://TaeJuneJoung.github.io/2020/01/16/algorithm-codility-lesson16-1/&name=Codility] MaxNonoverlappingSegments&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://TaeJuneJoung.github.io/2020/01/16/algorithm-codility-lesson16-1/&t=Codility] MaxNonoverlappingSegments"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+          
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4111865521431436",
+    enable_page_level_ads: true
+  });
+</script>
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2021
+    TaeJune Joung
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155762921-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-155762921-1');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    <meta name="description" content="Java로 처음 프로그래밍에 입문한 나로서 파이썬과 비교하며 기재한다는 것이 다소 웃긴 일이지만, 이제는 파이썬이 편리해진 현재로서는 비교를 하며 학습하고자 한다. Java 데이터 타입으로는 기본 타입(Primitive type)과 참조 타입(Reference type)으로 나누어져 있다. 데이터 기본 타입, Primitive type    논리형 문자형">
+<meta name="keywords" content="Java,Primitive">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java] Primitive, 기본 타입">
+<meta property="og:url" content="http://TaeJuneJoung.github.io/2019/12/24/java-primitive/index.html">
+<meta property="og:site_name" content="Jun&#39;s Blog">
+<meta property="og:description" content="Java로 처음 프로그래밍에 입문한 나로서 파이썬과 비교하며 기재한다는 것이 다소 웃긴 일이지만, 이제는 파이썬이 편리해진 현재로서는 비교를 하며 학습하고자 한다. Java 데이터 타입으로는 기본 타입(Primitive type)과 참조 타입(Reference type)으로 나누어져 있다. 데이터 기본 타입, Primitive type    논리형 문자형">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://taejunejoung.github.io/2019/12/24/java-primitive/decimal.png">
+<meta property="og:updated_time" content="2021-03-30T15:49:42.878Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java] Primitive, 기본 타입">
+<meta name="twitter:description" content="Java로 처음 프로그래밍에 입문한 나로서 파이썬과 비교하며 기재한다는 것이 다소 웃긴 일이지만, 이제는 파이썬이 편리해진 현재로서는 비교를 하며 학습하고자 한다. Java 데이터 타입으로는 기본 타입(Primitive type)과 참조 타입(Reference type)으로 나누어져 있다. 데이터 기본 타입, Primitive type    논리형 문자형">
+<meta name="twitter:image" content="http://taejunejoung.github.io/2019/12/24/java-primitive/decimal.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Java] Primitive, 기본 타입</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post " href="/2019/12/26/java-primitive-training/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post " href="/2019/12/23/python-middle-lambda/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://TaeJuneJoung.github.io/2019/12/24/java-primitive/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://TaeJuneJoung.github.io/2019/12/24/java-primitive/&text=Java] Primitive, 기본 타입"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://TaeJuneJoung.github.io/2019/12/24/java-primitive/&title=Java] Primitive, 기본 타입"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://TaeJuneJoung.github.io/2019/12/24/java-primitive/&is_video=false&description=Java] Primitive, 기본 타입"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Java] Primitive, 기본 타입&body=Check out this article: http://TaeJuneJoung.github.io/2019/12/24/java-primitive/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://TaeJuneJoung.github.io/2019/12/24/java-primitive/&title=Java] Primitive, 기본 타입"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://TaeJuneJoung.github.io/2019/12/24/java-primitive/&title=Java] Primitive, 기본 타입"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://TaeJuneJoung.github.io/2019/12/24/java-primitive/&title=Java] Primitive, 기본 타입"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://TaeJuneJoung.github.io/2019/12/24/java-primitive/&title=Java] Primitive, 기본 타입"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://TaeJuneJoung.github.io/2019/12/24/java-primitive/&name=Java] Primitive, 기본 타입&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://TaeJuneJoung.github.io/2019/12/24/java-primitive/&t=Java] Primitive, 기본 타입"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#데이터-기본-타입-Primitive-type"><span class="toc-number">1.</span> <span class="toc-text">데이터 기본 타입, Primitive type</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#지수부-가수부"><span class="toc-number">1.1.</span> <span class="toc-text">지수부 / 가수부</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#증감-연산자"><span class="toc-number">1.2.</span> <span class="toc-text">증감 연산자</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#소스자료"><span class="toc-number">2.</span> <span class="toc-text">소스자료</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4111865521431436",
+    enable_page_level_ads: true
+  });
+</script>
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Java] Primitive, 기본 타입
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">TaeJune Joung</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-12-23T15:44:44.000Z" itemprop="datePublished">2019-12-24</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/Java/">Java</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/Java/">Java</a>, <a class="tag-link" href="/tags/Primitive/">Primitive</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>Java로 처음 프로그래밍에 입문한 나로서 파이썬과 비교하며 기재한다는 것이 다소 웃긴 일이지만, 이제는 파이썬이 편리해진 현재로서는 비교를 하며 학습하고자 한다.</p>
+<p>Java 데이터 타입으로는 기본 타입(Primitive type)과 참조 타입(Reference type)으로 나누어져 있다.</p>
+<h2 id="데이터-기본-타입-Primitive-type"><a href="#데이터-기본-타입-Primitive-type" class="headerlink" title="데이터 기본 타입, Primitive type"></a>데이터 기본 타입, Primitive type</h2><table>
+<thead>
+<tr>
+<th></th>
+<th>논리형</th>
+<th>문자형</th>
+<th>정수형</th>
+<th>실수형</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1byte</td>
+<td>boolean</td>
+<td></td>
+<td>byte</td>
+<td></td>
+</tr>
+<tr>
+<td>2byte</td>
+<td></td>
+<td>char</td>
+<td>short</td>
+<td></td>
+</tr>
+<tr>
+<td>4byte</td>
+<td></td>
+<td></td>
+<td>int</td>
+<td>float</td>
+</tr>
+<tr>
+<td>8byte</td>
+<td></td>
+<td></td>
+<td>long</td>
+<td>double</td>
+</tr>
+</tbody></table>
+<p>정수형에서 기본형은 <strong>int</strong>, 실수형의 기본형은 <strong>double</strong></p>
+<p>Python에서는 모든 타입이 객체이기에 자료형에 따라 byte수가 제한되어 있지 않다. <code>&#39;&#39;</code>는 Java에서 Char 타입으로 쓰이고 <code>&quot;&quot;</code>는 String 타입에 쓰인다. System.out.println에서 String형식으로 나타낼 때는 <code>&quot;&quot;</code>을 써야한다.</p>
+<h3 id="지수부-가수부"><a href="#지수부-가수부" class="headerlink" title="지수부 / 가수부"></a>지수부 / 가수부</h3><img src="/2019/12/24/java-primitive/decimal.png" class="slug">
+
+<p>float와 double 범위 설정을 이해하기 위해서는 알아두면 좋은 개념</p>
+<p><strong>Java의 소수점 처리에서는 약간의 오차로 인하여 값이 달라질 수 있다는 점에 유의</strong>해야한다.</p>
+<p>파이썬은 float가 따로 없이 double로 실수형을 구별한다.</p>
+<h3 id="증감-연산자"><a href="#증감-연산자" class="headerlink" title="증감 연산자"></a>증감 연산자</h3><p>++과 –는 더하는가 빼는가의 차이기에 ++만 예로 들어서 나타낸다.</p>
+<table>
+<thead>
+<tr>
+<th>연산자</th>
+<th>기능</th>
+<th>연산 예</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>++</td>
+<td>항의 값에 1을 더한다</td>
+<td>value = ++num; -&gt; num값에 1을 증가후 value에 대입 value = num++; -&gt; value에 기존 num값을 먼저 대입 후 num값 1 증가</td>
+</tr>
+</tbody></table>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> num = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">int</span> value = num++;</span><br><span class="line">System.out.println(value); <span class="comment">//3</span></span><br><span class="line">System.out.println(num); <span class="comment">//4</span></span><br></pre></td></tr></table></figure>
+
+<p>파이썬에서는 증감연산자가 없다</p>
+<h2 id="소스자료"><a href="#소스자료" class="headerlink" title="소스자료"></a>소스자료</h2><p><a href="https://github.com/TaeJuneJoung/Java/tree/master/src/Chapter1" target="_blank" rel="noopener">Github Source</a></p>
+
+  </div>
+</article>
+<!--  utteranc comment -->
+
+<script src="https://utteranc.es/client.js"
+        repo="TaeJuneJoung/gitblog-comment"
+        issue-term="title"
+        label="Comment"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#데이터-기본-타입-Primitive-type"><span class="toc-number">1.</span> <span class="toc-text">데이터 기본 타입, Primitive type</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#지수부-가수부"><span class="toc-number">1.1.</span> <span class="toc-text">지수부 / 가수부</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#증감-연산자"><span class="toc-number">1.2.</span> <span class="toc-text">증감 연산자</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#소스자료"><span class="toc-number">2.</span> <span class="toc-text">소스자료</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://TaeJuneJoung.github.io/2019/12/24/java-primitive/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://TaeJuneJoung.github.io/2019/12/24/java-primitive/&text=Java] Primitive, 기본 타입"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://TaeJuneJoung.github.io/2019/12/24/java-primitive/&title=Java] Primitive, 기본 타입"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://TaeJuneJoung.github.io/2019/12/24/java-primitive/&is_video=false&description=Java] Primitive, 기본 타입"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Java] Primitive, 기본 타입&body=Check out this article: http://TaeJuneJoung.github.io/2019/12/24/java-primitive/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://TaeJuneJoung.github.io/2019/12/24/java-primitive/&title=Java] Primitive, 기본 타입"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://TaeJuneJoung.github.io/2019/12/24/java-primitive/&title=Java] Primitive, 기본 타입"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://TaeJuneJoung.github.io/2019/12/24/java-primitive/&title=Java] Primitive, 기본 타입"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://TaeJuneJoung.github.io/2019/12/24/java-primitive/&title=Java] Primitive, 기본 타입"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://TaeJuneJoung.github.io/2019/12/24/java-primitive/&name=Java] Primitive, 기본 타입&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://TaeJuneJoung.github.io/2019/12/24/java-primitive/&t=Java] Primitive, 기본 타입"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+          
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4111865521431436",
+    enable_page_level_ads: true
+  });
+</script>
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2021
+    TaeJune Joung
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155762921-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-155762921-1');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
