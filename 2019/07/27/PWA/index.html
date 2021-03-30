@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    <meta name="description" content="Progressive Web App 웹과 네이티브 앱의 기능 모두의 이점을 갖도록 수 많은 특정 기술과 표준 패턴을 사용해 개발된 웹 앱. Intall Setting편리한 확인을 위해 Chrome canary(개발자 크롬)를 다운받아 진행. Node.js Download PWA의 등장 배경 모바일 시장 폭발적 성장 모바일 웹 보다는 모바일 애플리케이션 사용">
+<meta name="keywords" content="JS,PWA">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS] PWA">
+<meta property="og:url" content="http://TaeJuneJoung.github.io/2019/07/27/PWA/index.html">
+<meta property="og:site_name" content="Jun&#39;s Blog">
+<meta property="og:description" content="Progressive Web App 웹과 네이티브 앱의 기능 모두의 이점을 갖도록 수 많은 특정 기술과 표준 패턴을 사용해 개발된 웹 앱. Intall Setting편리한 확인을 위해 Chrome canary(개발자 크롬)를 다운받아 진행. Node.js Download PWA의 등장 배경 모바일 시장 폭발적 성장 모바일 웹 보다는 모바일 애플리케이션 사용">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2021-03-30T14:22:37.363Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS] PWA">
+<meta name="twitter:description" content="Progressive Web App 웹과 네이티브 앱의 기능 모두의 이점을 갖도록 수 많은 특정 기술과 표준 패턴을 사용해 개발된 웹 앱. Intall Setting편리한 확인을 위해 Chrome canary(개발자 크롬)를 다운받아 진행. Node.js Download PWA의 등장 배경 모바일 시장 폭발적 성장 모바일 웹 보다는 모바일 애플리케이션 사용">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>JS] PWA</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post " href="/2019/08/07/drag&drop/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post " href="/2019/07/22/aws-lambda-basic/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://TaeJuneJoung.github.io/2019/07/27/PWA/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://TaeJuneJoung.github.io/2019/07/27/PWA/&text=JS] PWA"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://TaeJuneJoung.github.io/2019/07/27/PWA/&title=JS] PWA"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://TaeJuneJoung.github.io/2019/07/27/PWA/&is_video=false&description=JS] PWA"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=JS] PWA&body=Check out this article: http://TaeJuneJoung.github.io/2019/07/27/PWA/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://TaeJuneJoung.github.io/2019/07/27/PWA/&title=JS] PWA"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://TaeJuneJoung.github.io/2019/07/27/PWA/&title=JS] PWA"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://TaeJuneJoung.github.io/2019/07/27/PWA/&title=JS] PWA"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://TaeJuneJoung.github.io/2019/07/27/PWA/&title=JS] PWA"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://TaeJuneJoung.github.io/2019/07/27/PWA/&name=JS] PWA&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://TaeJuneJoung.github.io/2019/07/27/PWA/&t=JS] PWA"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Intall-Setting"><span class="toc-number">1.</span> <span class="toc-text">Intall Setting</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PWA의-등장-배경"><span class="toc-number">2.</span> <span class="toc-text">PWA의 등장 배경</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#특징"><span class="toc-number">3.</span> <span class="toc-text">특징</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#manifest-json"><span class="toc-number">4.</span> <span class="toc-text">manifest.json</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4111865521431436",
+    enable_page_level_ads: true
+  });
+</script>
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        JS] PWA
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">TaeJune Joung</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-07-27T14:45:12.000Z" itemprop="datePublished">2019-07-27</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/JS/">JS</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/JS/">JS</a>, <a class="tag-link" href="/tags/PWA/">PWA</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p><strong>Progressive Web App</strong></p>
+<p>웹과 네이티브 앱의 기능 모두의 이점을 갖도록 수 많은 특정 기술과 표준 패턴을 사용해 개발된 웹 앱.</p>
+<h3 id="Intall-Setting"><a href="#Intall-Setting" class="headerlink" title="Intall Setting"></a>Intall Setting</h3><p>편리한 확인을 위해 <code>Chrome canary(개발자 크롬)</code>를 다운받아 진행.</p>
+<p><code>Node.js</code> Download</p>
+<h3 id="PWA의-등장-배경"><a href="#PWA의-등장-배경" class="headerlink" title="PWA의 등장 배경"></a>PWA의 등장 배경</h3><ul>
+<li>모바일 시장 폭발적 성장</li>
+<li>모바일 웹 보다는 모바일 애플리케이션 사용</li>
+<li>모바일 앱영역 커버하기 위한 시도 -&gt; Hybrid App, React Native</li>
+<li>Offline Web 필요성</li>
+</ul>
+<h3 id="특징"><a href="#특징" class="headerlink" title="특징"></a>특징</h3><ol>
+<li>Responsive : 반응형</li>
+<li>App-like</li>
+<li>Discoverable</li>
+<li>Engageable : 푸시 알림</li>
+<li>Connectivity : 온/오프라인 연결성</li>
+<li>Safe : HTTPS가 아니라면 PWA를 적용할 수 없음_보안을 위해서</li>
+</ol>
+<h3 id="manifest-json"><a href="#manifest-json" class="headerlink" title="manifest.json"></a>manifest.json</h3><p><strong>Web App Manifest</strong></p>
+<p> : Progressive Web App의 설치와 앱 구성정보를 담고 있는 json 형식의 설정 파일</p>
+<pre><code>- 앱 아이콘, 화면 런처 방식, 배경색, 시작 페이지 등을 설정할 수 있는 JSON 파일</code></pre><blockquote>
+<p>앱 관련 구성정보</p>
+<ol>
+<li>Start URL : 웹 앱이 시작되는 지점</li>
+<li>Launch Image : 웹 앱 시작 화면</li>
+<li>Display Type : 웹 앱의 화면 형태</li>
+<li>Display Orientation : 웹 앱 화면 방향</li>
+<li>App Icon : 앱 아이콘 이미지와 크기</li>
+</ol>
+</blockquote>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">/*Sample*/</span><br><span class="line">&#123;</span><br><span class="line"> <span class="attr">"short_name"</span>: <span class="string">"앱 아이콘 이름"</span>,</span><br><span class="line"> <span class="attr">"name"</span>: <span class="string">"하단 설치 배너 표기될 이름 / 앱 검색 키워드"</span>,</span><br><span class="line"> <span class="attr">"icons"</span>: [</span><br><span class="line">  &#123;</span><br><span class="line">   <span class="attr">"src"</span>: <span class="string">"\/android-icon-36x36.png"</span>,</span><br><span class="line">   <span class="attr">"sizes"</span>: <span class="string">"36x36"</span>,</span><br><span class="line">   <span class="attr">"type"</span>: <span class="string">"image\/png"</span>,</span><br><span class="line">   <span class="attr">"density"</span>: <span class="string">"0.75"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">   <span class="attr">"src"</span>: <span class="string">"\/android-icon-96x96.png"</span>,</span><br><span class="line">   <span class="attr">"sizes"</span>: <span class="string">"96x96"</span>,</span><br><span class="line">   <span class="attr">"type"</span>: <span class="string">"image\/png"</span>,</span><br><span class="line">   <span class="attr">"density"</span>: <span class="string">"2.0"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">   <span class="attr">"src"</span>: <span class="string">"\/android-icon-192x192.png"</span>,</span><br><span class="line">   <span class="attr">"sizes"</span>: <span class="string">"192x192"</span>,</span><br><span class="line">   <span class="attr">"type"</span>: <span class="string">"image\/png"</span>,</span><br><span class="line">   <span class="attr">"density"</span>: <span class="string">"4.0"</span></span><br><span class="line">  &#125;</span><br><span class="line"> ],</span><br><span class="line"> <span class="attr">"background_color"</span>: <span class="string">"#ffffff"</span>,</span><br><span class="line"> <span class="attr">"display"</span>: <span class="string">"standalone"</span>,</span><br><span class="line"> <span class="attr">"start_url"</span>: <span class="string">"./"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- manifest파일 등록 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"manifest"</span> <span class="attr">href</span>=<span class="string">"Path/manifest.json"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>Launch Image</strong></p>
+<p>App Web이 시작될 때 거치는 시작 화면 설정 가능</p>
+<p>모바일 앱의 시작과 동일한 느낌</p>
+<p>화면 조합 : 아이콘 + 배경색 + 아이콘 이름</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">"background_color": "#ffffff",</span><br></pre></td></tr></table></figure>
+
+<p>icon은 지정 이미지 중 128dp(192px)에 가장 가까운 크기로 지정되므로, 192px 이미지는 꼭 넣어줄 것</p>
+<blockquote>
+<p><strong>dp</strong></p>
+<p>다양한 모바일 화면 크기에서 동일한 비율로 출력되게 하는 픽셀 단위</p>
+</blockquote>
+<p><strong>App Icon</strong></p>
+<p>manifest에서 icon 미지정시 html파일의 <code>&lt;link rel=&quot;icon&quot;&gt;</code> 태그를 검색</p>
+<blockquote>
+<p><strong>브라우저 Safari 경우</strong> 아래 추가 필요</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"apple-touch-icon"</span> <span class="attr">href</span>=<span class="string">"icon.png"</span>&gt;</span></span><br><span class="line">&gt; <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"apple-touch-icon"</span> <span class="attr">sizes</span>=<span class="string">"152x152"</span> <span class="attr">href</span>=<span class="string">"icon-152x152.png"</span>&gt;</span></span><br><span class="line">&gt; <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"apple-touch-icon"</span> <span class="attr">sizes</span>=<span class="string">"180x180"</span> <span class="attr">href</span>=<span class="string">"icon-180x180.png"</span>&gt;</span></span><br><span class="line">&gt; <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"apple-touch-icon"</span> <span class="attr">sizes</span>=<span class="string">"167x167"</span> <span class="attr">href</span>=<span class="string">"icon-167x167.png"</span>&gt;</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Intall-Setting"><span class="toc-number">1.</span> <span class="toc-text">Intall Setting</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PWA의-등장-배경"><span class="toc-number">2.</span> <span class="toc-text">PWA의 등장 배경</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#특징"><span class="toc-number">3.</span> <span class="toc-text">특징</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#manifest-json"><span class="toc-number">4.</span> <span class="toc-text">manifest.json</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://TaeJuneJoung.github.io/2019/07/27/PWA/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://TaeJuneJoung.github.io/2019/07/27/PWA/&text=JS] PWA"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://TaeJuneJoung.github.io/2019/07/27/PWA/&title=JS] PWA"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://TaeJuneJoung.github.io/2019/07/27/PWA/&is_video=false&description=JS] PWA"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=JS] PWA&body=Check out this article: http://TaeJuneJoung.github.io/2019/07/27/PWA/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://TaeJuneJoung.github.io/2019/07/27/PWA/&title=JS] PWA"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://TaeJuneJoung.github.io/2019/07/27/PWA/&title=JS] PWA"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://TaeJuneJoung.github.io/2019/07/27/PWA/&title=JS] PWA"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://TaeJuneJoung.github.io/2019/07/27/PWA/&title=JS] PWA"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://TaeJuneJoung.github.io/2019/07/27/PWA/&name=JS] PWA&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://TaeJuneJoung.github.io/2019/07/27/PWA/&t=JS] PWA"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+          
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4111865521431436",
+    enable_page_level_ads: true
+  });
+</script>
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2021
+    TaeJune Joung
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

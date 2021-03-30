@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    <meta name="description" content="참고] 배포과정은 버전에 따라 환경에 따라 다를 수 있습니다. 해당 방법은 어디까지나 삽질을 해보고 이런 방도로도 실행이 가능하다라는 정리문서이지 답이 아님을 밝힙니다.  목적프로젝트를 먼저 Linux(Mint)환경에서 실행해보고 Docker-Compose를 통해 AWS EC2에 Deploy해보자. 환경 Linux Mint(ubuntu 16.04)  아래">
+<meta name="keywords" content="Deploy,Linux,Docker Compose">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Deploy] EndMovie Deploy - Linux">
+<meta property="og:url" content="http://TaeJuneJoung.github.io/2019/12/12/deploy-project-endgame-linux/index.html">
+<meta property="og:site_name" content="Jun&#39;s Blog">
+<meta property="og:description" content="참고] 배포과정은 버전에 따라 환경에 따라 다를 수 있습니다. 해당 방법은 어디까지나 삽질을 해보고 이런 방도로도 실행이 가능하다라는 정리문서이지 답이 아님을 밝힙니다.  목적프로젝트를 먼저 Linux(Mint)환경에서 실행해보고 Docker-Compose를 통해 AWS EC2에 Deploy해보자. 환경 Linux Mint(ubuntu 16.04)  아래">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2021-03-30T14:22:37.368Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Deploy] EndMovie Deploy - Linux">
+<meta name="twitter:description" content="참고] 배포과정은 버전에 따라 환경에 따라 다를 수 있습니다. 해당 방법은 어디까지나 삽질을 해보고 이런 방도로도 실행이 가능하다라는 정리문서이지 답이 아님을 밝힙니다.  목적프로젝트를 먼저 Linux(Mint)환경에서 실행해보고 Docker-Compose를 통해 AWS EC2에 Deploy해보자. 환경 Linux Mint(ubuntu 16.04)  아래">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Deploy] EndMovie Deploy - Linux</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post " href="/2019/12/11/python-middle-comprehension/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://TaeJuneJoung.github.io/2019/12/12/deploy-project-endgame-linux/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://TaeJuneJoung.github.io/2019/12/12/deploy-project-endgame-linux/&text=Deploy] EndMovie Deploy - Linux"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://TaeJuneJoung.github.io/2019/12/12/deploy-project-endgame-linux/&title=Deploy] EndMovie Deploy - Linux"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://TaeJuneJoung.github.io/2019/12/12/deploy-project-endgame-linux/&is_video=false&description=Deploy] EndMovie Deploy - Linux"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Deploy] EndMovie Deploy - Linux&body=Check out this article: http://TaeJuneJoung.github.io/2019/12/12/deploy-project-endgame-linux/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://TaeJuneJoung.github.io/2019/12/12/deploy-project-endgame-linux/&title=Deploy] EndMovie Deploy - Linux"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://TaeJuneJoung.github.io/2019/12/12/deploy-project-endgame-linux/&title=Deploy] EndMovie Deploy - Linux"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://TaeJuneJoung.github.io/2019/12/12/deploy-project-endgame-linux/&title=Deploy] EndMovie Deploy - Linux"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://TaeJuneJoung.github.io/2019/12/12/deploy-project-endgame-linux/&title=Deploy] EndMovie Deploy - Linux"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://TaeJuneJoung.github.io/2019/12/12/deploy-project-endgame-linux/&name=Deploy] EndMovie Deploy - Linux&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://TaeJuneJoung.github.io/2019/12/12/deploy-project-endgame-linux/&t=Deploy] EndMovie Deploy - Linux"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#목적"><span class="toc-number">1.</span> <span class="toc-text">목적</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#환경"><span class="toc-number">2.</span> <span class="toc-text">환경</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Deploy-DB"><span class="toc-number">3.</span> <span class="toc-text">Deploy DB</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#sudo-없이-사용하기"><span class="toc-number">3.1.</span> <span class="toc-text">sudo 없이 사용하기</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Install-PostgreSQL"><span class="toc-number">3.2.</span> <span class="toc-text">Install PostgreSQL</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#PostgreSQL-Create-Database"><span class="toc-number">3.2.1.</span> <span class="toc-text">PostgreSQL Create Database</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Django-Settings"><span class="toc-number">4.</span> <span class="toc-text">Django Settings</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#alternative-설정"><span class="toc-number">4.1.</span> <span class="toc-text">alternative 설정</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue-Settings"><span class="toc-number">5.</span> <span class="toc-text">Vue Settings</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker-Compose"><span class="toc-number">6.</span> <span class="toc-text">Docker Compose</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Install-docker-compose"><span class="toc-number">6.1.</span> <span class="toc-text">Install docker-compose</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#settings-docker-compose"><span class="toc-number">6.2.</span> <span class="toc-text">settings docker-compose</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#느낀점"><span class="toc-number">7.</span> <span class="toc-text">느낀점</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#참고-자료"><span class="toc-number">8.</span> <span class="toc-text">참고 자료</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4111865521431436",
+    enable_page_level_ads: true
+  });
+</script>
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Deploy] EndMovie Deploy - Linux
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">TaeJune Joung</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-12-12T13:22:52.000Z" itemprop="datePublished">2019-12-12</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/Docker/">Docker</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/Deploy/">Deploy</a>, <a class="tag-link" href="/tags/Docker-Compose/">Docker Compose</a>, <a class="tag-link" href="/tags/Linux/">Linux</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <blockquote>
+<p>참고] 배포과정은 버전에 따라 환경에 따라 다를 수 있습니다. 해당 방법은 어디까지나 삽질을 해보고 이런 방도로도 실행이 가능하다라는 정리문서이지 답이 아님을 밝힙니다.</p>
+</blockquote>
+<h2 id="목적"><a href="#목적" class="headerlink" title="목적"></a>목적</h2><p>프로젝트를 먼저 Linux(Mint)환경에서 실행해보고 Docker-Compose를 통해 AWS EC2에 Deploy해보자.</p>
+<h2 id="환경"><a href="#환경" class="headerlink" title="환경"></a>환경</h2><ul>
+<li>Linux Mint(ubuntu 16.04)</li>
+</ul>
+<p>아래의 버전들은 프로젝트 버전에 맞추는게 좋다. 필자는 배포에만 신경썼기에 버전이 프로젝트와는 다르게 왔다갔다하는 부분이 있다. 설치할 때 버전을 설정하면 프로젝트 버전과 같게 설치할 수 있다.</p>
+<ul>
+<li>Python 3.6.8</li>
+<li>Node 12.x.x</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+
+<h2 id="Deploy-DB"><a href="#Deploy-DB" class="headerlink" title="Deploy DB"></a>Deploy DB</h2><p>DB는 Docker Image를 통해 설치해보자.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://get.docker.com/ | sudo sh</span><br></pre></td></tr></table></figure>
+
+<p>Docker를 먼저 다운로드 받는다. 이렇게만 할 경우 docker를 사용하기 전에 <code>sudo</code>를 붙여줘야 하는 귀차니즘이 발생하긴 한다.</p>
+<h3 id="sudo-없이-사용하기"><a href="#sudo-없이-사용하기" class="headerlink" title="sudo 없이 사용하기"></a>sudo 없이 사용하기</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo usermod -aG docker <span class="variable">$USER</span> <span class="comment"># 현재 접속중인 사용자에게 권한주기</span></span><br></pre></td></tr></table></figure>
+
+<p>먼저, sudo를 사용한 버전으로 소스를 작성하도록 하겠다.</p>
+<h3 id="Install-PostgreSQL"><a href="#Install-PostgreSQL" class="headerlink" title="Install PostgreSQL"></a>Install PostgreSQL</h3><p>기본적인 기능만 사용한다면 <code>alpine</code>을 사용하면 좋다. 최소한의 기능으로 경량화된 버전이다. 단, 많은 기능을 사용한다면 경량화 버전에서 설치를 계속해줘야하기에 불편한 점도 있다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker pull postgres</span><br><span class="line">docker run -d -p 5432:5432 --name pgsql -e POSTGRES_PASSWORD=비밀번호 postgres</span><br></pre></td></tr></table></figure>
+
+<p>Docker 볼륨을 생성하여 데이터를 유지해야할 경우는 volume 옵션이 필요하다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker volume create pgdata</span><br><span class="line">docker run -d -p 5432:5432 --name pgsql -it --rm -v pgdata:/var/lib/postgresql/data postgres</span><br></pre></td></tr></table></figure>
+
+<h4 id="PostgreSQL-Create-Database"><a href="#PostgreSQL-Create-Database" class="headerlink" title="PostgreSQL Create Database"></a>PostgreSQL Create Database</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it pgsql bash</span><br><span class="line"></span><br><span class="line"><span class="comment">#PostgreSQL</span></span><br><span class="line">psql -U postgres</span><br><span class="line">CREATE DATABASE 데이터베이스이름;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Django-Settings"><a href="#Django-Settings" class="headerlink" title="Django Settings"></a>Django Settings</h2><p>먼저, Docker를 사용하지 않고 세팅해보자</p>
+<p>파이썬의 버전이 너무 거슬린다. 이전의 방법도 있지만 전체적 설정에서 바꿔보자.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo update-alternatives --config python</span><br></pre></td></tr></table></figure>
+
+<p>만약 위의 명령어를 작성하였는데 <code>update-alternatives: error: no alternatives for python</code>가 Error가 발생하였다면 <strong>alternative</strong>가 설정된 것이 없는 것이니 설정을 해주자.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">which</span> python <span class="comment">#파이썬의 경로</span></span><br><span class="line">ls /usr/bin/ | grep python <span class="comment">#파이썬 리스트(경로는 기본이라면...)</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="alternative-설정"><a href="#alternative-설정" class="headerlink" title="alternative 설정"></a>alternative 설정</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1</span><br><span class="line">sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.6 2</span><br></pre></td></tr></table></figure>
+
+<p>이후에 <code>sudo update-alternatives --config python</code>를 다시 입력하면 버전 선택을 할 수 있다.</p>
+<p>이렇게 설정이 다 끝나고 나서 프로젝트에 있는 라이브러리들을 다운받으려고 했더니 pip가 없었다.</p>
+<p>python3를 기본적으로 사용할 것이기에 pip3만 다운로드 받는다. 이렇게 설치하여도 pip 명령어로 실행할 수 있었다. 아래의 코드가 문제가 생길시에는 sudo를 붙여서 진행하면 된다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install python3-pip</span><br></pre></td></tr></table></figure>
+
+<p>다 끝났다면 라이브러리를 설치하고 진행하면 된다.</p>
+<h2 id="Vue-Settings"><a href="#Vue-Settings" class="headerlink" title="Vue Settings"></a>Vue Settings</h2><p>yarn을 apt-get에서 바로 다운받거나 다른 방도가 있긴 하지만, 다른 파일을 다운 받아달라는 오류가 발생하여 npm에서 설치하는 방식으로 진행함</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install npm</span><br><span class="line">npm install -g yarn</span><br><span class="line"></span><br><span class="line">sudo apt-get install nodejs</span><br></pre></td></tr></table></figure>
+
+<p>nodejs를 다운받았는데 버전이 8이다. 프로젝트 설정된 버전보다 낮아 진행할 수 없는 문제가 발생했다. nodejs의 버전을 올려주자.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 강제 캐시 삭제</span></span><br><span class="line">sudo npm cache clean --force</span><br><span class="line"><span class="comment"># n모듈 설치</span></span><br><span class="line">sudo npm install -g n</span><br><span class="line"><span class="comment"># n모듈 이용한 Node.js 설치</span></span><br><span class="line">sudo n stable</span><br><span class="line"><span class="comment"># npm 설치</span></span><br><span class="line">sudo npm install -g npm</span><br><span class="line"></span><br><span class="line"><span class="comment"># vue-cli설치</span></span><br><span class="line">yarn add vue-cli</span><br><span class="line"></span><br><span class="line">yarn install</span><br><span class="line">yarn serve</span><br></pre></td></tr></table></figure>
+
+<h2 id="Docker-Compose"><a href="#Docker-Compose" class="headerlink" title="Docker Compose"></a>Docker Compose</h2><p>그러면 이제 본격적으로 docker-compose를 이용해서 Linux환경에서 실행해보자.</p>
+<p>docker로 하나하나 돌리는 방법도 있겠지만 옵션을 하나하나 주면서 확인해보고 하기에 너무 불편하다. 그러기에 docker-compose를 사용하기로 한다.</p>
+<h3 id="Install-docker-compose"><a href="#Install-docker-compose" class="headerlink" title="Install docker-compose"></a>Install docker-compose</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo curl -L <span class="string">"https://github.com/docker/compose/releases/download/1.25.0/docker-compose-<span class="variable">$(uname -s)</span>-<span class="variable">$(uname -m)</span>"</span> -o /usr/<span class="built_in">local</span>/bin/docker-compose</span><br><span class="line"></span><br><span class="line">sudo chmod +x /usr/<span class="built_in">local</span>/bin/docker-compose</span><br></pre></td></tr></table></figure>
+
+<h3 id="settings-docker-compose"><a href="#settings-docker-compose" class="headerlink" title="settings docker-compose"></a>settings docker-compose</h3><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">'3.5'</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"><span class="attr">  db:</span></span><br><span class="line"><span class="attr">    image:</span> <span class="string">postgres</span></span><br><span class="line"><span class="attr">    restart:</span> <span class="string">always</span></span><br><span class="line"><span class="attr">    ports:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="number">5432</span><span class="string">:5432</span></span><br><span class="line"><span class="attr">    networks:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">end-network</span></span><br><span class="line"><span class="attr">    volumes:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">./db:/var/lib/postgresql/data</span></span><br><span class="line"><span class="attr">    environment:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">POSTGRES_DB=end_movie</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">POSTGRES_UESR=postgres</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">POSTGRES_PASSWORD=0525</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">POSTGRES_INITDB_ARGS=--encoding=UTF-8</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  front:</span></span><br><span class="line"><span class="attr">    image:</span> <span class="string">node</span></span><br><span class="line"><span class="attr">    container_name:</span> <span class="string">front</span></span><br><span class="line"><span class="attr">    restart:</span> <span class="string">always</span></span><br><span class="line"><span class="attr">    ports:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="number">8080</span><span class="string">:8080</span></span><br><span class="line"><span class="attr">    working_dir:</span> <span class="string">/usr/src/app</span></span><br><span class="line"><span class="attr">    volumes:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">./front:/usr/src/app</span></span><br><span class="line"><span class="attr">    command:</span> <span class="string">&gt;</span></span><br><span class="line"><span class="string">      bash -c "yarn install &amp;&amp; yarn serve"</span></span><br><span class="line"><span class="string"></span><span class="attr">    environment:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">LC_ALL=C.UTF-8</span></span><br><span class="line"><span class="attr">    tty:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">    networks:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">end-network</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  back:</span></span><br><span class="line"><span class="attr">    build:</span></span><br><span class="line"><span class="attr">      context:</span> <span class="string">.</span></span><br><span class="line"><span class="attr">      dockerfile:</span> <span class="string">./back/Dockerfile</span></span><br><span class="line"><span class="attr">    restart:</span> <span class="string">always</span></span><br><span class="line"><span class="attr">    ports:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="number">8000</span><span class="string">:8000</span></span><br><span class="line"><span class="attr">    working_dir:</span> <span class="string">/usr/src/app</span></span><br><span class="line"><span class="attr">    volumes:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">./back:/usr/src/app</span></span><br><span class="line"><span class="attr">    command:</span> <span class="string">&gt;</span></span><br><span class="line"><span class="string">      bash -c "python manage.py makemigrations &amp;&amp; python manage.py migrate &amp;&amp; python manage.py runserver 0.0.0.0:8000"</span></span><br><span class="line"><span class="string"></span><span class="attr">    environment:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">LC_ALL=C.UTF-8</span></span><br><span class="line"><span class="attr">    tty:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">    networks:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">end-network</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="attr">networks:</span></span><br><span class="line"><span class="attr">  end-network:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">end-network</span></span><br></pre></td></tr></table></figure>
+
+<p>docker에서 django image는 지원하지 않는다는 내용을 확인하였다. 그래서 Python images를 받아서 진행할까 하다가 Dockerfile로 먼저 진행하였다.</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> python:<span class="number">3</span></span><br><span class="line"><span class="keyword">ENV</span> PYTHONUNBUFFERED <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="bash"> /usr/src/app</span></span><br><span class="line"><span class="keyword">ADD</span><span class="bash"> ./back/requirements.txt /usr/src/app/</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> pip install -r requirements.txt</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">8000</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="느낀점"><a href="#느낀점" class="headerlink" title="느낀점"></a>느낀점</h2><p>DevOps의 길은 알면 쉽고 모르면 너무나도 힘들다…</p>
+<p>Deploy로만 2일이 걸릴 줄이야…</p>
+<p>더붙여야할 기능이라면 더 있지만… CI/CD를 다뤄보면서 진행하자…</p>
+<p>이제 본격적인 AWS Deploy로 넘어가도록 하겠다.</p>
+<h2 id="참고-자료"><a href="#참고-자료" class="headerlink" title="참고 자료"></a>참고 자료</h2><p> <a href="https://subicura.com/2017/01/19/docker-guide-for-beginners-2.html" target="_blank" rel="noopener">https://subicura.com/2017/01/19/docker-guide-for-beginners-2.html</a> </p>
+<p> <a href="https://judo0179.tistory.com/48" target="_blank" rel="noopener">https://judo0179.tistory.com/48</a> </p>
+<p> <a href="https://seongkyun.github.io/others/2019/05/09/ubuntu_python/" target="_blank" rel="noopener">https://seongkyun.github.io/others/2019/05/09/ubuntu_python/</a> </p>
+<p> <a href="https://d2fault.github.io/2018/04/30/20180430-install-and-upgrade-nodejs-or-npm/" target="_blank" rel="noopener">https://d2fault.github.io/2018/04/30/20180430-install-and-upgrade-nodejs-or-npm/</a> </p>
+<p> <a href="https://docs.docker.com/compose/install/" target="_blank" rel="noopener">https://docs.docker.com/compose/install/</a> </p>
+<p> <a href="https://www.44bits.io/ko/post/almost-perfect-development-environment-with-docker-and-docker-compose" target="_blank" rel="noopener">https://www.44bits.io/ko/post/almost-perfect-development-environment-with-docker-and-docker-compose</a> </p>
+<p> <a href="https://github.com/raccoonyy/django-sample" target="_blank" rel="noopener">https://github.com/raccoonyy/django-sample</a> </p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#목적"><span class="toc-number">1.</span> <span class="toc-text">목적</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#환경"><span class="toc-number">2.</span> <span class="toc-text">환경</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Deploy-DB"><span class="toc-number">3.</span> <span class="toc-text">Deploy DB</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#sudo-없이-사용하기"><span class="toc-number">3.1.</span> <span class="toc-text">sudo 없이 사용하기</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Install-PostgreSQL"><span class="toc-number">3.2.</span> <span class="toc-text">Install PostgreSQL</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#PostgreSQL-Create-Database"><span class="toc-number">3.2.1.</span> <span class="toc-text">PostgreSQL Create Database</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Django-Settings"><span class="toc-number">4.</span> <span class="toc-text">Django Settings</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#alternative-설정"><span class="toc-number">4.1.</span> <span class="toc-text">alternative 설정</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue-Settings"><span class="toc-number">5.</span> <span class="toc-text">Vue Settings</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker-Compose"><span class="toc-number">6.</span> <span class="toc-text">Docker Compose</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Install-docker-compose"><span class="toc-number">6.1.</span> <span class="toc-text">Install docker-compose</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#settings-docker-compose"><span class="toc-number">6.2.</span> <span class="toc-text">settings docker-compose</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#느낀점"><span class="toc-number">7.</span> <span class="toc-text">느낀점</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#참고-자료"><span class="toc-number">8.</span> <span class="toc-text">참고 자료</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://TaeJuneJoung.github.io/2019/12/12/deploy-project-endgame-linux/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://TaeJuneJoung.github.io/2019/12/12/deploy-project-endgame-linux/&text=Deploy] EndMovie Deploy - Linux"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://TaeJuneJoung.github.io/2019/12/12/deploy-project-endgame-linux/&title=Deploy] EndMovie Deploy - Linux"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://TaeJuneJoung.github.io/2019/12/12/deploy-project-endgame-linux/&is_video=false&description=Deploy] EndMovie Deploy - Linux"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Deploy] EndMovie Deploy - Linux&body=Check out this article: http://TaeJuneJoung.github.io/2019/12/12/deploy-project-endgame-linux/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://TaeJuneJoung.github.io/2019/12/12/deploy-project-endgame-linux/&title=Deploy] EndMovie Deploy - Linux"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://TaeJuneJoung.github.io/2019/12/12/deploy-project-endgame-linux/&title=Deploy] EndMovie Deploy - Linux"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://TaeJuneJoung.github.io/2019/12/12/deploy-project-endgame-linux/&title=Deploy] EndMovie Deploy - Linux"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://TaeJuneJoung.github.io/2019/12/12/deploy-project-endgame-linux/&title=Deploy] EndMovie Deploy - Linux"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://TaeJuneJoung.github.io/2019/12/12/deploy-project-endgame-linux/&name=Deploy] EndMovie Deploy - Linux&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://TaeJuneJoung.github.io/2019/12/12/deploy-project-endgame-linux/&t=Deploy] EndMovie Deploy - Linux"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+          
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4111865521431436",
+    enable_page_level_ads: true
+  });
+</script>
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2021
+    TaeJune Joung
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

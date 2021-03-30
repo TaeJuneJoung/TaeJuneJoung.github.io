@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    <meta name="description" content="프로젝트 목적이전에 Django를 처음 배우면서 만들었던 영화 프로젝트를 RESTFUL을 이용한 방법으로 만들어보고자 토이 프로젝트를 진행하였다.  RESTFUL 학습 Front-END 학습  초기 프로젝트 주소https://github.com/ClearRoot/EndGamePJ현재 프로젝트 주소https://github.com/TaeJuneJoung/en">
+<meta name="keywords" content="Project">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Project] End Movie">
+<meta property="og:url" content="http://TaeJuneJoung.github.io/2019/11/14/project-endmovie/index.html">
+<meta property="og:site_name" content="Jun&#39;s Blog">
+<meta property="og:description" content="프로젝트 목적이전에 Django를 처음 배우면서 만들었던 영화 프로젝트를 RESTFUL을 이용한 방법으로 만들어보고자 토이 프로젝트를 진행하였다.  RESTFUL 학습 Front-END 학습  초기 프로젝트 주소https://github.com/ClearRoot/EndGamePJ현재 프로젝트 주소https://github.com/TaeJuneJoung/en">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://taejunejoung.github.io/2019/11/14/project-endmovie/guest_main.png">
+<meta property="og:image" content="http://taejunejoung.github.io/2019/11/14/project-endmovie/guest_movie_detail01.png">
+<meta property="og:image" content="http://taejunejoung.github.io/2019/11/14/project-endmovie/guest_movie_detail02.png">
+<meta property="og:image" content="http://taejunejoung.github.io/2019/11/14/project-endmovie/join.png">
+<meta property="og:image" content="http://taejunejoung.github.io/2019/11/14/project-endmovie/login.png">
+<meta property="og:image" content="http://taejunejoung.github.io/2019/11/14/project-endmovie/user_main.png">
+<meta property="og:image" content="http://taejunejoung.github.io/2019/11/14/project-endmovie/user_movie_detail01.png">
+<meta property="og:updated_time" content="2021-03-30T14:22:37.373Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Project] End Movie">
+<meta name="twitter:description" content="프로젝트 목적이전에 Django를 처음 배우면서 만들었던 영화 프로젝트를 RESTFUL을 이용한 방법으로 만들어보고자 토이 프로젝트를 진행하였다.  RESTFUL 학습 Front-END 학습  초기 프로젝트 주소https://github.com/ClearRoot/EndGamePJ현재 프로젝트 주소https://github.com/TaeJuneJoung/en">
+<meta name="twitter:image" content="http://taejunejoung.github.io/2019/11/14/project-endmovie/guest_main.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Project] End Movie</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post " href="/2019/12/03/deploy-django/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post " href="/2019/11/10/python-smtp/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://TaeJuneJoung.github.io/2019/11/14/project-endmovie/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://TaeJuneJoung.github.io/2019/11/14/project-endmovie/&text=Project] End Movie"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://TaeJuneJoung.github.io/2019/11/14/project-endmovie/&title=Project] End Movie"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://TaeJuneJoung.github.io/2019/11/14/project-endmovie/&is_video=false&description=Project] End Movie"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Project] End Movie&body=Check out this article: http://TaeJuneJoung.github.io/2019/11/14/project-endmovie/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://TaeJuneJoung.github.io/2019/11/14/project-endmovie/&title=Project] End Movie"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://TaeJuneJoung.github.io/2019/11/14/project-endmovie/&title=Project] End Movie"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://TaeJuneJoung.github.io/2019/11/14/project-endmovie/&title=Project] End Movie"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://TaeJuneJoung.github.io/2019/11/14/project-endmovie/&title=Project] End Movie"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://TaeJuneJoung.github.io/2019/11/14/project-endmovie/&name=Project] End Movie&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://TaeJuneJoung.github.io/2019/11/14/project-endmovie/&t=Project] End Movie"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#프로젝트-목적"><span class="toc-number">1.</span> <span class="toc-text">프로젝트 목적</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#추후-발전-계획-내용"><span class="toc-number">2.</span> <span class="toc-text">추후 발전 계획 내용</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#프로젝트를-하며-느낀점"><span class="toc-number">3.</span> <span class="toc-text">프로젝트를 하며 느낀점</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#다른-프로젝트에서-적용해볼-내용"><span class="toc-number">3.1.</span> <span class="toc-text">다른 프로젝트에서 적용해볼 내용</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4111865521431436",
+    enable_page_level_ads: true
+  });
+</script>
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Project] End Movie
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">TaeJune Joung</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-11-14T13:30:59.000Z" itemprop="datePublished">2019-11-14</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/Project/">Project</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/Project/">Project</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="프로젝트-목적"><a href="#프로젝트-목적" class="headerlink" title="프로젝트 목적"></a>프로젝트 목적</h2><p>이전에 Django를 처음 배우면서 만들었던 영화 프로젝트를 <code>RESTFUL</code>을 이용한 방법으로 만들어보고자 토이 프로젝트를 진행하였다.</p>
+<ol>
+<li>RESTFUL 학습</li>
+<li>Front-END 학습</li>
+</ol>
+<dl><dt>초기 프로젝트 주소</dt><dd><a href="https://github.com/ClearRoot/EndGamePJ" target="_blank" rel="noopener">https://github.com/ClearRoot/EndGamePJ</a></dd></dl><dl><dt>현재 프로젝트 주소</dt><dd><a href="https://github.com/TaeJuneJoung/endMovie" target="_blank" rel="noopener">https://github.com/TaeJuneJoung/endMovie</a></dd></dl><img src="/2019/11/14/project-endmovie/guest_main.png" class="slug">
+
+<p>The Movie DB API를 이용하여 데이터를 가져와 DB에 저장한 후, 처음 페이지에서 보여주었다.<br>너무 많은 데이터를 한꺼번에 보여줘서 스크롤의 압박이 생길까하여 처음에는 28개의 영화 정보를 보여주고 <code>더보기</code> 버튼을 누르면 12개씩 추가되도록 하였다.</p>
+<img src="/2019/11/14/project-endmovie/guest_movie_detail01.png" class="slug">
+
+<p>하나의 영화 정보를 클릭해서 들어가면 처음 맞이하는 페이지</p>
+<img src="/2019/11/14/project-endmovie/guest_movie_detail02.png" class="slug">
+
+<p>아래의 공간에는 Youtube를 통해 예고편 보기와 영화 내용, 댓글 기능이 구현되어 있다.</p>
+<img src="/2019/11/14/project-endmovie/join.png" class="slug">
+
+<p>회원은 회원이름을 ID로 하고, 비밀번호는 숫자+영어+특수문자로 8자 이상을 기입하여야 가능하다. 이메일 인증을 통해 무분별한 사용자를 막고자 하였다.(휴대전화로 하려고 하였으나, 문자는 금액적인 부분이 발생으로 이메일로 구현)</p>
+<img src="/2019/11/14/project-endmovie/login.png" class="slug">
+
+<p>회원가입과 로그인 디자인 부분은 <code>N</code>사에서 얻어왔다.</p>
+<img src="/2019/11/14/project-endmovie/user_main.png" class="slug">
+
+<p>로그인을 한 사용자는 영화의 평점도 영화 리스트를 보며 남길 수 있다.</p>
+<img src="/2019/11/14/project-endmovie/user_movie_detail01.png" class="slug">
+
+<p>로그인 사용자는 댓글을 작성하며 댓글에 대한 <code>좋아요</code> 기능을 사용할 수 있다.</p>
+<h2 id="추후-발전-계획-내용"><a href="#추후-발전-계획-내용" class="headerlink" title="추후 발전 계획 내용"></a>추후 발전 계획 내용</h2><ol>
+<li>영화 추천 서비스</li>
+<li>배포(Deploy)</li>
+<li>검색기능</li>
+<li>좋아요 기능</li>
+<li>댓글 신고 기능 / BEST 댓글</li>
+<li>약관동의/회원 분실 찾기</li>
+</ol>
+<p>1번과 2번은 추후라도 꼭 해볼 내용<br>1번은 AI부분이나 빅데이터 부분을 배워야하기에 학습을 이룬 후에 1번과 2번을 위주로 할 계획</p>
+<p>3~6번은 서비스에는 필요하나 학습 위주의 토이 프로젝트이기에 구현이 어렵지 않으므로 넘길 수 있음</p>
+<p>2번의 배포는 Docker를 이용하고 CI/CD 자동화를 한 후에 가능하다면 <code>kubernetes</code>를 알아보고 적용해볼 계획</p>
+<h2 id="프로젝트를-하며-느낀점"><a href="#프로젝트를-하며-느낀점" class="headerlink" title="프로젝트를 하며 느낀점"></a>프로젝트를 하며 느낀점</h2><p>현재까지 작성한 부분은 <code>영화 추천 서비스</code>를 하기 위해 기본적인 부분들을 만든 토이 프로젝트다.<br>다른 부분들을 하면서 시간이 날 때마다 조금씩 하다보니 집중력이 많이 들어간 프로젝트는 아닌 점이 아쉽다.<br>그래도 Front를 Vue와 Vuetify로 만들면서 정말 편하다는 점과 Back단만 고집했던 나 자신이 Full Stack으로 하면서 ‘하나의 기본적인 프로젝트를 완성할 수 있구나’라는 자신감을 느낄수 있었다.<br>서버단에서 RESTFUL을 이용할 때는 Django는 Serailizer를 이용해야하니 Django에서 바로 서비스를 만들때랑은 다르겠구나 하였는데, 기본은 어디에서나 쓰이고 기본이 튼튼해야함을 느낄 수 있었다.</p>
+<h3 id="다른-프로젝트에서-적용해볼-내용"><a href="#다른-프로젝트에서-적용해볼-내용" class="headerlink" title="다른 프로젝트에서 적용해볼 내용"></a>다른 프로젝트에서 적용해볼 내용</h3><ul>
+<li><p>JWT Token<br>현 프로젝트에서는 회원 정보를 JWT토큰으로 주고 받고 있지 않기에 JWT토큰에 대한 부분을 만들어 봐야겠다.</p>
+</li>
+<li><p>TDD 개발<br>TDD개발을 어떻게 하는지 감은 오는데 정확한 방법을 몰라 연습해 봐야겠다. 감 잡은 내용은 아래의 주소와 같다.</p>
+</li>
+</ul>
+<p><a href="https://wikidocs.net/11057" target="_blank" rel="noopener">https://wikidocs.net/11057</a></p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#프로젝트-목적"><span class="toc-number">1.</span> <span class="toc-text">프로젝트 목적</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#추후-발전-계획-내용"><span class="toc-number">2.</span> <span class="toc-text">추후 발전 계획 내용</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#프로젝트를-하며-느낀점"><span class="toc-number">3.</span> <span class="toc-text">프로젝트를 하며 느낀점</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#다른-프로젝트에서-적용해볼-내용"><span class="toc-number">3.1.</span> <span class="toc-text">다른 프로젝트에서 적용해볼 내용</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://TaeJuneJoung.github.io/2019/11/14/project-endmovie/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://TaeJuneJoung.github.io/2019/11/14/project-endmovie/&text=Project] End Movie"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://TaeJuneJoung.github.io/2019/11/14/project-endmovie/&title=Project] End Movie"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://TaeJuneJoung.github.io/2019/11/14/project-endmovie/&is_video=false&description=Project] End Movie"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Project] End Movie&body=Check out this article: http://TaeJuneJoung.github.io/2019/11/14/project-endmovie/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://TaeJuneJoung.github.io/2019/11/14/project-endmovie/&title=Project] End Movie"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://TaeJuneJoung.github.io/2019/11/14/project-endmovie/&title=Project] End Movie"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://TaeJuneJoung.github.io/2019/11/14/project-endmovie/&title=Project] End Movie"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://TaeJuneJoung.github.io/2019/11/14/project-endmovie/&title=Project] End Movie"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://TaeJuneJoung.github.io/2019/11/14/project-endmovie/&name=Project] End Movie&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://TaeJuneJoung.github.io/2019/11/14/project-endmovie/&t=Project] End Movie"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+          
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4111865521431436",
+    enable_page_level_ads: true
+  });
+</script>
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2021
+    TaeJune Joung
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

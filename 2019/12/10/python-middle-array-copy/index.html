@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    <meta name="description" content="Shallow Copy, 얕은 복사변수 할당 얕은 복사1234567891011121314151617181920list_data = [&apos;1&apos;,&apos;2&apos;,&apos;3&apos;, [1,2,3], 1,2,3]list_copy = list_dataprint(id(list_data))print(id(list_copy))# 단일 리스트 값 변경list_data[0] = &apos;5&apos;print(">
+<meta name="keywords" content="Python,Shallow Copy,Deep Copy">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python] 얕은복사 | 깊은복사">
+<meta property="og:url" content="http://TaeJuneJoung.github.io/2019/12/10/python-middle-array-copy/index.html">
+<meta property="og:site_name" content="Jun&#39;s Blog">
+<meta property="og:description" content="Shallow Copy, 얕은 복사변수 할당 얕은 복사1234567891011121314151617181920list_data = [&apos;1&apos;,&apos;2&apos;,&apos;3&apos;, [1,2,3], 1,2,3]list_copy = list_dataprint(id(list_data))print(id(list_copy))# 단일 리스트 값 변경list_data[0] = &apos;5&apos;print(">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2021-03-30T14:22:37.400Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python] 얕은복사 | 깊은복사">
+<meta name="twitter:description" content="Shallow Copy, 얕은 복사변수 할당 얕은 복사1234567891011121314151617181920list_data = [&apos;1&apos;,&apos;2&apos;,&apos;3&apos;, [1,2,3], 1,2,3]list_copy = list_dataprint(id(list_data))print(id(list_copy))# 단일 리스트 값 변경list_data[0] = &apos;5&apos;print(">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Python] 얕은복사 | 깊은복사</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post " href="/2019/12/11/python-middle-comprehension/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post " href="/2019/12/10/python-middle-mutable-immutable/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://TaeJuneJoung.github.io/2019/12/10/python-middle-array-copy/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://TaeJuneJoung.github.io/2019/12/10/python-middle-array-copy/&text=Python] 얕은복사 | 깊은복사"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://TaeJuneJoung.github.io/2019/12/10/python-middle-array-copy/&title=Python] 얕은복사 | 깊은복사"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://TaeJuneJoung.github.io/2019/12/10/python-middle-array-copy/&is_video=false&description=Python] 얕은복사 | 깊은복사"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Python] 얕은복사 | 깊은복사&body=Check out this article: http://TaeJuneJoung.github.io/2019/12/10/python-middle-array-copy/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://TaeJuneJoung.github.io/2019/12/10/python-middle-array-copy/&title=Python] 얕은복사 | 깊은복사"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://TaeJuneJoung.github.io/2019/12/10/python-middle-array-copy/&title=Python] 얕은복사 | 깊은복사"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://TaeJuneJoung.github.io/2019/12/10/python-middle-array-copy/&title=Python] 얕은복사 | 깊은복사"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://TaeJuneJoung.github.io/2019/12/10/python-middle-array-copy/&title=Python] 얕은복사 | 깊은복사"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://TaeJuneJoung.github.io/2019/12/10/python-middle-array-copy/&name=Python] 얕은복사 | 깊은복사&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://TaeJuneJoung.github.io/2019/12/10/python-middle-array-copy/&t=Python] 얕은복사 | 깊은복사"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Shallow-Copy-얕은-복사"><span class="toc-number">1.</span> <span class="toc-text">Shallow Copy, 얕은 복사</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#변수-할당-얕은-복사"><span class="toc-number">1.1.</span> <span class="toc-text">변수 할당 얕은 복사</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#슬라이싱을-이용한-얕은-복사"><span class="toc-number">1.2.</span> <span class="toc-text">슬라이싱을 이용한 얕은 복사</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Deep-Copy-깊은-복사"><span class="toc-number">2.</span> <span class="toc-text">Deep Copy, 깊은 복사</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Copy-Deepcopy를-이용한-깊은-복사"><span class="toc-number">2.1.</span> <span class="toc-text">Copy.Deepcopy를 이용한 깊은 복사</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#참고사항-Immutable의-복사"><span class="toc-number">3.</span> <span class="toc-text">[참고사항]Immutable의 복사</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4111865521431436",
+    enable_page_level_ads: true
+  });
+</script>
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Python] 얕은복사 | 깊은복사
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">TaeJune Joung</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-12-10T12:35:52.000Z" itemprop="datePublished">2019-12-10</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/Python/">Python</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/Deep-Copy/">Deep Copy</a>, <a class="tag-link" href="/tags/Python/">Python</a>, <a class="tag-link" href="/tags/Shallow-Copy/">Shallow Copy</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="Shallow-Copy-얕은-복사"><a href="#Shallow-Copy-얕은-복사" class="headerlink" title="Shallow Copy, 얕은 복사"></a>Shallow Copy, 얕은 복사</h2><h3 id="변수-할당-얕은-복사"><a href="#변수-할당-얕은-복사" class="headerlink" title="변수 할당 얕은 복사"></a>변수 할당 얕은 복사</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">list_data = [<span class="string">'1'</span>,<span class="string">'2'</span>,<span class="string">'3'</span>, [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>], <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"></span><br><span class="line">list_copy = list_data</span><br><span class="line"></span><br><span class="line">print(id(list_data))</span><br><span class="line">print(id(list_copy))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 단일 리스트 값 변경</span></span><br><span class="line">list_data[<span class="number">0</span>] = <span class="string">'5'</span></span><br><span class="line">print(list_data)</span><br><span class="line">print(list_copy)</span><br><span class="line">print(id(list_data))</span><br><span class="line">print(id(list_copy))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2중 리스트 값 변경</span></span><br><span class="line">list_data[<span class="number">3</span>][<span class="number">0</span>] = <span class="number">5</span></span><br><span class="line">print(list_data)</span><br><span class="line">print(list_copy)</span><br><span class="line">print(id(list_data))</span><br><span class="line">print(id(list_copy))</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>결과값</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt; 2327860600520</span><br><span class="line">&gt; 2327860600520</span><br><span class="line">&gt; [&apos;5&apos;, &apos;2&apos;, &apos;3&apos;, [1, 2, 3], 1, 2, 3]</span><br><span class="line">&gt; [&apos;5&apos;, &apos;2&apos;, &apos;3&apos;, [1, 2, 3], 1, 2, 3]</span><br><span class="line">&gt; 2327860600520</span><br><span class="line">&gt; 2327860600520</span><br><span class="line">&gt; [&apos;5&apos;, &apos;2&apos;, &apos;3&apos;, [5, 2, 3], 1, 2, 3]</span><br><span class="line">&gt; [&apos;5&apos;, &apos;2&apos;, &apos;3&apos;, [5, 2, 3], 1, 2, 3]</span><br><span class="line">&gt; 2327860600520</span><br><span class="line">&gt; 2327860600520</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p> 변수를 그대로 할당하여 사용할 경우에는,<br>같은 <code>주소</code>를 가리켜 하나의 값이 변하였을 때 다른 변수의 값도 변하게 된다.<br>메모리 주소지에 있는 값이 변하여서 해당 주소지를 쓰는 변수는 동일하게 변하는 것이다. </p>
+<h3 id="슬라이싱을-이용한-얕은-복사"><a href="#슬라이싱을-이용한-얕은-복사" class="headerlink" title="슬라이싱을 이용한 얕은 복사"></a>슬라이싱을 이용한 얕은 복사</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">'-------`:사용`------'</span>)</span><br><span class="line">list_data = [<span class="string">'1'</span>,<span class="string">'2'</span>,<span class="string">'3'</span>, [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>], <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">list_copy = list_data[:]</span><br><span class="line">print(id(list_data))</span><br><span class="line">print(id(list_copy))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 단일 리스트 값 변경</span></span><br><span class="line">list_data[<span class="number">0</span>] = <span class="string">'5'</span></span><br><span class="line">print(list_data)</span><br><span class="line">print(list_copy)</span><br><span class="line">print(id(list_data))</span><br><span class="line">print(id(list_copy))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2중 리스트 값 변경</span></span><br><span class="line">list_data[<span class="number">3</span>][<span class="number">0</span>] = <span class="number">5</span></span><br><span class="line">print(list_data)</span><br><span class="line">print(list_copy)</span><br><span class="line">print(id(list_data))</span><br><span class="line">print(id(list_copy))</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>결과값</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&gt; -------`:사용`------</span><br><span class="line">&gt; 2327860646088</span><br><span class="line">&gt; 2327860440200</span><br><span class="line">&gt; [&apos;5&apos;, &apos;2&apos;, &apos;3&apos;, [1, 2, 3], 1, 2, 3]</span><br><span class="line">&gt; [&apos;1&apos;, &apos;2&apos;, &apos;3&apos;, [1, 2, 3], 1, 2, 3]</span><br><span class="line">&gt; 2327860646088</span><br><span class="line">&gt; 2327860440200</span><br><span class="line">&gt; [&apos;5&apos;, &apos;2&apos;, &apos;3&apos;, [5, 2, 3], 1, 2, 3]</span><br><span class="line">&gt; [&apos;1&apos;, &apos;2&apos;, &apos;3&apos;, [5, 2, 3], 1, 2, 3]</span><br><span class="line">&gt; 2327860646088</span><br><span class="line">&gt; 2327860440200</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p> 리스트 슬라이싱을 통해서 값만 가져오면 해결할 수 있다고 생각할 수 있으나,<br>내부에 리스트가 있거나 2중 리스트 이상의 형태일 경우에는 동일한 문제가 발생한다. </p>
+<h2 id="Deep-Copy-깊은-복사"><a href="#Deep-Copy-깊은-복사" class="headerlink" title="Deep Copy, 깊은 복사"></a>Deep Copy, 깊은 복사</h2><h3 id="Copy-Deepcopy를-이용한-깊은-복사"><a href="#Copy-Deepcopy를-이용한-깊은-복사" class="headerlink" title="Copy.Deepcopy를 이용한 깊은 복사"></a>Copy.Deepcopy를 이용한 깊은 복사</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> copy</span><br><span class="line"></span><br><span class="line">list_data = [<span class="string">'1'</span>,<span class="string">'2'</span>,<span class="string">'3'</span>, [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>], <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">list_copy = copy.deepcopy(list_data)</span><br><span class="line">print(id(list_data))</span><br><span class="line">print(id(list_copy))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 단일 리스트 값 변경</span></span><br><span class="line">list_data[<span class="number">0</span>] = <span class="string">'5'</span></span><br><span class="line">print(list_data)</span><br><span class="line">print(list_copy)</span><br><span class="line">print(id(list_data))</span><br><span class="line">print(id(list_copy))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2중 리스트 값 변경</span></span><br><span class="line">list_data[<span class="number">3</span>][<span class="number">0</span>] = <span class="number">5</span></span><br><span class="line">print(list_data)</span><br><span class="line">print(list_copy)</span><br><span class="line">print(id(list_data))</span><br><span class="line">print(id(list_copy))</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>결과값</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt; 2327860646664</span><br><span class="line">&gt; 2327860646472</span><br><span class="line">&gt; [&apos;5&apos;, &apos;2&apos;, &apos;3&apos;, [1, 2, 3], 1, 2, 3]</span><br><span class="line">&gt; [&apos;1&apos;, &apos;2&apos;, &apos;3&apos;, [1, 2, 3], 1, 2, 3]</span><br><span class="line">&gt; 2327860646664</span><br><span class="line">&gt; 2327860646472</span><br><span class="line">&gt; [&apos;5&apos;, &apos;2&apos;, &apos;3&apos;, [5, 2, 3], 1, 2, 3]</span><br><span class="line">&gt; [&apos;1&apos;, &apos;2&apos;, &apos;3&apos;, [1, 2, 3], 1, 2, 3]</span><br><span class="line">&gt; 2327860646664</span><br><span class="line">&gt; 2327860646472</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>주소값도 다르며, 값들이 영향을 받지 않음을 알 수 있다.<br>이중리스트도 영향을 받지 않은 것을 보니 <code>깊은 복사</code>가 이뤄졌다. </p>
+<h2 id="참고사항-Immutable의-복사"><a href="#참고사항-Immutable의-복사" class="headerlink" title="[참고사항]Immutable의 복사"></a>[참고사항]Immutable의 복사</h2><p> Immutable 객체는 깊은 복사를 하여도 얕은 복사를 한 결과가 도출된다. </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">immutable_tuple = (<span class="number">1</span>,<span class="number">2</span>,(<span class="number">3</span>,<span class="number">4</span>), <span class="string">'5'</span>)</span><br><span class="line">copy_tuple = immutable_tuple</span><br><span class="line"></span><br><span class="line">print(id(immutable_tuple))</span><br><span class="line">print(id(copy_tuple))</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>결과값</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; 2327861436808</span><br><span class="line">&gt; 2327861436808</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> copy</span><br><span class="line"></span><br><span class="line">immutable_tuple = (<span class="number">1</span>,<span class="number">2</span>,(<span class="number">3</span>,<span class="number">4</span>), <span class="string">'5'</span>)</span><br><span class="line">copy_tuple = copy.deepcopy(immutable_tuple)</span><br><span class="line"></span><br><span class="line">print(id(immutable_tuple))</span><br><span class="line">print(id(copy_tuple))</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>결과값</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; 2327861191688</span><br><span class="line">&gt; 2327861191688</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Shallow-Copy-얕은-복사"><span class="toc-number">1.</span> <span class="toc-text">Shallow Copy, 얕은 복사</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#변수-할당-얕은-복사"><span class="toc-number">1.1.</span> <span class="toc-text">변수 할당 얕은 복사</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#슬라이싱을-이용한-얕은-복사"><span class="toc-number">1.2.</span> <span class="toc-text">슬라이싱을 이용한 얕은 복사</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Deep-Copy-깊은-복사"><span class="toc-number">2.</span> <span class="toc-text">Deep Copy, 깊은 복사</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Copy-Deepcopy를-이용한-깊은-복사"><span class="toc-number">2.1.</span> <span class="toc-text">Copy.Deepcopy를 이용한 깊은 복사</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#참고사항-Immutable의-복사"><span class="toc-number">3.</span> <span class="toc-text">[참고사항]Immutable의 복사</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://TaeJuneJoung.github.io/2019/12/10/python-middle-array-copy/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://TaeJuneJoung.github.io/2019/12/10/python-middle-array-copy/&text=Python] 얕은복사 | 깊은복사"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://TaeJuneJoung.github.io/2019/12/10/python-middle-array-copy/&title=Python] 얕은복사 | 깊은복사"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://TaeJuneJoung.github.io/2019/12/10/python-middle-array-copy/&is_video=false&description=Python] 얕은복사 | 깊은복사"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Python] 얕은복사 | 깊은복사&body=Check out this article: http://TaeJuneJoung.github.io/2019/12/10/python-middle-array-copy/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://TaeJuneJoung.github.io/2019/12/10/python-middle-array-copy/&title=Python] 얕은복사 | 깊은복사"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://TaeJuneJoung.github.io/2019/12/10/python-middle-array-copy/&title=Python] 얕은복사 | 깊은복사"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://TaeJuneJoung.github.io/2019/12/10/python-middle-array-copy/&title=Python] 얕은복사 | 깊은복사"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://TaeJuneJoung.github.io/2019/12/10/python-middle-array-copy/&title=Python] 얕은복사 | 깊은복사"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://TaeJuneJoung.github.io/2019/12/10/python-middle-array-copy/&name=Python] 얕은복사 | 깊은복사&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://TaeJuneJoung.github.io/2019/12/10/python-middle-array-copy/&t=Python] 얕은복사 | 깊은복사"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+          
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4111865521431436",
+    enable_page_level_ads: true
+  });
+</script>
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2021
+    TaeJune Joung
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    <meta name="description" content="2019.06.29(Sat)ProgrammingJavascript을 통해 이미지 업로드 파일을 미리 보기 기능을 구현하고자 하였다. 사용자 관점에서 올린 파일 확인을 통해 편리성을 제공하기 위해서였다. 목요일에는 JQuery를 통하거나 멀티 파일이 아닌 단일 파일로는 자료가 많다는 것을 확인할 수 있었다. 어떻게 돌아가는지 파악하기 위해서 다른 사람들의 소">
+<meta name="keywords" content="diary">
+<meta property="og:type" content="article">
+<meta property="og:title" content="20190629.md">
+<meta property="og:url" content="http://TaeJuneJoung.github.io/2019/06/30/20190629-md/index.html">
+<meta property="og:site_name" content="Jun&#39;s Blog">
+<meta property="og:description" content="2019.06.29(Sat)ProgrammingJavascript을 통해 이미지 업로드 파일을 미리 보기 기능을 구현하고자 하였다. 사용자 관점에서 올린 파일 확인을 통해 편리성을 제공하기 위해서였다. 목요일에는 JQuery를 통하거나 멀티 파일이 아닌 단일 파일로는 자료가 많다는 것을 확인할 수 있었다. 어떻게 돌아가는지 파악하기 위해서 다른 사람들의 소">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2021-03-30T14:22:37.362Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="20190629.md">
+<meta name="twitter:description" content="2019.06.29(Sat)ProgrammingJavascript을 통해 이미지 업로드 파일을 미리 보기 기능을 구현하고자 하였다. 사용자 관점에서 올린 파일 확인을 통해 편리성을 제공하기 위해서였다. 목요일에는 JQuery를 통하거나 멀티 파일이 아닌 단일 파일로는 자료가 많다는 것을 확인할 수 있었다. 어떻게 돌아가는지 파악하기 위해서 다른 사람들의 소">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>20190629.md</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post " href="/2019/07/22/aws-lambda-basic/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post " href="/2019/06/23/hexo/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://TaeJuneJoung.github.io/2019/06/30/20190629-md/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://TaeJuneJoung.github.io/2019/06/30/20190629-md/&text=20190629.md"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://TaeJuneJoung.github.io/2019/06/30/20190629-md/&title=20190629.md"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://TaeJuneJoung.github.io/2019/06/30/20190629-md/&is_video=false&description=20190629.md"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=20190629.md&body=Check out this article: http://TaeJuneJoung.github.io/2019/06/30/20190629-md/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://TaeJuneJoung.github.io/2019/06/30/20190629-md/&title=20190629.md"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://TaeJuneJoung.github.io/2019/06/30/20190629-md/&title=20190629.md"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://TaeJuneJoung.github.io/2019/06/30/20190629-md/&title=20190629.md"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://TaeJuneJoung.github.io/2019/06/30/20190629-md/&title=20190629.md"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://TaeJuneJoung.github.io/2019/06/30/20190629-md/&name=20190629.md&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://TaeJuneJoung.github.io/2019/06/30/20190629-md/&t=20190629.md"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2019-06-29-Sat"><span class="toc-number">1.</span> <span class="toc-text">2019.06.29(Sat)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Programming"><span class="toc-number">1.0.1.</span> <span class="toc-text">Programming</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#거인의-어깨-위에-서있는-개발자가-되자"><span class="toc-number">1.0.2.</span> <span class="toc-text">거인의 어깨 위에 서있는 개발자가 되자!</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4111865521431436",
+    enable_page_level_ads: true
+  });
+</script>
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        20190629.md
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">TaeJune Joung</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-06-29T16:22:45.000Z" itemprop="datePublished">2019-06-30</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/diary/">diary</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/diary/">diary</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="2019-06-29-Sat"><a href="#2019-06-29-Sat" class="headerlink" title="2019.06.29(Sat)"></a>2019.06.29(Sat)</h1><h3 id="Programming"><a href="#Programming" class="headerlink" title="Programming"></a>Programming</h3><p>Javascript을 통해 이미지 업로드 파일을 미리 보기 기능을 구현하고자 하였다. 사용자 관점에서 <strong>올린 파일 확인</strong>을 통해 편리성을 제공하기 위해서였다.</p>
+<p>목요일에는 JQuery를 통하거나 <code>멀티 파일</code>이 아닌 단일 파일로는 자료가 많다는 것을 확인할 수 있었다. 어떻게 돌아가는지 파악하기 위해서 다른 사람들의 소스를 확인하였다.</p>
+<p>금요일에는 해당 소스들을 Javascript로 변환하고 멀티 파일로 바꾸는 작업을 하였다.</p>
+<p>금요일에는 오랜만의 휴식을 즐기기 위해 많은 작업을 하진 못하였지만, <code>쉬면서도 이렇게 하면 되지 않을까?</code>라는 생각을 해보았다.</p>
+<p>토요일에는 생각했던 부분들을 적용해보았지만, 작동 되지 않았다. <code>onclick</code>, <code>addEventListener</code>가 어떠한 상황속에서도 만들면 되는지 알았는데, FileReader 내부에서 안된다는 오류를 맞이하였다. 되게 신기한건 innerText일 때는 되었던게 innerHTML에서는 되지 않았다.</p>
+<p>이에 대한 문제는 Front-end를 더 접하게 되는 날에 더 연구해봐야겠다. 지금은 만들고자 하는 목표를 빠르게 만드는 것이 중요할 때! 이미지들을 pdf로 변환해서 다운로드를 제공해주는 사이트를 만들려고 했는데… 이미 있긴 한거였지만… 내가 원했던 사이트와 너무 비슷한게 있었다. 이 사이트가 얼마나 많은 이미지들을 수용하고 몇 번의 횟수까지 제공해주는지는 정확힌 모르지만, 내 목표와 유사하게 제한이 없는 것 같았다.</p>
+<p><a href="https://imagetopdf.com/ko/" target="_blank" rel="noopener">https://imagetopdf.com/ko/</a></p>
+<p>위 사이트로서, 해당 사이트는 다국어 지원, 1시간 후 이미지 자료 삭제까지 된다.</p>
+<p>Back-end 개발자를 꿈꾸지만, Front를 해보면서 <code>개발은 어렵구나</code> 라는 슬픔과 더 발전해나가야하는 도전의식을 얻었다.</p>
+<p>아직 가야할길이 너무나도 멀다.</p>
+<h3 id="거인의-어깨-위에-서있는-개발자가-되자"><a href="#거인의-어깨-위에-서있는-개발자가-되자" class="headerlink" title="거인의 어깨 위에 서있는 개발자가 되자!"></a>거인의 어깨 위에 서있는 개발자가 되자!</h3>
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2019-06-29-Sat"><span class="toc-number">1.</span> <span class="toc-text">2019.06.29(Sat)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Programming"><span class="toc-number">1.0.1.</span> <span class="toc-text">Programming</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#거인의-어깨-위에-서있는-개발자가-되자"><span class="toc-number">1.0.2.</span> <span class="toc-text">거인의 어깨 위에 서있는 개발자가 되자!</span></a></li></ol></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://TaeJuneJoung.github.io/2019/06/30/20190629-md/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://TaeJuneJoung.github.io/2019/06/30/20190629-md/&text=20190629.md"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://TaeJuneJoung.github.io/2019/06/30/20190629-md/&title=20190629.md"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://TaeJuneJoung.github.io/2019/06/30/20190629-md/&is_video=false&description=20190629.md"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=20190629.md&body=Check out this article: http://TaeJuneJoung.github.io/2019/06/30/20190629-md/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://TaeJuneJoung.github.io/2019/06/30/20190629-md/&title=20190629.md"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://TaeJuneJoung.github.io/2019/06/30/20190629-md/&title=20190629.md"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://TaeJuneJoung.github.io/2019/06/30/20190629-md/&title=20190629.md"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://TaeJuneJoung.github.io/2019/06/30/20190629-md/&title=20190629.md"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://TaeJuneJoung.github.io/2019/06/30/20190629-md/&name=20190629.md&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://TaeJuneJoung.github.io/2019/06/30/20190629-md/&t=20190629.md"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+          
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4111865521431436",
+    enable_page_level_ads: true
+  });
+</script>
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2021
+    TaeJune Joung
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

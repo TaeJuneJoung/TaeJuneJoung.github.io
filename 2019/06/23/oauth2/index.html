@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    <meta name="description" content="Install &amp;amp; SettingsInstall django-allauth 1pip install django-allauth    settings.py  1234567891011121314151617181920212223242526272829303132333435363738394041424344# Specify the context processors">
+<meta name="keywords" content="Django,OAuth2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Django] OAuth2">
+<meta property="og:url" content="http://TaeJuneJoung.github.io/2019/06/23/oauth2/index.html">
+<meta property="og:site_name" content="Jun&#39;s Blog">
+<meta property="og:description" content="Install &amp;amp; SettingsInstall django-allauth 1pip install django-allauth    settings.py  1234567891011121314151617181920212223242526272829303132333435363738394041424344# Specify the context processors">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://taejunejoung.github.io/2019/06/23/oauth2/kakao_allauth_1.PNG">
+<meta property="og:image" content="http://taejunejoung.github.io/2019/06/23/oauth2/kakao_allauth_2.PNG">
+<meta property="og:image" content="http://taejunejoung.github.io/2019/06/23/oauth2/kakao_allauth_2_2.PNG">
+<meta property="og:image" content="http://taejunejoung.github.io/2019/06/23/oauth2/kakao_allauth_3.PNG">
+<meta property="og:image" content="http://taejunejoung.github.io/2019/06/23/oauth2/kakao_allauth_4.PNG">
+<meta property="og:image" content="http://taejunejoung.github.io/2019/06/23/oauth2/kakao_allauth_5.PNG">
+<meta property="og:image" content="http://taejunejoung.github.io/2019/06/23/oauth2/kakao_allauth_6.PNG">
+<meta property="og:image" content="http://taejunejoung.github.io/2019/06/23/oauth2/kakao_allauth_7.PNG">
+<meta property="og:image" content="http://taejunejoung.github.io/2019/06/23/oauth2/kakao_allauth_8.PNG">
+<meta property="og:image" content="http://taejunejoung.github.io/2019/06/23/oauth2/kakao_allauth_9.PNG">
+<meta property="og:updated_time" content="2021-03-30T14:22:37.369Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Django] OAuth2">
+<meta name="twitter:description" content="Install &amp;amp; SettingsInstall django-allauth 1pip install django-allauth    settings.py  1234567891011121314151617181920212223242526272829303132333435363738394041424344# Specify the context processors">
+<meta name="twitter:image" content="http://taejunejoung.github.io/2019/06/23/oauth2/kakao_allauth_1.PNG">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Django] OAuth2</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post " href="/2019/06/23/hexo/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Back to top " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://TaeJuneJoung.github.io/2019/06/23/oauth2/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://TaeJuneJoung.github.io/2019/06/23/oauth2/&text=Django] OAuth2"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://TaeJuneJoung.github.io/2019/06/23/oauth2/&title=Django] OAuth2"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://TaeJuneJoung.github.io/2019/06/23/oauth2/&is_video=false&description=Django] OAuth2"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Django] OAuth2&body=Check out this article: http://TaeJuneJoung.github.io/2019/06/23/oauth2/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://TaeJuneJoung.github.io/2019/06/23/oauth2/&title=Django] OAuth2"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://TaeJuneJoung.github.io/2019/06/23/oauth2/&title=Django] OAuth2"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://TaeJuneJoung.github.io/2019/06/23/oauth2/&title=Django] OAuth2"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://TaeJuneJoung.github.io/2019/06/23/oauth2/&title=Django] OAuth2"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://TaeJuneJoung.github.io/2019/06/23/oauth2/&name=Django] OAuth2&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://TaeJuneJoung.github.io/2019/06/23/oauth2/&t=Django] OAuth2"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Install-amp-Settings"><span class="toc-number">1.</span> <span class="toc-text">Install &amp; Settings</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Kakao"><span class="toc-number">2.</span> <span class="toc-text">Kakao</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Image-부가설명"><span class="toc-number">3.</span> <span class="toc-text">Image 부가설명</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SourceCode"><span class="toc-number">4.</span> <span class="toc-text">SourceCode</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#참고사이트"><span class="toc-number">4.1.</span> <span class="toc-text">참고사이트</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4111865521431436",
+    enable_page_level_ads: true
+  });
+</script>
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Django] OAuth2
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">TaeJune Joung</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-06-23T13:16:35.000Z" itemprop="datePublished">2019-06-23</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/Django/">Django</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/Django/">Django</a>, <a class="tag-link" href="/tags/OAuth2/">OAuth2</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="Install-amp-Settings"><a href="#Install-amp-Settings" class="headerlink" title="Install &amp; Settings"></a>Install &amp; Settings</h2><p><strong>Install django-allauth</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install django-allauth</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>settings.py</strong></p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Specify the context processors as follows:</span></span><br><span class="line">TEMPLATES = [</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">'BACKEND'</span>: <span class="string">'django.template.backends.django.DjangoTemplates'</span>,</span><br><span class="line">        <span class="string">'DIRS'</span>: [],</span><br><span class="line">        <span class="string">'APP_DIRS'</span>: <span class="literal">True</span>,</span><br><span class="line">        <span class="string">'OPTIONS'</span>: &#123;</span><br><span class="line">            <span class="string">'context_processors'</span>: [</span><br><span class="line">                <span class="comment"># Already defined Django-related contexts here</span></span><br><span class="line"></span><br><span class="line">                <span class="comment"># `allauth` needs this from django</span></span><br><span class="line">                <span class="string">'django.template.context_processors.request'</span>,</span><br><span class="line">            ],</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">AUTHENTICATION_BACKENDS = (</span><br><span class="line">    ...</span><br><span class="line">    <span class="comment"># Needed to login by username in Django admin, regardless of `allauth`</span></span><br><span class="line">    <span class="string">'django.contrib.auth.backends.ModelBackend'</span>,</span><br><span class="line"></span><br><span class="line">    <span class="comment"># `allauth` specific authentication methods, such as login by e-mail</span></span><br><span class="line">    <span class="string">'allauth.account.auth_backends.AuthenticationBackend'</span>,</span><br><span class="line">    ...</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">INSTALLED_APPS = (</span><br><span class="line">    ...</span><br><span class="line">    <span class="comment"># The following apps are required:</span></span><br><span class="line">    <span class="string">'django.contrib.auth'</span>,</span><br><span class="line">    <span class="string">'django.contrib.messages'</span>,</span><br><span class="line">    <span class="string">'django.contrib.sites'</span>,</span><br><span class="line"></span><br><span class="line">    <span class="string">'allauth'</span>,</span><br><span class="line">    <span class="string">'allauth.account'</span>,</span><br><span class="line">    <span class="string">'allauth.socialaccount'</span>,</span><br><span class="line">    <span class="comment"># ... include the providers you want to enable:</span></span><br><span class="line">    <span class="string">'allauth.socialaccount.providers.kakao'</span>,</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">SITE_ID = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">LOGIN_REDIRECT_URL = <span class="string">"accounts:main"</span></span><br></pre></td></tr></table></figure>
+
+<p> 필자는 django 2.2.1버전으로 진행하였고,</p>
+<p> <code>AUTHENTICATION_BACKENDS</code>부터 추가하면 되었다.</p>
+<p> <strong>urls.py</strong></p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</span><br><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path, include</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">'admin/'</span>, admin.site.urls),</span><br><span class="line">    path(<span class="string">'accounts/'</span>, include(<span class="string">'accounts.urls'</span>)),</span><br><span class="line">    <span class="comment">#allauth</span></span><br><span class="line">    path(<span class="string">'accounts/'</span>, include(<span class="string">'allauth.urls'</span>)),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+
+
+<p> <strong>accounts/views.py</strong></p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render, redirect</span><br><span class="line"><span class="keyword">from</span> django.contrib.auth.forms <span class="keyword">import</span> AuthenticationForm</span><br><span class="line"><span class="keyword">from</span> django.contrib.auth <span class="keyword">import</span> authenticate</span><br><span class="line"><span class="keyword">from</span> django.contrib.auth <span class="keyword">import</span> login <span class="keyword">as</span> auth_login, logout <span class="keyword">as</span> auth_logout</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create your views here.</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">(request)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> render(request, <span class="string">'accounts/main.html'</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">login</span><span class="params">(request)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">"POST"</span>:</span><br><span class="line">        auth_id = request.POST.get(<span class="string">'auth_id'</span>)</span><br><span class="line">        auth_pwd = request.POST.get(<span class="string">'auth_pwd'</span>)</span><br><span class="line">        user = authenticate(request, username=auth_id, password=auth_pwd)</span><br><span class="line">        <span class="keyword">if</span> user <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">            auth_login(request, user)</span><br><span class="line">            <span class="keyword">return</span> redirect(<span class="string">'accounts:main'</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        form = AuthenticationForm()</span><br><span class="line">    <span class="keyword">return</span> render(request, <span class="string">'accounts/login.html'</span>, &#123;<span class="string">'form'</span>:form&#125;)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">logout</span><span class="params">(request)</span>:</span></span><br><span class="line">    auth_logout(request)</span><br><span class="line">    <span class="keyword">return</span> redirect(<span class="string">'accounts:main'</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<p> <strong>main.html</strong></p>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&#123;% load socialaccount %&#125;</span><br><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"ie=edge"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>AllAuth<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"&#123;% url 'accounts:main' %&#125;"</span>&gt;</span>Home<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">        &#123;% if user.is_authenticated %&#125;</span><br><span class="line">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"&#123;% url 'accounts:logout' %&#125;"</span>&gt;</span>Logout<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">        &#123;% else %&#125;</span><br><span class="line">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"&#123;% url 'accounts:login' %&#125;"</span>&gt;</span>Login<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">        &#123;% endif %&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Main<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    &#123;% if user.is_authenticated %&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;&#123;request.user&#125;&#125;님, 로그인하셨습니다.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    &#123;% else %&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>학습 목적이기에 꾸며지지 않았습니다.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    &#123;% endif %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p> <strong>login.html</strong></p>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#123;% load socialaccount %&#125;</span><br><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"ie=edge"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Login<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">"POST"</span>&gt;</span></span><br><span class="line">        &#123;% csrf_token %&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"auth_id"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">name</span>=<span class="string">"auth_pwd"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"Login"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"&#123;% provider_login_url 'kakao' method='oauth2' %&#125;"</span>&gt;</span>Kakao_login<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Kakao"><a href="#Kakao" class="headerlink" title="Kakao"></a>Kakao</h2><p> Kakao Developers</p>
+<p> <a href="https://developers.kakao.com/apps" target="_blank" rel="noopener">https://developers.kakao.com/apps</a></p>
+<p> CallBack URL :</p>
+<p> <a href="http://localhost:8000/accounts/kakao/login/callback/" target="_blank" rel="noopener">http://localhost:8000/accounts/kakao/login/callback/</a></p>
+<h2 id="Image-부가설명"><a href="#Image-부가설명" class="headerlink" title="Image 부가설명"></a>Image 부가설명</h2><p>카카오 개발자 사이트에 들어가서 사용할 <code>내 애플리케이션</code>을 먼저 생성</p>
+<img src="/2019/06/23/oauth2/kakao_allauth_1.PNG" class="slug">
+
+<p>생성을 하고나면 위와 같이 키를 준다. 필자가 사용하고자 하는 키는 <code>REST API키</code>이다.</p>
+<img src="/2019/06/23/oauth2/kakao_allauth_2.PNG" class="slug">
+
+<p>사용자 관리를 들어가서 <code>사용자 관리 ON</code>을 해주고 받을 정보들을 설정해준다. 검수작업이 필요할 때도 있기에 이로 인해 사용가능 시간이 걸리는 것 같기도 하다…</p>
+<img src="/2019/06/23/oauth2/kakao_allauth_2_2.PNG" class="slug">
+
+<p>가장 중요한 곳이다. 일반으로 들어가서 애플리케이션을 사용하고자 하는 곳을 설정. 필자는 웹으로 사용하기에 웹을 설정하고 local에서 진행하였기에 local주소를 설정하였다.<br><code>Redirect Path</code>는 정해져있다고 보면 된다.</p>
+<img src="/2019/06/23/oauth2/kakao_allauth_3.PNG" class="slug">
+
+<p><code>고급설정</code>에서 Secret키를 가져온다. 위에 가져왔던 REST_API키와 Secret키로 아래 설정을 해주면 된다.</p>
+<img src="/2019/06/23/oauth2/kakao_allauth_4.PNG" class="slug">
+<br>
+<img src="/2019/06/23/oauth2/kakao_allauth_5.PNG" class="slug">
+
+<p>설정은 admin에 들어가서 해주면 되고, 아래는 설정이 끝난 다음 테스팅한 과정이다.</p>
+<img src="/2019/06/23/oauth2/kakao_allauth_6.PNG" class="slug">
+<br>
+<img src="/2019/06/23/oauth2/kakao_allauth_7.PNG" class="slug">
+
+<p>kakao_login을 누르면 아래와 같이 kakao 로그인 페이지가 나온다.</p>
+<img src="/2019/06/23/oauth2/kakao_allauth_8.PNG" class="slug">
+
+<p>접속을 하면 개발자가 redirect시킨 곳으로 들어가게 된다.</p>
+<img src="/2019/06/23/oauth2/kakao_allauth_9.PNG" class="slug">
+
+<p>이로 인하여 kakao_oauth2_REST KEY방식을 완성하였다.</p>
+<h2 id="SourceCode"><a href="#SourceCode" class="headerlink" title="SourceCode"></a>SourceCode</h2><p><a href="https://github.com/TaeJuneJoung/Python/tree/master/library/oauth_project" target="_blank" rel="noopener">https://github.com/TaeJuneJoung/Python/tree/master/library/oauth_project</a></p>
+<h3 id="참고사이트"><a href="#참고사이트" class="headerlink" title="참고사이트"></a>참고사이트</h3><p><a href="https://django-allauth.readthedocs.io/en/latest/" target="_blank" rel="noopener">https://django-allauth.readthedocs.io/en/latest/</a></p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Install-amp-Settings"><span class="toc-number">1.</span> <span class="toc-text">Install &amp; Settings</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Kakao"><span class="toc-number">2.</span> <span class="toc-text">Kakao</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Image-부가설명"><span class="toc-number">3.</span> <span class="toc-text">Image 부가설명</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SourceCode"><span class="toc-number">4.</span> <span class="toc-text">SourceCode</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#참고사이트"><span class="toc-number">4.1.</span> <span class="toc-text">참고사이트</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://TaeJuneJoung.github.io/2019/06/23/oauth2/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://TaeJuneJoung.github.io/2019/06/23/oauth2/&text=Django] OAuth2"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://TaeJuneJoung.github.io/2019/06/23/oauth2/&title=Django] OAuth2"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://TaeJuneJoung.github.io/2019/06/23/oauth2/&is_video=false&description=Django] OAuth2"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Django] OAuth2&body=Check out this article: http://TaeJuneJoung.github.io/2019/06/23/oauth2/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://TaeJuneJoung.github.io/2019/06/23/oauth2/&title=Django] OAuth2"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://TaeJuneJoung.github.io/2019/06/23/oauth2/&title=Django] OAuth2"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://TaeJuneJoung.github.io/2019/06/23/oauth2/&title=Django] OAuth2"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://TaeJuneJoung.github.io/2019/06/23/oauth2/&title=Django] OAuth2"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://TaeJuneJoung.github.io/2019/06/23/oauth2/&name=Django] OAuth2&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://TaeJuneJoung.github.io/2019/06/23/oauth2/&t=Django] OAuth2"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+          
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4111865521431436",
+    enable_page_level_ads: true
+  });
+</script>
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2021
+    TaeJune Joung
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

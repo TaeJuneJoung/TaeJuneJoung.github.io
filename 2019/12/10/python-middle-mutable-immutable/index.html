@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    <meta name="description" content="Mutable, 가변 객체 List, 리스트 Dictionary, 딕셔너리 Set, 집합  Immutable 불변 객체 String, 문자열  Number, 숫자형 Integer, Float, Complex  Bool, 논리형  Tuple, 튜플  FrozenSet, 불변집합 : 파이썬의 변경 불가인 집합 객체   List와 Tuple 비교Mutable과">
+<meta name="keywords" content="Python,Mutable,Immutable">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python] Mutable vs Immutable">
+<meta property="og:url" content="http://TaeJuneJoung.github.io/2019/12/10/python-middle-mutable-immutable/index.html">
+<meta property="og:site_name" content="Jun&#39;s Blog">
+<meta property="og:description" content="Mutable, 가변 객체 List, 리스트 Dictionary, 딕셔너리 Set, 집합  Immutable 불변 객체 String, 문자열  Number, 숫자형 Integer, Float, Complex  Bool, 논리형  Tuple, 튜플  FrozenSet, 불변집합 : 파이썬의 변경 불가인 집합 객체   List와 Tuple 비교Mutable과">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2021-03-30T14:22:37.401Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python] Mutable vs Immutable">
+<meta name="twitter:description" content="Mutable, 가변 객체 List, 리스트 Dictionary, 딕셔너리 Set, 집합  Immutable 불변 객체 String, 문자열  Number, 숫자형 Integer, Float, Complex  Bool, 논리형  Tuple, 튜플  FrozenSet, 불변집합 : 파이썬의 변경 불가인 집합 객체   List와 Tuple 비교Mutable과">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Python] Mutable vs Immutable</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post " href="/2019/12/10/python-middle-array-copy/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post " href="/2019/12/10/python-middle-gc/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://TaeJuneJoung.github.io/2019/12/10/python-middle-mutable-immutable/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://TaeJuneJoung.github.io/2019/12/10/python-middle-mutable-immutable/&text=Python] Mutable vs Immutable"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://TaeJuneJoung.github.io/2019/12/10/python-middle-mutable-immutable/&title=Python] Mutable vs Immutable"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://TaeJuneJoung.github.io/2019/12/10/python-middle-mutable-immutable/&is_video=false&description=Python] Mutable vs Immutable"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Python] Mutable vs Immutable&body=Check out this article: http://TaeJuneJoung.github.io/2019/12/10/python-middle-mutable-immutable/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://TaeJuneJoung.github.io/2019/12/10/python-middle-mutable-immutable/&title=Python] Mutable vs Immutable"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://TaeJuneJoung.github.io/2019/12/10/python-middle-mutable-immutable/&title=Python] Mutable vs Immutable"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://TaeJuneJoung.github.io/2019/12/10/python-middle-mutable-immutable/&title=Python] Mutable vs Immutable"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://TaeJuneJoung.github.io/2019/12/10/python-middle-mutable-immutable/&title=Python] Mutable vs Immutable"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://TaeJuneJoung.github.io/2019/12/10/python-middle-mutable-immutable/&name=Python] Mutable vs Immutable&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://TaeJuneJoung.github.io/2019/12/10/python-middle-mutable-immutable/&t=Python] Mutable vs Immutable"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Mutable-가변-객체"><span class="toc-number">1.</span> <span class="toc-text">Mutable, 가변 객체</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Immutable-불변-객체"><span class="toc-number">2.</span> <span class="toc-text">Immutable 불변 객체</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#List와-Tuple-비교"><span class="toc-number">3.</span> <span class="toc-text">List와 Tuple 비교</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#is와"><span class="toc-number">3.1.</span> <span class="toc-text">is와 ==</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4111865521431436",
+    enable_page_level_ads: true
+  });
+</script>
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Python] Mutable vs Immutable
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">TaeJune Joung</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-12-10T12:25:10.000Z" itemprop="datePublished">2019-12-10</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/Python/">Python</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/Immutable/">Immutable</a>, <a class="tag-link" href="/tags/Mutable/">Mutable</a>, <a class="tag-link" href="/tags/Python/">Python</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="Mutable-가변-객체"><a href="#Mutable-가변-객체" class="headerlink" title="Mutable, 가변 객체"></a>Mutable, 가변 객체</h2><ul>
+<li>List, 리스트</li>
+<li>Dictionary, 딕셔너리</li>
+<li>Set, 집합</li>
+</ul>
+<h2 id="Immutable-불변-객체"><a href="#Immutable-불변-객체" class="headerlink" title="Immutable 불변 객체"></a>Immutable 불변 객체</h2><ul>
+<li><p>String, 문자열</p>
+</li>
+<li><p>Number, 숫자형</p>
+<p>Integer, Float, Complex</p>
+</li>
+<li><p>Bool, 논리형</p>
+</li>
+<li><p>Tuple, 튜플</p>
+</li>
+<li><p>FrozenSet, 불변집합</p>
+<p>: 파이썬의 변경 불가인 집합 객체</p>
+</li>
+</ul>
+<h2 id="List와-Tuple-비교"><a href="#List와-Tuple-비교" class="headerlink" title="List와 Tuple 비교"></a>List와 Tuple 비교</h2><p>Mutable과 Immutable의 대표적인 List와 Tuple을 가지고 비교해보자.</p>
+<h3 id="is와"><a href="#is와" class="headerlink" title="is와 =="></a>is와 ==</h3><ul>
+<li><p>is: 주소값 비교</p>
+<p><code>id()</code>: 객체의 주소값 반환</p>
+</li>
+<li><p>==: 값 비교</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">r1 = (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line">r2 = (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">print(r1 <span class="keyword">is</span> r2) <span class="comment">#컴파일시에는 True로 나옴(Idel과 Jupyter에서는 False)</span></span><br><span class="line">print(r1 == r2)</span><br><span class="line"></span><br><span class="line">print(id(r1), id(r2))</span><br><span class="line"></span><br><span class="line">r1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">r2 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"></span><br><span class="line">print(r1 <span class="keyword">is</span> r2)</span><br><span class="line">print(r1 == r2)</span><br><span class="line"></span><br><span class="line">print(id(r1), id(r2))</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>결과값</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;False</span><br><span class="line">&gt;True</span><br><span class="line">&gt;1954010284680 1954010286768</span><br><span class="line">&gt;False</span><br><span class="line">&gt;True</span><br><span class="line">&gt;1954009597832 1954009597896</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>위의 내용으로 설명을 하고자 하였는데 어떤 Tool을 쓰느냐에 따라 값이 달라지는 부분이 있고,<br>다른 Type에 대해서는 어려운 부분이 있으니 다른 방도로 진행 </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(v1, v2)</span>:</span></span><br><span class="line">    v1 += v2</span><br><span class="line"></span><br><span class="line">v1 = (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line">v2 = (<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>)</span><br><span class="line"></span><br><span class="line">add(v1, v2)</span><br><span class="line">print(v1)</span><br><span class="line"></span><br><span class="line">v1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">v2 = [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"></span><br><span class="line">add(v1, v2)</span><br><span class="line">print(v1)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>결과값</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; (1, 2, 3)</span><br><span class="line">&gt; [1, 2, 3, 4, 5, 6]</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p> <code>튜플</code>일 경우는 값이 추가되지 않았다는 점을 확인할 수 있다.<br><code>리스트</code>인 경우는 값이 변하였다.<br><strong>왜 이러한 차이가 발생할까?</strong> </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(v1, v2)</span>:</span></span><br><span class="line">    v1 += v2</span><br><span class="line">    print(id(v1))</span><br><span class="line"></span><br><span class="line">v1 = (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line">print(id(v1))</span><br><span class="line">v2 = (<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>)</span><br><span class="line"></span><br><span class="line">add(v1, v2)</span><br><span class="line"></span><br><span class="line">v1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">print(id(v1))</span><br><span class="line">v2 = [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"></span><br><span class="line">add(v1, v2)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>결과값</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; 1954010286840</span><br><span class="line">&gt; 1954009922824</span><br><span class="line">&gt; 1954009597064</span><br><span class="line">&gt; 1954009597064</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>함수 안에서의 주소값을 찍어서 같은지 다른지를 확인하면 된다.<br><code>튜플</code>의 경우는 다르지만, <code>리스트</code>의 경우에는 같다.<br><code>튜플</code>에서는 새로운 객체가 생성되어 값을 할당받는다. 즉, Immutable객체는 새로운 객체로 선언된다 .</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">v1 = <span class="string">'Python'</span></span><br><span class="line">print(id(v1))</span><br><span class="line">v2 = <span class="string">'Test'</span></span><br><span class="line"></span><br><span class="line">add(v1, v2)</span><br><span class="line"></span><br><span class="line">v1 = <span class="number">3</span></span><br><span class="line">print(id(v1))</span><br><span class="line">v2 = <span class="number">5</span></span><br><span class="line"></span><br><span class="line">add(v1, v2)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>결과값</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; 1953967907592</span><br><span class="line">&gt; 1954010299824</span><br><span class="line">&gt; 140715235971968</span><br><span class="line">&gt; 140715235972128</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p> <code>str</code>타입과 <code>Number</code>타입도 Immutable하기에 같은 결과가 나옴을 확인할 수 있다.<br>여기서 잠시 참고하고 넘어갈 부분도 있다. Number는 Immutable하지만 </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">v1 = <span class="number">0</span></span><br><span class="line">print(id(v1))</span><br><span class="line">v2 = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">add(v1, v2)</span><br></pre></td></tr></table></figure>
+
+<p>의 결과는 어떻게 나올까?</p>
+<blockquote>
+<p>결과값</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; 140715235971872</span><br><span class="line">&gt; 140715235971872</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p> 같음을 볼 수 있다. ‘Immutable할 때는 주소값이 다르다고 했는데 왜 같지?’<br>모순이 발생함을 알 수 있는데, 이는 파이썬 정책 때문이다. </p>
+<p><a href="https://docs.python.org/3/c-api/long.html#c.PyLong_FromLong" target="_blank" rel="noopener">https://docs.python.org/3/c-api/long.html#c.PyLong_FromLong</a></p>
+<p>내용을 확인해보면 파이썬은 <strong>-5~256</strong>값은 저장해두고 사용함을 알 수 있다.</p>
+<p>Mutable과 Immutable의 개념은 중요하다.</p>
+<p>이후에 다룰 내용들과 다음에 나올 <strong>리스트(배열)의 얕은/깊은 복사에 기초가 되기 때문이다.</strong></p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Mutable-가변-객체"><span class="toc-number">1.</span> <span class="toc-text">Mutable, 가변 객체</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Immutable-불변-객체"><span class="toc-number">2.</span> <span class="toc-text">Immutable 불변 객체</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#List와-Tuple-비교"><span class="toc-number">3.</span> <span class="toc-text">List와 Tuple 비교</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#is와"><span class="toc-number">3.1.</span> <span class="toc-text">is와 ==</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://TaeJuneJoung.github.io/2019/12/10/python-middle-mutable-immutable/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://TaeJuneJoung.github.io/2019/12/10/python-middle-mutable-immutable/&text=Python] Mutable vs Immutable"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://TaeJuneJoung.github.io/2019/12/10/python-middle-mutable-immutable/&title=Python] Mutable vs Immutable"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://TaeJuneJoung.github.io/2019/12/10/python-middle-mutable-immutable/&is_video=false&description=Python] Mutable vs Immutable"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Python] Mutable vs Immutable&body=Check out this article: http://TaeJuneJoung.github.io/2019/12/10/python-middle-mutable-immutable/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://TaeJuneJoung.github.io/2019/12/10/python-middle-mutable-immutable/&title=Python] Mutable vs Immutable"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://TaeJuneJoung.github.io/2019/12/10/python-middle-mutable-immutable/&title=Python] Mutable vs Immutable"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://TaeJuneJoung.github.io/2019/12/10/python-middle-mutable-immutable/&title=Python] Mutable vs Immutable"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://TaeJuneJoung.github.io/2019/12/10/python-middle-mutable-immutable/&title=Python] Mutable vs Immutable"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://TaeJuneJoung.github.io/2019/12/10/python-middle-mutable-immutable/&name=Python] Mutable vs Immutable&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://TaeJuneJoung.github.io/2019/12/10/python-middle-mutable-immutable/&t=Python] Mutable vs Immutable"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+          
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4111865521431436",
+    enable_page_level_ads: true
+  });
+</script>
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2021
+    TaeJune Joung
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

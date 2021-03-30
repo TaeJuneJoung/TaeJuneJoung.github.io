@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    <meta name="description" content="목적​Flask REST API를 만드는 방법에 대해서 학습해보고자 한다. Install123pip install flaskpip install flask_restfulpip install flask-cors  Flask Settings​    먼저, Flask를 만들어보자. Flask Docs를 보고 따라하면 된다. 먼저 아래의 소스를 app.py를 생성">
+<meta name="keywords" content="Flask,REST API">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flask] Rest Api">
+<meta property="og:url" content="http://TaeJuneJoung.github.io/2019/09/23/flask-rest-api/index.html">
+<meta property="og:site_name" content="Jun&#39;s Blog">
+<meta property="og:description" content="목적​Flask REST API를 만드는 방법에 대해서 학습해보고자 한다. Install123pip install flaskpip install flask_restfulpip install flask-cors  Flask Settings​    먼저, Flask를 만들어보자. Flask Docs를 보고 따라하면 된다. 먼저 아래의 소스를 app.py를 생성">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2021-03-30T14:22:37.368Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Flask] Rest Api">
+<meta name="twitter:description" content="목적​Flask REST API를 만드는 방법에 대해서 학습해보고자 한다. Install123pip install flaskpip install flask_restfulpip install flask-cors  Flask Settings​    먼저, Flask를 만들어보자. Flask Docs를 보고 따라하면 된다. 먼저 아래의 소스를 app.py를 생성">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Flask] Rest Api</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post " href="/2019/10/29/nuxt-navigator/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post " href="/2019/08/25/hyper-v/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://TaeJuneJoung.github.io/2019/09/23/flask-rest-api/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://TaeJuneJoung.github.io/2019/09/23/flask-rest-api/&text=Flask] Rest Api"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://TaeJuneJoung.github.io/2019/09/23/flask-rest-api/&title=Flask] Rest Api"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://TaeJuneJoung.github.io/2019/09/23/flask-rest-api/&is_video=false&description=Flask] Rest Api"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Flask] Rest Api&body=Check out this article: http://TaeJuneJoung.github.io/2019/09/23/flask-rest-api/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://TaeJuneJoung.github.io/2019/09/23/flask-rest-api/&title=Flask] Rest Api"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://TaeJuneJoung.github.io/2019/09/23/flask-rest-api/&title=Flask] Rest Api"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://TaeJuneJoung.github.io/2019/09/23/flask-rest-api/&title=Flask] Rest Api"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://TaeJuneJoung.github.io/2019/09/23/flask-rest-api/&title=Flask] Rest Api"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://TaeJuneJoung.github.io/2019/09/23/flask-rest-api/&name=Flask] Rest Api&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://TaeJuneJoung.github.io/2019/09/23/flask-rest-api/&t=Flask] Rest Api"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#목적"><span class="toc-number">1.</span> <span class="toc-text">목적</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Install"><span class="toc-number">2.</span> <span class="toc-text">Install</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flask-Settings"><span class="toc-number">3.</span> <span class="toc-text">Flask Settings</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Connect-Database"><span class="toc-number">4.</span> <span class="toc-text">Connect Database</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BASIC-RESTFUL-API"><span class="toc-number">5.</span> <span class="toc-text">BASIC RESTFUL API</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CORS"><span class="toc-number">5.1.</span> <span class="toc-text">CORS</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#완성-RESTFUL-API"><span class="toc-number">6.</span> <span class="toc-text">완성 RESTFUL API</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#참고-자료"><span class="toc-number">6.1.</span> <span class="toc-text">참고 자료</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4111865521431436",
+    enable_page_level_ads: true
+  });
+</script>
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Flask] Rest Api
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">TaeJune Joung</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-09-23T12:06:57.000Z" itemprop="datePublished">2019-09-23</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/Flask/">Flask</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/Flask/">Flask</a>, <a class="tag-link" href="/tags/REST-API/">REST API</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="목적"><a href="#목적" class="headerlink" title="목적"></a>목적</h2><p>​Flask REST API를 만드는 방법에 대해서 학습해보고자 한다.</p>
+<h2 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pip install flask</span><br><span class="line">pip install flask_restful</span><br><span class="line">pip install flask-cors</span><br></pre></td></tr></table></figure>
+
+<h2 id="Flask-Settings"><a href="#Flask-Settings" class="headerlink" title="Flask Settings"></a>Flask Settings</h2><p>​    먼저, Flask를 만들어보자.</p>
+<p><a href="https://palletsprojects.com/p/flask/" target="_blank" rel="noopener">Flask Docs</a>를 보고 따라하면 된다. 먼저 아래의 소스를 <code>app.py</code>를 생성하여 넣어보자. 작성 후에 <code>python app.py</code>를 실행해보면 Flask 서버를 실행할 수 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, escape, request</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello</span><span class="params">()</span>:</span></span><br><span class="line">    name = request.args.get(<span class="string">"name"</span>, <span class="string">"World"</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">f'Hello, <span class="subst">&#123;escape(name)&#125;</span>!'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    app.run(debug=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Connect-Database"><a href="#Connect-Database" class="headerlink" title="Connect Database"></a>Connect Database</h2><p>​    값을 가져오기 위해서 Database와 연동하자. DB는 Flask와 연결되어 있는 sqlite3를 사용하도록 하겠다. 다른 DB를 사용하고 싶으면 갈아 끼우고 그에 맞는 설정만 하면 그만이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sqlite3</span><br><span class="line"></span><br><span class="line"><span class="comment"># database 폴더가 없다면 생성</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> os.path.isdir(<span class="string">'database'</span>):</span><br><span class="line">    os.mkdir(<span class="string">'database'</span>)</span><br><span class="line"></span><br><span class="line">conn = <span class="literal">None</span></span><br><span class="line">cur = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">conn</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">global</span> conn, cur</span><br><span class="line">    conn = sqlite3.connect(<span class="string">'database/database.db'</span>)</span><br><span class="line">    cur = conn.cursor()</span><br><span class="line">    </span><br><span class="line">    cur.execute(<span class="string">'''CREATE TABLE IF NOT EXISTS todos(</span></span><br><span class="line"><span class="string">        id INTEGER PRIMARY KEY AUTOINCREMENT,</span></span><br><span class="line"><span class="string">        work TEXT,</span></span><br><span class="line"><span class="string">        create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP</span></span><br><span class="line"><span class="string">        )'''</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">close</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">global</span> conn, cur</span><br><span class="line">    conn.commit()</span><br><span class="line">    cur.close()</span><br><span class="line">    conn.close()</span><br><span class="line">    cur = <span class="literal">None</span></span><br><span class="line">    conn = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_todos</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">global</span> conn, cur</span><br><span class="line">    conn()</span><br><span class="line">    cur.execute(<span class="string">'''</span></span><br><span class="line"><span class="string">        SEELCT * FROM todos;</span></span><br><span class="line"><span class="string">    '''</span>)</span><br><span class="line">    data = cur.fetchall()</span><br><span class="line">    close()</span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_todo</span><span class="params">(id)</span>:</span></span><br><span class="line">    <span class="keyword">global</span> conn, cur</span><br><span class="line">    conn()</span><br><span class="line">    cur.execute(<span class="string">f'''</span></span><br><span class="line"><span class="string">        SELECT * FROM todos</span></span><br><span class="line"><span class="string">        WHERE id = <span class="subst">&#123;id&#125;</span>;</span></span><br><span class="line"><span class="string">    '''</span>)</span><br><span class="line">    data = cur.fetchone()</span><br><span class="line">    close()</span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">post_todo</span><span class="params">(work)</span>:</span></span><br><span class="line">    <span class="keyword">global</span> conn, cur</span><br><span class="line">    conn()</span><br><span class="line">    cur.execute(<span class="string">f"""</span></span><br><span class="line"><span class="string">        INSERT INTO todos (work)</span></span><br><span class="line"><span class="string">        VALUES ('<span class="subst">&#123;work&#125;</span>');</span></span><br><span class="line"><span class="string">    """</span>)</span><br><span class="line">    close()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">put_todo</span><span class="params">(id, work)</span>:</span></span><br><span class="line">    <span class="keyword">global</span> conn, cur</span><br><span class="line">    conn()</span><br><span class="line">    cur.execute(<span class="string">f"""</span></span><br><span class="line"><span class="string">        UPDATE todos</span></span><br><span class="line"><span class="string">        SET work = '<span class="subst">&#123;work&#125;</span>'</span></span><br><span class="line"><span class="string">        WHERE id = <span class="subst">&#123;id&#125;</span>;</span></span><br><span class="line"><span class="string">    """</span>)</span><br><span class="line">    close()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">delete_todo</span><span class="params">(id)</span>:</span></span><br><span class="line">    <span class="keyword">global</span> conn, cur</span><br><span class="line">    conn()</span><br><span class="line">    cur.execute(<span class="string">f'''</span></span><br><span class="line"><span class="string">        DELETE FROM todos</span></span><br><span class="line"><span class="string">        WHERE id = <span class="subst">&#123;id&#125;</span>;</span></span><br><span class="line"><span class="string">    '''</span>)</span><br><span class="line">    close()</span><br></pre></td></tr></table></figure>
+
+<p>​    ORM형식으로 짠 것이 아니라 그런지, 발생한 이슈는 <code>Text</code>타입일 때 Insert나 Update SQL Query에서 <code>&#39;</code>싱글 쿼터나 더블 쿼터로 감싸주지 않아서 타입 오류가 발생하였다. 이에 대한 대응책도 하나 마련해야한다. 싱글 쿼터로 감싸주었는데 값에 싱글 쿼터가 있다면 SQL Injection이 발생하고 말 것이다. 여기에는 작성하지 않았지만, 이를 해결하기 위해서 python의 <code>replace문</code>을 사용할 수 있다.</p>
+<h2 id="BASIC-RESTFUL-API"><a href="#BASIC-RESTFUL-API" class="headerlink" title="BASIC RESTFUL API"></a>BASIC RESTFUL API</h2><p>​    에러처리 없는 기본적인 REST API는 아래와 같다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, escape, request</span><br><span class="line"><span class="keyword">from</span> flask_restful <span class="keyword">import</span> reqparse, abort, Api, Resource</span><br><span class="line"><span class="keyword">import</span> database</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line">api = Api(app)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Todos</span><span class="params">(Resource)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> database.get_todos()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">post</span><span class="params">(self)</span>:</span></span><br><span class="line">        parser = reqparse.RequestParser()</span><br><span class="line">        parser.add_argument(<span class="string">'work'</span>, type=str, required=<span class="literal">True</span>)</span><br><span class="line">        args = parser.parse_args()</span><br><span class="line">        database.post_todo(args)</span><br><span class="line">        <span class="keyword">return</span> args</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Todo</span><span class="params">(Resource)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self, id)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> database.get_todo(id)</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">put</span><span class="params">(self, id)</span>:</span></span><br><span class="line">        parser = reqparse.RequestParser()</span><br><span class="line">        parser.add_argument(<span class="string">'work'</span>, type=str, required=<span class="literal">True</span>)</span><br><span class="line">        args = parser.parse_args()</span><br><span class="line">        database.put_todo(id, args[<span class="string">'work'</span>])</span><br><span class="line">        <span class="keyword">return</span> args</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">delete</span><span class="params">(self, id)</span>:</span></span><br><span class="line">        database.delete_todo(id)</span><br><span class="line"></span><br><span class="line">api.add_resource(Todos, <span class="string">'/todos'</span>)</span><br><span class="line">api.add_resource(Todo, <span class="string">'/todo/&lt;int:id&gt;'</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello</span><span class="params">()</span>:</span></span><br><span class="line">    name = request.args.get(<span class="string">"name"</span>, <span class="string">"World"</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">f'Hello, <span class="subst">&#123;escape(name)&#125;</span>!'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    app.run(debug=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<p>​    테스트 해보던 중에 한가지 문제가 발생하였다. get으로 가져온 다음에 F5를 누르면 해당 값이 <code>None</code>이 되면서 <strong>TypeError</strong>을 발생하는 것이었다. 데이터베이스 구조에서 <strong>close</strong>를 해주기에 생기는 문제였는데,  이는 sqlite3에서 발생하였다.  sqlite3는 동시성이 필요한 작업에서는 사용하지 않는 것이 좋다.</p>
+<p>​    DB를 고려하지 않는다고 하였을 때도 새로운 문제가 발생한다. 다른 주소에서 접근을 할 수가 없는 문제있다. 이를 해결하기 위해서 CORS를 설정해주어야한다.</p>
+<h3 id="CORS"><a href="#CORS" class="headerlink" title="CORS"></a>CORS</h3><p><strong>Cross-Origin Resource Sharing</strong></p>
+<p>: 시스템 수준에서 타 도메인 간 자원 호출을 승인하거나 차단하는 것을 결정하는 것</p>
+<h2 id="완성-RESTFUL-API"><a href="#완성-RESTFUL-API" class="headerlink" title="완성 RESTFUL API"></a>완성 RESTFUL API</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, escape, request</span><br><span class="line"><span class="keyword">from</span> flask_restful <span class="keyword">import</span> reqparse, abort, Api, Resource</span><br><span class="line"><span class="keyword">from</span> flask_cors <span class="keyword">import</span> CORS</span><br><span class="line"><span class="keyword">import</span> database</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line">CORS(app)</span><br><span class="line">api = Api(app)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Todos</span><span class="params">(Resource)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> database.get_todos()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">post</span><span class="params">(self)</span>:</span></span><br><span class="line">        parser = reqparse.RequestParser()</span><br><span class="line">        parser.add_argument(<span class="string">'work'</span>, type=str, required=<span class="literal">True</span>)</span><br><span class="line">        args = parser.parse_args()</span><br><span class="line">        database.post_todo(args)</span><br><span class="line">        <span class="keyword">return</span> args</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Todo</span><span class="params">(Resource)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self, id)</span>:</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            data = database.get_todo(id)</span><br><span class="line">        <span class="keyword">except</span> TypeError:</span><br><span class="line">            data = abort(<span class="number">404</span>, message=<span class="string">f"Todo id:<span class="subst">&#123;id&#125;</span> doesn't exist"</span>)</span><br><span class="line">        <span class="keyword">return</span> data</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">put</span><span class="params">(self, id)</span>:</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            database.get_todo(id)</span><br><span class="line">            parser = reqparse.RequestParser()</span><br><span class="line">            parser.add_argument(<span class="string">'work'</span>, type=str, required=<span class="literal">True</span>)</span><br><span class="line">            args = parser.parse_args()</span><br><span class="line">            database.put_todo(id, args[<span class="string">'work'</span>])</span><br><span class="line">        <span class="keyword">except</span> TypeError:</span><br><span class="line">            args = abort(<span class="number">404</span>, message=<span class="string">f"Todo id:<span class="subst">&#123;id&#125;</span> doesn't exist"</span>)</span><br><span class="line">        <span class="keyword">return</span> args</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">delete</span><span class="params">(self, id)</span>:</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            database.get_todo(id)</span><br><span class="line">            database.delete_todo(id)</span><br><span class="line">            data = &#123;<span class="string">"message"</span>: <span class="string">"Delete"</span>&#125;</span><br><span class="line">        <span class="keyword">except</span> TypeError:</span><br><span class="line">            data = abort(<span class="number">404</span>, message=<span class="string">f"Todo id:<span class="subst">&#123;id&#125;</span> doesn't exist"</span>)</span><br><span class="line">        <span class="keyword">return</span> data</span><br><span class="line"></span><br><span class="line">api.add_resource(Todos, <span class="string">'/todos'</span>)</span><br><span class="line">api.add_resource(Todo, <span class="string">'/todo/&lt;int:id&gt;'</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello</span><span class="params">()</span>:</span></span><br><span class="line">    name = request.args.get(<span class="string">"name"</span>, <span class="string">"World"</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">f'Hello, <span class="subst">&#123;escape(name)&#125;</span>!'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    app.run(debug=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="참고-자료"><a href="#참고-자료" class="headerlink" title="참고 자료"></a>참고 자료</h3><p><a href="http://egloos.zum.com/sweeper/v/3052951" target="_blank" rel="noopener">SQLite 장단점</a></p>
+<p><a href="https://flask-restful.readthedocs.io/en/0.3.5/quickstart.html" target="_blank" rel="noopener">Flask-Restful Docs</a></p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#목적"><span class="toc-number">1.</span> <span class="toc-text">목적</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Install"><span class="toc-number">2.</span> <span class="toc-text">Install</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flask-Settings"><span class="toc-number">3.</span> <span class="toc-text">Flask Settings</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Connect-Database"><span class="toc-number">4.</span> <span class="toc-text">Connect Database</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BASIC-RESTFUL-API"><span class="toc-number">5.</span> <span class="toc-text">BASIC RESTFUL API</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CORS"><span class="toc-number">5.1.</span> <span class="toc-text">CORS</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#완성-RESTFUL-API"><span class="toc-number">6.</span> <span class="toc-text">완성 RESTFUL API</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#참고-자료"><span class="toc-number">6.1.</span> <span class="toc-text">참고 자료</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://TaeJuneJoung.github.io/2019/09/23/flask-rest-api/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://TaeJuneJoung.github.io/2019/09/23/flask-rest-api/&text=Flask] Rest Api"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://TaeJuneJoung.github.io/2019/09/23/flask-rest-api/&title=Flask] Rest Api"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://TaeJuneJoung.github.io/2019/09/23/flask-rest-api/&is_video=false&description=Flask] Rest Api"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Flask] Rest Api&body=Check out this article: http://TaeJuneJoung.github.io/2019/09/23/flask-rest-api/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://TaeJuneJoung.github.io/2019/09/23/flask-rest-api/&title=Flask] Rest Api"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://TaeJuneJoung.github.io/2019/09/23/flask-rest-api/&title=Flask] Rest Api"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://TaeJuneJoung.github.io/2019/09/23/flask-rest-api/&title=Flask] Rest Api"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://TaeJuneJoung.github.io/2019/09/23/flask-rest-api/&title=Flask] Rest Api"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://TaeJuneJoung.github.io/2019/09/23/flask-rest-api/&name=Flask] Rest Api&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://TaeJuneJoung.github.io/2019/09/23/flask-rest-api/&t=Flask] Rest Api"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+          
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4111865521431436",
+    enable_page_level_ads: true
+  });
+</script>
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2021
+    TaeJune Joung
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
