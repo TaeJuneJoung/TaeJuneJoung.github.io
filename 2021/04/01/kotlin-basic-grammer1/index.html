@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    <meta name="description" content="Kotlin해당 내용은 테크과학! DiMo Youtube 내용을 보고 정리하였습니다. 학습에 사용한 Web Tool: play.kotlinlang.org 123fun main() &amp;#123;    println(&quot;Hello, world!!!&quot;)&amp;#125;  클래스 이름: 파스칼 표기법  파스칼 표기법 모든 단어를 대문자로 시작 ClassName  함수나 변">
+<meta name="keywords" content="Kotlin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kotlin] 기본 문법(1)">
+<meta property="og:url" content="http://TaeJuneJoung.github.io/2021/04/01/kotlin-basic-grammer1/index.html">
+<meta property="og:site_name" content="Jun&#39;s Blog">
+<meta property="og:description" content="Kotlin해당 내용은 테크과학! DiMo Youtube 내용을 보고 정리하였습니다. 학습에 사용한 Web Tool: play.kotlinlang.org 123fun main() &amp;#123;    println(&quot;Hello, world!!!&quot;)&amp;#125;  클래스 이름: 파스칼 표기법  파스칼 표기법 모든 단어를 대문자로 시작 ClassName  함수나 변">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2021-04-01T11:29:00.356Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kotlin] 기본 문법(1)">
+<meta name="twitter:description" content="Kotlin해당 내용은 테크과학! DiMo Youtube 내용을 보고 정리하였습니다. 학습에 사용한 Web Tool: play.kotlinlang.org 123fun main() &amp;#123;    println(&quot;Hello, world!!!&quot;)&amp;#125;  클래스 이름: 파스칼 표기법  파스칼 표기법 모든 단어를 대문자로 시작 ClassName  함수나 변">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Kotlin] 기본 문법(1)</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post " href="/2020/01/27/aws-lambda-selenium/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://TaeJuneJoung.github.io/2021/04/01/kotlin-basic-grammer1/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://TaeJuneJoung.github.io/2021/04/01/kotlin-basic-grammer1/&text=Kotlin] 기본 문법(1)"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://TaeJuneJoung.github.io/2021/04/01/kotlin-basic-grammer1/&title=Kotlin] 기본 문법(1)"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://TaeJuneJoung.github.io/2021/04/01/kotlin-basic-grammer1/&is_video=false&description=Kotlin] 기본 문법(1)"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Kotlin] 기본 문법(1)&body=Check out this article: http://TaeJuneJoung.github.io/2021/04/01/kotlin-basic-grammer1/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://TaeJuneJoung.github.io/2021/04/01/kotlin-basic-grammer1/&title=Kotlin] 기본 문법(1)"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://TaeJuneJoung.github.io/2021/04/01/kotlin-basic-grammer1/&title=Kotlin] 기본 문법(1)"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://TaeJuneJoung.github.io/2021/04/01/kotlin-basic-grammer1/&title=Kotlin] 기본 문법(1)"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://TaeJuneJoung.github.io/2021/04/01/kotlin-basic-grammer1/&title=Kotlin] 기본 문법(1)"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://TaeJuneJoung.github.io/2021/04/01/kotlin-basic-grammer1/&name=Kotlin] 기본 문법(1)&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://TaeJuneJoung.github.io/2021/04/01/kotlin-basic-grammer1/&t=Kotlin] 기본 문법(1)"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Kotlin"><span class="toc-number">1.</span> <span class="toc-text">Kotlin</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#변수-선언법"><span class="toc-number">1.1.</span> <span class="toc-text">변수 선언법</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#var"><span class="toc-number">1.1.1.</span> <span class="toc-text">var</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#val"><span class="toc-number">1.1.2.</span> <span class="toc-text">val</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Primitive-Type"><span class="toc-number">1.2.</span> <span class="toc-text">Primitive Type</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#숫자형-타입"><span class="toc-number">1.2.1.</span> <span class="toc-text">숫자형 타입</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#정수형"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">정수형</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#실수형"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">실수형</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#문자형"><span class="toc-number">1.2.2.</span> <span class="toc-text">문자형</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Boolean"><span class="toc-number">1.2.3.</span> <span class="toc-text">Boolean</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#문자열"><span class="toc-number">1.2.4.</span> <span class="toc-text">문자열</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#형변환과-배열"><span class="toc-number">1.3.</span> <span class="toc-text">형변환과 배열</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Type-Casting"><span class="toc-number">1.3.1.</span> <span class="toc-text">Type Casting</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#형변환-함수"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">형변환 함수</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#명시적-형변환-Explicit-type-casting"><span class="toc-number">1.3.1.2.</span> <span class="toc-text">명시적 형변환(Explicit type casting)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Array"><span class="toc-number">1.3.2.</span> <span class="toc-text">Array</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#타입-추론과-함수"><span class="toc-number">1.4.</span> <span class="toc-text">타입 추론과 함수</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#타입-추론"><span class="toc-number">1.4.1.</span> <span class="toc-text">타입 추론</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#함수"><span class="toc-number">1.4.2.</span> <span class="toc-text">함수</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#단일-표현식-함수-Single-Expression-Function"><span class="toc-number">1.4.2.1.</span> <span class="toc-text">단일 표현식 함수(Single-Expression Function)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#조건문"><span class="toc-number">1.5.</span> <span class="toc-text">조건문</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#when"><span class="toc-number">1.5.1.</span> <span class="toc-text">when</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#반복문"><span class="toc-number">1.6.</span> <span class="toc-text">반복문</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#흐름제어"><span class="toc-number">1.7.</span> <span class="toc-text">흐름제어</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Class"><span class="toc-number">1.8.</span> <span class="toc-text">Class</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#생성자-Constructor"><span class="toc-number">1.8.1.</span> <span class="toc-text">생성자(Constructor)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#상속-Inheritance"><span class="toc-number">1.9.</span> <span class="toc-text">상속(Inheritance)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#오버라이딩과-추상화"><span class="toc-number">1.10.</span> <span class="toc-text">오버라이딩과 추상화</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Overriding"><span class="toc-number">1.10.1.</span> <span class="toc-text">Overriding</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Abstraction"><span class="toc-number">1.10.2.</span> <span class="toc-text">Abstraction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Interface"><span class="toc-number">1.10.3.</span> <span class="toc-text">Interface</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#접근제한자"><span class="toc-number">1.11.</span> <span class="toc-text">접근제한자</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Access-Modifier"><span class="toc-number">1.11.1.</span> <span class="toc-text">Access Modifier</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#고차함수와-람다함수"><span class="toc-number">1.12.</span> <span class="toc-text">고차함수와 람다함수</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#고차함수"><span class="toc-number">1.12.1.</span> <span class="toc-text">고차함수</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Lambda-Function"><span class="toc-number">1.12.2.</span> <span class="toc-text">Lambda Function</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Scope-Function"><span class="toc-number">1.12.3.</span> <span class="toc-text">Scope Function</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4111865521431436",
+    enable_page_level_ads: true
+  });
+</script>
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Kotlin] 기본 문법(1)
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">TaeJune Joung</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2021-04-01T11:19:27.000Z" itemprop="datePublished">2021-04-01</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/Kotlin/">Kotlin</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/Kotlin/">Kotlin</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="Kotlin"><a href="#Kotlin" class="headerlink" title="Kotlin"></a>Kotlin</h1><p><a href="https://www.youtube.com/channel/UCVqKQvma-Cr-eQ4hgxETAFQ" target="_blank" rel="noopener">해당 내용은 테크과학! DiMo Youtube 내용을 보고 정리하였습니다.</a></p>
+<p>학습에 사용한 Web Tool: <a href="https://play.kotlinlang.org" target="_blank" rel="noopener">play.kotlinlang.org</a></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    println(<span class="string">"Hello, world!!!"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>클래스 이름: 파스칼 표기법</strong></p>
+<blockquote>
+<p><strong>파스칼 표기법</strong></p>
+<p>모든 단어를 대문자로 시작</p>
+<p>ClassName</p>
+</blockquote>
+<p><strong>함수나 변수 이름: 카멜 표기법</strong></p>
+<blockquote>
+<p><strong>CamelCase</strong></p>
+<p>첫 단어만 소문자로 시작</p>
+<p>functionName</p>
+</blockquote>
+<h2 id="변수-선언법"><a href="#변수-선언법" class="headerlink" title="변수 선언법"></a>변수 선언법</h2><h3 id="var"><a href="#var" class="headerlink" title="var"></a>var</h3><p>일반적으로 통용되는 변수</p>
+<p>언제든지 읽기 쓰기가 가능함</p>
+<h3 id="val"><a href="#val" class="headerlink" title="val"></a>val</h3><p>선언시에만 초기화 가능</p>
+<p>중간에 값을 변경할 수 없음</p>
+<p>(const나 final과 같은 변수 -&gt; 상수)</p>
+<p><strong>클래스에 선언된 변수: Property(속성)</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> a: <span class="built_in">Int</span></span><br><span class="line">    println(a)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>위의 코드를 실행하면 에러가 발생하게 된다.</p>
+<p>코틀린은 기존의 언어와는 다르게 값이 할당되지 않으면 Error를 표시하게 된다</p>
+<p><code>Variable &#39;a&#39; must be initialized</code></p>
+<p>코틀린은 기본 변수로 Null값을 허용하지 않아서 원천적으로 의도치 않은 동작이나 null point exception을 막아준다.</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> a: <span class="built_in">Int</span> = <span class="number">20210325</span></span><br><span class="line">    println(a) <span class="comment">// 출력값: 20210325</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>프로그래밍을 하면서 Null이 필요할 때가 있는데 이러할 때는 아래와 같이 하면 된다</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> a: <span class="built_in">Int</span>? = <span class="literal">null</span></span><br><span class="line">    println(a)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>자료형 뒤 물음표를 붙이면 nullable 변수로 선언</strong>해 줄 수 있다.</p>
+<p>:warning:nullable 변수는 null인 상태로 연산할 시 null point exception이 발생할 수 있으므로 주의해서 사용 필요</p>
+<p>변수의 초기화를 늦추는 <code>lateinit</code>이나 <code>lazy</code>속성은 클래스에 대한 지식 필요</p>
+<h2 id="Primitive-Type"><a href="#Primitive-Type" class="headerlink" title="Primitive Type"></a>Primitive Type</h2><p>기본 자료형은 Java와의 호환을 위해 거의 동일</p>
+<h3 id="숫자형-타입"><a href="#숫자형-타입" class="headerlink" title="숫자형 타입"></a>숫자형 타입</h3><h4 id="정수형"><a href="#정수형" class="headerlink" title="정수형"></a>정수형</h4><p>참고, Kotlin은 8진수의 표기는 지원하지 않음</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> intValue:<span class="built_in">Int</span> = <span class="number">1234</span></span><br><span class="line">    <span class="keyword">var</span> longValue:<span class="built_in">Long</span> = <span class="number">1234L</span></span><br><span class="line">    <span class="keyword">var</span> hexValue:<span class="built_in">Int</span> = <span class="number">0x4d2</span></span><br><span class="line">    <span class="keyword">var</span> binValue:<span class="built_in">Int</span> = <span class="number">0b10011010010</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="실수형"><a href="#실수형" class="headerlink" title="실수형"></a>실수형</h4><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> doubleValue:<span class="built_in">Double</span> = <span class="number">123.5</span></span><br><span class="line">    <span class="keyword">var</span> doubleValueWithExp:<span class="built_in">Double</span> = <span class="number">123.5e10</span> <span class="comment">// 지수 표현</span></span><br><span class="line">    <span class="keyword">var</span> floatValue:<span class="built_in">Float</span> = <span class="number">123.5f</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="문자형"><a href="#문자형" class="headerlink" title="문자형"></a>문자형</h3><p>코틀린 문자열은 <strong>UTF-16 BE</strong> 규칙을 따르고 있으며 <strong>글자 하나가 2bytes의 메모리 공간 사용</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">// UTF-16 BE: 코틀린 문자열 관리 규칙</span></span><br><span class="line">    <span class="comment">// 글자 하나가 2bytes의 메모리 공간 사용</span></span><br><span class="line">    <span class="keyword">var</span> charValue:<span class="built_in">Char</span> = <span class="string">'k'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Boolean"><a href="#Boolean" class="headerlink" title="Boolean"></a>Boolean</h3><p>true(참) / false(거짓)</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> booleanValue:<span class="built_in">Boolean</span> = <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="문자열"><a href="#문자열" class="headerlink" title="문자열"></a>문자열</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> stringValue:String = <span class="string">"Kotlin"</span></span><br><span class="line">    println(stringValue)</span><br><span class="line">    stringValue = <span class="string">"Hello"</span></span><br><span class="line">    print(stringValue)</span><br><span class="line">    </span><br><span class="line">    stringValue = <span class="string">"""Multiline</span></span><br><span class="line"><span class="string">    Kotlin</span></span><br><span class="line"><span class="string">    Hello"""</span></span><br><span class="line">    println(stringValue)</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">     * Multiline</span></span><br><span class="line"><span class="comment">     * 		Kotlin</span></span><br><span class="line"><span class="comment">     * 		Hello</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="형변환과-배열"><a href="#형변환과-배열" class="headerlink" title="형변환과 배열"></a>형변환과 배열</h2><h3 id="Type-Casting"><a href="#Type-Casting" class="headerlink" title="Type Casting"></a>Type Casting</h3><p>형변환은 하나의 변수에 지정된 자료형을 호환되는 다른 자료형으로 변환하는 기능</p>
+<h4 id="형변환-함수"><a href="#형변환-함수" class="headerlink" title="형변환 함수"></a>형변환 함수</h4><ul>
+<li>toByte()</li>
+<li>toShort()</li>
+<li>toInt()</li>
+<li>toLong()</li>
+<li>toFloat()</li>
+<li>toDouble()</li>
+<li>toChar()</li>
+<li>toString()</li>
+</ul>
+<h4 id="명시적-형변환-Explicit-type-casting"><a href="#명시적-형변환-Explicit-type-casting" class="headerlink" title="명시적 형변환(Explicit type casting)"></a>명시적 형변환(Explicit type casting)</h4><p>변환될 자료형을 개발자가 직접 지정함</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> intValue = <span class="number">1234</span></span><br><span class="line">    <span class="keyword">var</span> longValue = intValue.toLong()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>:man_teacher:코틀린은 형변환시 발생할 수 있는 오류를 막기 위해 암시적 형변환은 지원하지 않음</strong></p>
+<h3 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h3><p><code>Array&lt;T&gt;</code></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> intArr = arrayOf(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>)</span><br><span class="line">    <span class="keyword">var</span> nullArr = arrayOfNulls&lt;<span class="built_in">Int</span>&gt;(<span class="number">5</span>) <span class="comment">// 비어있는 배열 만들기</span></span><br><span class="line">    </span><br><span class="line">    println(intArr[<span class="number">1</span>]) <span class="comment">// 2</span></span><br><span class="line">    intArr[<span class="number">1</span>] = <span class="number">7</span></span><br><span class="line">    println(intArr[<span class="number">1</span>]) <span class="comment">// 7</span></span><br><span class="line">    </span><br><span class="line">    nullArr[<span class="number">0</span>] = <span class="number">5</span></span><br><span class="line">    println(nullArr[<span class="number">0</span>]) <span class="comment">// 5</span></span><br><span class="line">    println(nullArr[<span class="number">1</span>]) <span class="comment">// null</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="타입-추론과-함수"><a href="#타입-추론과-함수" class="headerlink" title="타입 추론과 함수"></a>타입 추론과 함수</h2><h3 id="타입-추론"><a href="#타입-추론" class="headerlink" title="타입 추론"></a>타입 추론</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">5</span></span><br><span class="line">    println(a.javaClass.kotlin.simpleName) <span class="comment">// 타입확인: Int</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>var a:Int = 5</code>라고 사용하지 않아도 Kotlin이 타입을 추론하여 Int형태로 선언해주는 것을 알 수 있다.</p>
+<h3 id="함수"><a href="#함수" class="headerlink" title="함수"></a>함수</h3><p>function의 <code>fun</code>을 이용하여 선언</p>
+<p>:runner:연습. 3가지 숫자를 받아서 합해주는 함수를 만들어보기</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">plusCalc</span><span class="params">(a:<span class="type">Int</span>, b:<span class="type">Int</span>, c:<span class="type">Int</span>)</span></span>:<span class="built_in">Int</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> a + b + c</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> result:<span class="built_in">Int</span> = plusCalc(<span class="number">5</span>, <span class="number">3</span>, <span class="number">2</span>)</span><br><span class="line">    println(result) <span class="comment">// 10</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="단일-표현식-함수-Single-Expression-Function"><a href="#단일-표현식-함수-Single-Expression-Function" class="headerlink" title="단일 표현식 함수(Single-Expression Function)"></a>단일 표현식 함수(Single-Expression Function)</h4><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">plusCalc</span><span class="params">(a:<span class="type">Int</span>, b:<span class="type">Int</span>, c:<span class="type">Int</span>)</span></span> = a + b + c</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> result:<span class="built_in">Int</span> = plusCalc(<span class="number">5</span>, <span class="number">3</span>, <span class="number">2</span>)</span><br><span class="line">    println(result)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>단일 표현식 함수에서는 반환형의 타입을 생략할 수 있다. </p>
+<p><strong>함수형 프로그래밍 언어</strong>를 이해하기 위해서 <strong>함수는 자료형이 결정된 변수라는 개념으로 접근</strong>하는 것이 좋다.</p>
+<h2 id="조건문"><a href="#조건문" class="headerlink" title="조건문"></a>조건문</h2><h3 id="when"><a href="#when" class="headerlink" title="when"></a>when</h3><p>다른 언어의 switch문을 when으로 변경하여 사용함</p>
+<p>다른 언어의 break문 사용없이 위에 조건에 맞게 되면 아래의 조건은 실행하지 않음</p>
+<p>:warning:<strong>등호나 부등호의 사용은 불가능</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 조건에 따른 출력 */</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    doWhen(<span class="number">3</span>.toLong())</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">doWhen</span><span class="params">(a: <span class="type">Any</span>)</span></span> &#123; <span class="comment">// Any: 어떤 자료형이든 상관없이 호환되는 코틀린 최상위 자료형</span></span><br><span class="line">    <span class="keyword">when</span>(a) &#123;</span><br><span class="line">        <span class="number">1</span> -&gt; println(<span class="string">"숫자 1입니다"</span>)</span><br><span class="line">        <span class="string">"Kotlin"</span> -&gt; println(<span class="string">"문자열 Kotlin입니다. Hello, Kotlin"</span>)</span><br><span class="line">        <span class="keyword">is</span> <span class="built_in">Long</span> -&gt; println(<span class="string">"Long 타입입니다"</span>)</span><br><span class="line">        !<span class="keyword">is</span> String -&gt; println(<span class="string">"String 타입이 아닙니다"</span>)</span><br><span class="line">        <span class="keyword">else</span> -&gt; print(<span class="string">"어떤 조건도 맞지 않습니다"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 조건에 따른 변수값 지정 */</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> result = doWhen(<span class="number">3</span>.toLong())</span><br><span class="line">    println(result)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">doWhen</span><span class="params">(a: <span class="type">Any</span>)</span></span>:Any &#123; <span class="comment">// Any: 어떤 자료형이든 상관없이 호환되는 코틀린 최상위 자료형</span></span><br><span class="line">    <span class="keyword">var</span> result = <span class="keyword">when</span>(a) &#123;</span><br><span class="line">        <span class="number">1</span> -&gt; <span class="string">"숫자 1입니다"</span></span><br><span class="line">        <span class="string">"Kotlin"</span> -&gt; <span class="string">"문자열 Kotlin입니다. Hello, Kotlin"</span></span><br><span class="line">        <span class="keyword">is</span> <span class="built_in">Long</span> -&gt; <span class="string">"Long 타입입니다"</span></span><br><span class="line">        !<span class="keyword">is</span> String -&gt; <span class="string">"String 타입이 아닙니다"</span></span><br><span class="line">        <span class="keyword">else</span> -&gt; <span class="string">"어떤 조건도 맞지 않습니다"</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="반복문"><a href="#반복문" class="headerlink" title="반복문"></a>반복문</h2><p>파이썬과 다르게 마지막 값까지 포함하여 반복</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">0</span>..<span class="number">9</span>) &#123;</span><br><span class="line">        println(i)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>1씩 증가하는 것이 아닌 단계별 증가를 시키기 위해서는 <strong>step</strong>을 사용하면 된다</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">0</span>..<span class="number">9</span> step <span class="number">3</span>) &#123;</span><br><span class="line">        println(i)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>..</code>이 아닌 <strong>downTo</strong>를 이용하여 감소를 시킬 수 있다</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">9</span> downTo <span class="number">0</span>) &#123;</span><br><span class="line">        println(i)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (i <span class="keyword">in</span> <span class="string">'a'</span>..<span class="string">'e'</span>) &#123;</span><br><span class="line">        println(i)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>step을 사용할 수도 있다</p>
+<p>character형태가 숫자로도 나타낼 수 있기에…</p>
+<h2 id="흐름제어"><a href="#흐름제어" class="headerlink" title="흐름제어"></a>흐름제어</h2><p>break문과 continue문은 동일하나 코틀린에서 <strong>label</strong> 기능을 사용 할 수 있다</p>
+<p>다중 반복문을 통해서 label의 기능을 살펴보자</p>
+<p>먼저, 일반적인 이중 반복문에서 break를 이용한 방식을 보면 첫번째 for문으로 인해 이후의 값들도 지속됨을 알 수 있다</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">1</span>..<span class="number">10</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span> (j <span class="keyword">in</span> <span class="number">1</span>..<span class="number">10</span>) &#123;</span><br><span class="line">            print(i)</span><br><span class="line">            print(<span class="string">"\t"</span>)</span><br><span class="line">            println(j)</span><br><span class="line">            <span class="keyword">if</span> (i == <span class="number">1</span> &amp;&amp; j == <span class="number">2</span>) &#123;</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>다음의 label의 기능을 쓴 방식은 처음 for문을 빠져나가게 해줌으로서 이후의 값이 출력되지 않는다</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="symbol">loop@</span><span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">1</span>..<span class="number">10</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span> (j <span class="keyword">in</span> <span class="number">1</span>..<span class="number">10</span>) &#123;</span><br><span class="line">            print(i)</span><br><span class="line">            print(<span class="string">"\t"</span>)</span><br><span class="line">            println(j)</span><br><span class="line">            <span class="keyword">if</span> (i == <span class="number">1</span> &amp;&amp; j == <span class="number">2</span>) &#123;</span><br><span class="line">                <span class="keyword">break</span><span class="symbol">@loop</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>이렇게 보았을 때 시간 복잡도상으로 따진다면 큰 이득을 얻을 수 있다</p>
+<p>보통은 함수처리하여 <code>return</code>으로 마무리 했었는데 좋은 기능이 추가 되었음을 알 수 있다</p>
+<h2 id="Class"><a href="#Class" class="headerlink" title="Class"></a>Class</h2><p>고유의 특징값(속성) + 기능의 구현(함수)로 이루어짐</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> a = Person(<span class="string">"오세훈"</span>, <span class="number">1961</span>)</span><br><span class="line">    <span class="keyword">var</span> b = Person(<span class="string">"박영선"</span>, <span class="number">1960</span>)</span><br><span class="line">    <span class="keyword">var</span> c = Person(<span class="string">"안철수"</span>, <span class="number">1962</span>)</span><br><span class="line">    </span><br><span class="line">    a.introduce()</span><br><span class="line">    b.introduce()</span><br><span class="line">    c.introduce()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>(<span class="keyword">var</span> name:String, <span class="keyword">val</span> birthYear: <span class="built_in">Int</span>) &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">introduce</span><span class="params">()</span></span> &#123;</span><br><span class="line">        println(<span class="string">"안녕하십니까 시민 여러분 저는 <span class="subst">$&#123;birthYear&#125;</span>년생 <span class="subst">$&#123;name&#125;</span> 입니다"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>여기서 클래스 옆에 <code>var name:String, val birthYear: Int</code>는 클래스의 속성들을 선언함과 동시에 생성자 역시 선언하는 방법</p>
+<h3 id="생성자-Constructor"><a href="#생성자-Constructor" class="headerlink" title="생성자(Constructor)"></a>생성자(Constructor)</h3><p>새로운 인스턴스를 만들기 위해 호출하는 특수한 함수</p>
+<p>생성자를 호출하면 클래스의 인스턴스를 만들어 반환 받을 수 있음</p>
+<ul>
+<li>인스턴스의 속성을 초기화</li>
+<li>인스턴스 생성시 구문을 수행</li>
+</ul>
+<p><strong>init</strong>함수를 통해 구문 수행 가능</p>
+<p>init 함수는 파라미터나 반환형이 없는 특수한 함수로 생성자가 생성될 때 실행됨</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> a = Person(<span class="string">"오세훈"</span>, <span class="number">1961</span>)</span><br><span class="line">    <span class="keyword">var</span> b = Person(<span class="string">"박영선"</span>, <span class="number">1960</span>)</span><br><span class="line">    <span class="keyword">var</span> c = Person(<span class="string">"안철수"</span>, <span class="number">1962</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>(<span class="keyword">var</span> name:String, <span class="keyword">val</span> birthYear: <span class="built_in">Int</span>) &#123;</span><br><span class="line">    <span class="keyword">init</span> &#123;</span><br><span class="line">        println(<span class="string">"안녕하십니까 시민 여러분 저는 <span class="subst">$&#123;this.birthYear&#125;</span>년생 <span class="subst">$&#123;this.name&#125;</span> 입니다"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>기본 생성자</strong>: 클래스를 만들 때 기본으로 선언<code>init</code></p>
+<p><strong>보조 생성자</strong>: 필요에 따라 추가적으로 선언<code>constructor</code></p>
+<p>:man_teacher:<strong>보조 생성자를 만들 때는 반드시 기본 생성자를 통해 속성을 초기화</strong> 해주어야 한다</p>
+<p>보조 생성자가 기본 생성자를 호출하도록 하려면 아래와 같이 <code>:this</code>라는 키워드를 사용하고 기본 파라미터가 필요한 부분을 괄호 안에 넣어주면 된다</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> a = Person(<span class="string">"오세훈"</span>, <span class="number">1961</span>)</span><br><span class="line">    <span class="keyword">var</span> b = Person(<span class="string">"박영선"</span>, <span class="number">1960</span>)</span><br><span class="line">    <span class="keyword">var</span> c = Person(<span class="string">"안철수"</span>, <span class="number">1962</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">var</span> baby1 = Person(<span class="string">"신생아1"</span>)</span><br><span class="line">    <span class="keyword">var</span> baby2 = Person(<span class="string">"신생아2"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>(<span class="keyword">var</span> name:String, <span class="keyword">val</span> birthYear: <span class="built_in">Int</span>) &#123;</span><br><span class="line">    <span class="keyword">init</span> &#123;</span><br><span class="line">        println(<span class="string">"안녕하십니까 시민 여러분 저는 <span class="subst">$&#123; this.birthYear &#125;</span>년생 <span class="subst">$&#123; this.name &#125;</span> 입니다"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">constructor</span>(name:String):<span class="keyword">this</span>(name, <span class="number">2021</span>) &#123;</span><br><span class="line">        println(<span class="string">"보조 생성자가 실행되었습니다"</span>)</span><br><span class="line">        println(<span class="string">"생성된 보조 생성자 <span class="subst">$&#123; name &#125;</span>입니다"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="상속-Inheritance"><a href="#상속-Inheritance" class="headerlink" title="상속(Inheritance)"></a>상속(Inheritance)</h2><p>코틀린은 상속 금지가 기본이기에 상속을 하기 위해서는 부모 클래스가 <code>open</code>이어야 한다</p>
+<p><strong>open</strong>: 클래스가 상속될 수 있도록 클래스 선언시 붙여줄 수 있는 키워드</p>
+<ol>
+<li>서브 클래스는 슈퍼 클래스에 존재하는 속성과 ‘같은 이름’의 속성을 가질 수 없다</li>
+<li>서브 클래스가 생성될 떄는 슈퍼 클래스의 생성자까지 호출하여야 한다</li>
+</ol>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> a = Animal(<span class="string">"John"</span>, <span class="number">3</span>, <span class="string">"DOG"</span>)</span><br><span class="line">    <span class="keyword">var</span> b = Dog(<span class="string">"John"</span>, <span class="number">3</span>)</span><br><span class="line">    </span><br><span class="line">    a.introduce()</span><br><span class="line">    b.introduce()</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// a.bark() // 부모클래스에서 자식클래스 함수 접근X</span></span><br><span class="line">    b.bark()</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">var</span> c = Cat(<span class="string">"Loi"</span>, <span class="number">2</span>)</span><br><span class="line">    c.introduce()</span><br><span class="line">    c.meow()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">open</span> <span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>(<span class="keyword">var</span> name:String, <span class="keyword">var</span> age:<span class="built_in">Int</span>, <span class="keyword">var</span> type:String) &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">introduce</span><span class="params">()</span></span> &#123;</span><br><span class="line">        println(<span class="string">"<span class="subst">$&#123;type&#125;</span> <span class="subst">$&#123;name&#125;</span> <span class="subst">$&#123;age&#125;</span>"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> </span>(name:String, age:<span class="built_in">Int</span>) : Animal (name, age, <span class="string">"DOG"</span>) &#123;</span><br><span class="line">    <span class="comment">// 클래스의 자체 속성으로 만들어주는 var을 붙이지 말것</span></span><br><span class="line">    <span class="comment">// 같은 속성을 붙이게 되면 서브 클래스의 속성이 되기에 상속 규칙 무시됨</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">bark</span><span class="params">()</span></span> &#123;</span><br><span class="line">        println(<span class="string">"Bark! Bark!"</span>)</span><br><span class="line">    &#125;    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span> </span>(name:String, age:<span class="built_in">Int</span>) : Animal (name, age, <span class="string">"CAT"</span>) &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">meow</span><span class="params">()</span></span> &#123;</span><br><span class="line">        println(<span class="string">"Meow~"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="오버라이딩과-추상화"><a href="#오버라이딩과-추상화" class="headerlink" title="오버라이딩과 추상화"></a>오버라이딩과 추상화</h2><h3 id="Overriding"><a href="#Overriding" class="headerlink" title="Overriding"></a>Overriding</h3><p>슈퍼 클래스에서 함수가 <code>open</code>이 되어 있는 것은 서브 클래스에서 <code>override</code>를 사용하여 재정의를 할 수 있다</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> a = Animal(<span class="string">"John"</span>, <span class="number">3</span>, <span class="string">"DOG"</span>)</span><br><span class="line">    <span class="keyword">var</span> b = Dog(<span class="string">"John"</span>, <span class="number">3</span>)</span><br><span class="line">    <span class="keyword">var</span> c = Cat(<span class="string">"Loi"</span>, <span class="number">2</span>)</span><br><span class="line">    </span><br><span class="line">    a.sound()</span><br><span class="line">    b.sound()</span><br><span class="line">    c.sound()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">open</span> <span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>(<span class="keyword">var</span> name:String, <span class="keyword">var</span> age:<span class="built_in">Int</span>, <span class="keyword">var</span> type:String) &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">introduce</span><span class="params">()</span></span> &#123;</span><br><span class="line">        println(<span class="string">"<span class="subst">$&#123;type&#125;</span> <span class="subst">$&#123;name&#125;</span> <span class="subst">$&#123;age&#125;</span>"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">open</span> <span class="function"><span class="keyword">fun</span> <span class="title">sound</span><span class="params">()</span></span> &#123;</span><br><span class="line">        println(<span class="string">"Sound"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> </span>(name:String, age:<span class="built_in">Int</span>) : Animal (name, age, <span class="string">"DOG"</span>) &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">sound</span><span class="params">()</span></span> &#123;</span><br><span class="line">        println(<span class="string">"Bark! Bark!"</span>)</span><br><span class="line">    &#125;    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span> </span>(name:String, age:<span class="built_in">Int</span>) : Animal (name, age, <span class="string">"CAT"</span>) &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">sound</span><span class="params">()</span></span> &#123;</span><br><span class="line">        println(<span class="string">"Meow~"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Abstraction"><a href="#Abstraction" class="headerlink" title="Abstraction"></a>Abstraction</h3><p>추상화는 선언부만 있고 기능이 구현되지 않은 추상함수(abstraction function)와 추상클래스(abstraction class)로 구성</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> rabbit = Rabbit()</span><br><span class="line">    rabbit.sniff()</span><br><span class="line">    rabbit.eat()</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">    <span class="keyword">abstract</span> <span class="function"><span class="keyword">fun</span> <span class="title">eat</span><span class="params">()</span></span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">sniff</span><span class="params">()</span></span> &#123;</span><br><span class="line">        println(<span class="string">"킁킁"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Rabbit</span> : <span class="type">Animal</span></span>() &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">eat</span><span class="params">()</span></span> &#123;</span><br><span class="line">        println(<span class="string">"당근을 먹습니다"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Interface"><a href="#Interface" class="headerlink" title="Interface"></a>Interface</h3><p>다른 언어에서 인터페이스는 추상함수로만 이루어져 있는 <strong>순수 추상화 기능</strong></p>
+<p><strong>코틀린에서는 인터페이스도 속성, 추상함수, 일반함수</strong>를 가질 수 있다</p>
+<p>다만, 추상함수는 생성자를 가질 수 있는 반면에 인터페이스는 생성자를 가질 수는 없다</p>
+<p>구현부가 있는 함수: <strong>open</strong>함수로 간주</p>
+<p>구현부가 없는 함수: <strong>abstract</strong>함수로 간주</p>
+<p><strong>별도의 키워드가 없어도 포함된 모든 함수를 서브클래스에서 구현 및 재정의 가능</strong></p>
+<p>한번에 여러 인터페이스를 상속할 수 있기에 유연한 설계 가능</p>
+<blockquote>
+<p><strong>[정리]</strong></p>
+<p>오버라이딩: 이미 구현이 끝난 함수의 기능을 서브클래스에서 재정의 할 때</p>
+<p>추상화: 형식만 선언하고 실제 구현은 서브클래스에 일임할 때</p>
+<p>인터페이스: 서로 다른 기능들을 여러개 물려주어야 할 때</p>
+</blockquote>
+<h2 id="접근제한자"><a href="#접근제한자" class="headerlink" title="접근제한자"></a>접근제한자</h2><h3 id="Access-Modifier"><a href="#Access-Modifier" class="headerlink" title="Access Modifier"></a>Access Modifier</h3><ul>
+<li>public</li>
+<li>internal</li>
+<li>private</li>
+<li>protected</li>
+</ul>
+<p><strong>패키지 스코프</strong></p>
+<table>
+<thead>
+<tr>
+<th>키워드</th>
+<th>접근 범위</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public(기본값)</td>
+<td>어떤 패키지에서도 접근 가능</td>
+</tr>
+<tr>
+<td>internal</td>
+<td>같은 모듈 내에서만 접근 가능</td>
+</tr>
+<tr>
+<td>private</td>
+<td>같은 파일 내에서만 접근 가능</td>
+</tr>
+</tbody></table>
+<p>*protected는 사용하지 않음</p>
+<p><strong>클래스 스코프</strong></p>
+<table>
+<thead>
+<tr>
+<th>키워드</th>
+<th>접근 범위</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public(기본값)</td>
+<td>클래스 외부에서 늘 접근 가능</td>
+</tr>
+<tr>
+<td>private</td>
+<td>클래스 내부에서만 접근 가능</td>
+</tr>
+<tr>
+<td>protected</td>
+<td>클래스 자신과 상속받은 클래스에서 접근 가능</td>
+</tr>
+</tbody></table>
+<p>*internal은 사용하지 않음</p>
+<h2 id="고차함수와-람다함수"><a href="#고차함수와-람다함수" class="headerlink" title="고차함수와 람다함수"></a>고차함수와 람다함수</h2><h3 id="고차함수"><a href="#고차함수" class="headerlink" title="고차함수"></a>고차함수</h3><p><strong>(String)-&gt;Unit</strong>: 반환형에는 값이 없다라는 의미로 Unit를 사용하며, 람다식에 주로 사용</p>
+<p><strong>function1(::function2)</strong>: 일반 함수를 고차 함수로 변경해 주는 연산자로 <code>::</code>를 사용</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    b(::a) <span class="comment">// 일반 함수를 고차 함수로 변경해 주는 연산자</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">a</span> <span class="params">(str: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">    println(<span class="string">"<span class="variable">$str</span> 함수 a"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">b</span> <span class="params">(function: (<span class="type">String</span>)</span></span>-&gt;<span class="built_in">Unit</span>) &#123; <span class="comment">// Unit: 반환형에는 값이 없다</span></span><br><span class="line">    function(<span class="string">"b가 호출함"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Lambda-Function"><a href="#Lambda-Function" class="headerlink" title="Lambda Function"></a>Lambda Function</h3><p>위의 내용을 람다식을 써서 이렇게 나타낼 수도 있다</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> a: (String) -&gt; <span class="built_in">Unit</span> = &#123; str:String -&gt; print(<span class="string">"<span class="variable">$str</span> 함수 a"</span>) &#125;</span><br><span class="line">    b(a)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">b</span> <span class="params">(function: (<span class="type">String</span>)</span></span>-&gt;<span class="built_in">Unit</span>) &#123; <span class="comment">// Unit: 반환형에는 값이 없다</span></span><br><span class="line">    function(<span class="string">"b가 호출함"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>위의 람다함수를 이렇게 간략하게 쓸수도 있다</p>
+<p>위의 람다함수에서는 String을 하나 받지만 반환값이 없기에 아래와 같이 쉽게 나타낼 수 있다</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> a = &#123; str:String -&gt; print(<span class="string">"<span class="variable">$str</span> 람다함수"</span>) &#125;</span><br><span class="line">    b(a)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">b</span> <span class="params">(function: (<span class="type">String</span>)</span></span>-&gt;<span class="built_in">Unit</span>) &#123; <span class="comment">// Unit: 반환형에는 값이 없다</span></span><br><span class="line">    function(<span class="string">"b가 호출함"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>람다식에서도 여러줄을 사용할 수 있다</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> calculate:(<span class="built_in">Int</span>, <span class="built_in">Int</span>) -&gt; <span class="built_in">Int</span> = &#123; a, b -&gt;</span><br><span class="line">        println(a)</span><br><span class="line">        println(b)</span><br><span class="line">        a + b <span class="comment">// return값, return 타입 있을시에는 맨 아래줄 리턴 대상</span></span><br><span class="line">    &#125;   </span><br><span class="line">    println(calculate(<span class="number">3</span>, <span class="number">5</span>))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>파라미터가 없을 시,</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> calculate:() -&gt; <span class="built_in">Unit</span> = &#123;</span><br><span class="line">        println(<span class="string">"계산값 없음"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    calculate()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>파라미터가 하나일 경우 다른방법으로 파라미터 가져오기: <strong>it</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> calculate:(<span class="built_in">Int</span>) -&gt; <span class="built_in">Unit</span> = &#123;</span><br><span class="line">        println(<span class="string">"<span class="subst">$&#123;it&#125;</span> 파라미터 하나 가져오기"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    calculate(<span class="number">7</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Scope-Function"><a href="#Scope-Function" class="headerlink" title="Scope Function"></a>Scope Function</h3><p>함수형 언어의 특징을 조금 더 편리하게 사용할 수 있도록 기본 제공하는 함수들</p>
+<ul>
+<li>apply</li>
+<li>run</li>
+<li>with</li>
+<li>also</li>
+<li>let</li>
+</ul>
+<p><strong>apply</strong>: 인스턴스를 생성한 후 변수에 담기 전에 ‘초기화 과정’을 수행할 때 많이 사용됨</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> book = Book(<span class="string">"Kotlin"</span>, <span class="number">30000</span>).apply &#123;</span><br><span class="line">        name = <span class="string">"[Sale]"</span> + name</span><br><span class="line">        discount()</span><br><span class="line">    &#125;</span><br><span class="line">    println(book.price)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Book</span></span>(<span class="keyword">var</span> name: String, <span class="keyword">var</span> price: <span class="built_in">Int</span>) &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">discount</span><span class="params">()</span></span> &#123;</span><br><span class="line">        price = (price * <span class="number">0.7</span>).toInt()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>main함수와 별도의 스코프에서 인스턴스의 변수와 함수를 조작하므로 코드가 깔끔해진다</p>
+<p><strong>run</strong>: 스코프 안에서 참조연산자를 사용하지 않아도 된다는 점은 apply와 같지만, 일반 람다함수처럼 인스턴스 대신 마지막 구문에서 값 반환</p>
+<p>이미 인스턴스가 만들어진 후에 인스턴의 함수나 속성을 scope 내에서 사용해야할 떄 유용</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> book = Book(<span class="string">"Kotlin"</span>, <span class="number">30000</span>).apply &#123;</span><br><span class="line">        name = <span class="string">"[Sale]"</span> + name</span><br><span class="line">        discount()</span><br><span class="line">    &#125;</span><br><span class="line">    book.run &#123;</span><br><span class="line">        println(<span class="string">"Product: <span class="subst">$&#123;name&#125;</span>, Price: <span class="subst">$&#123; price &#125;</span>"</span>)</span><br><span class="line">        <span class="comment">// Product: [Sale]Kotlin, Price: 21000</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Book</span></span>(<span class="keyword">var</span> name: String, <span class="keyword">var</span> price: <span class="built_in">Int</span>) &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">discount</span><span class="params">()</span></span> &#123;</span><br><span class="line">        price = (price * <span class="number">0.7</span>).toInt()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>with</strong>: run과 동일한 기능을 가지지만 단지 인스턴스를 참조연산자 대신 파라미터로 받는다는 차이</p>
+<p>처리가 끝나면 <code>인스턴스를 반환</code>: <strong>apply, also</strong></p>
+<p>처리가 끝나면 <code>최종값을 반환</code>: <strong>run, let</strong></p>
+<p>참조연산자 없이 인스턴스의 변수와 함수를 사용: <strong>apply, run</strong></p>
+<p>파라미터로 인스턴스를 넘긴 것처럼 <code>it</code>을 통해서 인스턴스 사용: <strong>also, let</strong></p>
+<blockquote>
+<p><strong>also와 let이 파라미터를 통해서 인스턴스를 받는 이유</strong></p>
+<p>같은 이름의 변수나 함수가 scope 바깥에 중복되어 있는 경우에 혼란을 방지하기 위해서</p>
+</blockquote>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">var</span> price = <span class="number">5000</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">var</span> book = Book(<span class="string">"Kotlin"</span>, <span class="number">30000</span>).apply &#123;</span><br><span class="line">        name = <span class="string">"[Sale]"</span> + name</span><br><span class="line">        discount()</span><br><span class="line">    &#125;</span><br><span class="line">    book.run &#123;</span><br><span class="line">        println(<span class="string">"Product: <span class="subst">$&#123;name&#125;</span>, Price: <span class="subst">$&#123; price &#125;</span>"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Book</span></span>(<span class="keyword">var</span> name: String, <span class="keyword">var</span> price: <span class="built_in">Int</span>) &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">discount</span><span class="params">()</span></span> &#123;</span><br><span class="line">        price = (price * <span class="number">0.7</span>).toInt()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>이러한 경우 27000이 나와야하지만, 위의 price와 혼동이 생겨 5000이 나오게 됨</p>
+
+  </div>
+</article>
+<!--  utteranc comment -->
+
+<script src="https://utteranc.es/client.js"
+        repo="TaeJuneJoung/gitblog-comment"
+        issue-term="title"
+        label="Comment"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Kotlin"><span class="toc-number">1.</span> <span class="toc-text">Kotlin</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#변수-선언법"><span class="toc-number">1.1.</span> <span class="toc-text">변수 선언법</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#var"><span class="toc-number">1.1.1.</span> <span class="toc-text">var</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#val"><span class="toc-number">1.1.2.</span> <span class="toc-text">val</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Primitive-Type"><span class="toc-number">1.2.</span> <span class="toc-text">Primitive Type</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#숫자형-타입"><span class="toc-number">1.2.1.</span> <span class="toc-text">숫자형 타입</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#정수형"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">정수형</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#실수형"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">실수형</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#문자형"><span class="toc-number">1.2.2.</span> <span class="toc-text">문자형</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Boolean"><span class="toc-number">1.2.3.</span> <span class="toc-text">Boolean</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#문자열"><span class="toc-number">1.2.4.</span> <span class="toc-text">문자열</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#형변환과-배열"><span class="toc-number">1.3.</span> <span class="toc-text">형변환과 배열</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Type-Casting"><span class="toc-number">1.3.1.</span> <span class="toc-text">Type Casting</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#형변환-함수"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">형변환 함수</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#명시적-형변환-Explicit-type-casting"><span class="toc-number">1.3.1.2.</span> <span class="toc-text">명시적 형변환(Explicit type casting)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Array"><span class="toc-number">1.3.2.</span> <span class="toc-text">Array</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#타입-추론과-함수"><span class="toc-number">1.4.</span> <span class="toc-text">타입 추론과 함수</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#타입-추론"><span class="toc-number">1.4.1.</span> <span class="toc-text">타입 추론</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#함수"><span class="toc-number">1.4.2.</span> <span class="toc-text">함수</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#단일-표현식-함수-Single-Expression-Function"><span class="toc-number">1.4.2.1.</span> <span class="toc-text">단일 표현식 함수(Single-Expression Function)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#조건문"><span class="toc-number">1.5.</span> <span class="toc-text">조건문</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#when"><span class="toc-number">1.5.1.</span> <span class="toc-text">when</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#반복문"><span class="toc-number">1.6.</span> <span class="toc-text">반복문</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#흐름제어"><span class="toc-number">1.7.</span> <span class="toc-text">흐름제어</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Class"><span class="toc-number">1.8.</span> <span class="toc-text">Class</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#생성자-Constructor"><span class="toc-number">1.8.1.</span> <span class="toc-text">생성자(Constructor)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#상속-Inheritance"><span class="toc-number">1.9.</span> <span class="toc-text">상속(Inheritance)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#오버라이딩과-추상화"><span class="toc-number">1.10.</span> <span class="toc-text">오버라이딩과 추상화</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Overriding"><span class="toc-number">1.10.1.</span> <span class="toc-text">Overriding</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Abstraction"><span class="toc-number">1.10.2.</span> <span class="toc-text">Abstraction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Interface"><span class="toc-number">1.10.3.</span> <span class="toc-text">Interface</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#접근제한자"><span class="toc-number">1.11.</span> <span class="toc-text">접근제한자</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Access-Modifier"><span class="toc-number">1.11.1.</span> <span class="toc-text">Access Modifier</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#고차함수와-람다함수"><span class="toc-number">1.12.</span> <span class="toc-text">고차함수와 람다함수</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#고차함수"><span class="toc-number">1.12.1.</span> <span class="toc-text">고차함수</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Lambda-Function"><span class="toc-number">1.12.2.</span> <span class="toc-text">Lambda Function</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Scope-Function"><span class="toc-number">1.12.3.</span> <span class="toc-text">Scope Function</span></a></li></ol></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://TaeJuneJoung.github.io/2021/04/01/kotlin-basic-grammer1/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://TaeJuneJoung.github.io/2021/04/01/kotlin-basic-grammer1/&text=Kotlin] 기본 문법(1)"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://TaeJuneJoung.github.io/2021/04/01/kotlin-basic-grammer1/&title=Kotlin] 기본 문법(1)"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://TaeJuneJoung.github.io/2021/04/01/kotlin-basic-grammer1/&is_video=false&description=Kotlin] 기본 문법(1)"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Kotlin] 기본 문법(1)&body=Check out this article: http://TaeJuneJoung.github.io/2021/04/01/kotlin-basic-grammer1/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://TaeJuneJoung.github.io/2021/04/01/kotlin-basic-grammer1/&title=Kotlin] 기본 문법(1)"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://TaeJuneJoung.github.io/2021/04/01/kotlin-basic-grammer1/&title=Kotlin] 기본 문법(1)"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://TaeJuneJoung.github.io/2021/04/01/kotlin-basic-grammer1/&title=Kotlin] 기본 문법(1)"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://TaeJuneJoung.github.io/2021/04/01/kotlin-basic-grammer1/&title=Kotlin] 기본 문법(1)"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://TaeJuneJoung.github.io/2021/04/01/kotlin-basic-grammer1/&name=Kotlin] 기본 문법(1)&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://TaeJuneJoung.github.io/2021/04/01/kotlin-basic-grammer1/&t=Kotlin] 기본 문법(1)"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+          
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4111865521431436",
+    enable_page_level_ads: true
+  });
+</script>
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2021
+    TaeJune Joung
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155762921-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-155762921-1');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
